@@ -1,0 +1,76 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-no-border toolbar-core">
+    <ion-buttons slot="start">
+      <ion-button (click)="homePage('/operator/tabs/tab1')">
+        <ion-icon
+          src="../../../../assets/icon/air-selangor-icon.svg"
+          style="font-size: 2rem;"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="ion-text-center" style="font-weight: bold;">
+      Profile
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="openNotification()">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+        <ion-badge
+          size="small"
+          color="danger"
+          style="position: absolute; right: -5px; top: 1px;"
+          >3</ion-badge
+        >
+      </ion-button>
+      <!-- <ion-button (click)="clickLogout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-core">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="pencil"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid class="ion-padding-top">
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col size="5">
+        <div class="ion-text-center">
+          <ion-img src="assets/image/user-circle.png"></ion-img>  
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-list class="line-input">
+              <ion-item>
+                <ion-label position="stacked">Name</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Title</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Department</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">ID</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

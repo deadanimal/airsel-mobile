@@ -1,0 +1,85 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-no-border toolbar-core">
+    <ion-buttons slot="start">
+      <ion-button (click)="clickBack()">
+        <ion-icon src="../../../../assets/icon/air-selangor-icon.svg" style="font-size: 2rem"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold"> Asset Detail </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openNotification()">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+        <ion-badge size="small" color="danger" style="position: absolute; right: -5px; top: 1px">
+          {{ notificationService.totalnotificationbyuser }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-core">
+  <!-- <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="scanQrCode()">
+      <ion-icon name="scan"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+  <div class="ion-padding">
+    <ion-list class="ion-padding line-input">
+
+      <ion-item>
+        <ion-label position="stacked">Badge No</ion-label>
+        <ion-input type="text" [disabled]="true" [value]="asset_detail.badge_no" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Asset ID</ion-label>
+        <ion-input type="text" [disabled]="true" [value]="asset_detail.asset_id" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Asset Type</ion-label>
+        <ion-input type="text" [disabled]="true" readonly [value]="asset_detail.asset_type" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Asset Description</ion-label>
+        <!-- <ion-input type="text" (change)="onKeyAssDesc($event.target.value,asset_detail)"
+          [value]="asset_detail.description">
+        </ion-input> -->
+        <ion-textarea rows="3" (change)="onKeyAssDesc($event.target.value,asset_detail)"
+          [value]="asset_detail.description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Asset Location</ion-label>
+        <ion-textarea rows="3" [disabled]="true" [value]="assetLocatioSyncdata" readonly></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-list-header *ngIf="assetAttrColumn != []">
+      <ion-label>Asset Attribute </ion-label>
+    </ion-list-header>
+
+    <ion-list class="ion-padding line-input">
+      <ion-item *ngFor="let assetAttr of assetAttributedatas">
+        <ion-label position="stacked">{{assetAttr.field_name | titlecase}}</ion-label>
+
+        <ion-input type="text" *ngIf="assetAttr.dropdown == 'no'" (change)="onKey($event.target.value,assetAttr)"
+          value="{{assetAttr.field_value}}">
+        </ion-input>
+
+        <ion-select *ngIf="assetAttr.dropdown == 'yes'" (ionChange)="onKey($event.target.value,assetAttr)">
+          <ion-select-option *ngFor="let assAtt of assetAttr.option" [value]="assAtt.characteristic_value">
+            {{assAtt.characteristic_value}}</ion-select-option>
+        </ion-select>
+
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+  <div class="ion-padding ion-text-center">
+    <ion-button color="light" (click)="cancel()">Cancel</ion-button>
+    <ion-button color="primary" (click)="updateDetails()">Update</ion-button>
+  </div>
+</ion-content>

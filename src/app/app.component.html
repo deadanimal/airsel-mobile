@@ -1,0 +1,30 @@
+<ion-app>
+  <ion-menu contentId="content1" menuId="menuNotification" side="end">
+    <ion-header mode="ios" class="ion-no-border">
+      <ion-toolbar mode="ios" class="ion-no-border toolbar-core">
+        <ion-title>Notification</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeNotification()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="content-core ion-padding">
+      <!-- <h6 class="ion-no-margin" style="color: red;">Mark all as read</h6> -->
+      <ion-list class="ion-margin-top">
+        <ion-item lines="none" *ngFor="let notification of notifications">
+          <ion-icon name="megaphone" slot="start"></ion-icon>
+          <ion-label>
+            <h2 class="ion-text-wrap ion-text-justify">
+              {{ notification.title }}
+            </h2>
+            <p class="ion-text-wrap">{{ notification.message }}</p>
+            <small>{{ notification.created_at | date }}</small>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="content1" main></ion-router-outlet>
+</ion-app>

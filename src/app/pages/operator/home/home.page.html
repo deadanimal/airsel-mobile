@@ -1,0 +1,97 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-no-border toolbar-core">
+    <ion-buttons slot="start">
+      <ion-button (click)="homePage('/operator/tabs/tab1')">
+        <ion-icon
+          src="../../../../assets/icon/air-selangor-icon.svg"
+          style="font-size: 2rem;"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="ion-text-center" style="font-weight: bold;">
+      OPERATOR DETAILS
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="openNotification()">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+        <ion-badge
+          size="small"
+          color="danger"
+          style="position: absolute; right: -5px; top: 1px;"
+          >3</ion-badge
+        >
+      </ion-button>
+      <!-- <ion-button (click)="clickLogout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-core">
+  <!-- <ion-card style="height: auto;">
+    <ion-card-content>
+      <ion-list>
+        <ion-item class="nopaddingstart">
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input readonly value="Ahmad Albab"></ion-input>
+        </ion-item>
+
+        <ion-item class="nopaddingstart">
+          <ion-label position="stacked">Department</ion-label>
+          <ion-input readonly type="text" value="Distribution"></ion-input>
+        </ion-item>
+
+        <ion-item class="nopaddingstart">
+          <ion-label position="stacked">Region</ion-label>
+          <ion-input readonly type="text" value="North"></ion-input>
+        </ion-item>
+
+        <ion-item class="nopaddingstart">
+          <ion-label position="stacked">Zone</ion-label>
+          <ion-input readonly type="text" value="KL 1"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card> -->
+
+  <ion-list-header>
+    <h3 class="ion-no-margin">
+      <ion-icon
+        name="list-outline"
+        style="vertical-align: middle;"
+      ></ion-icon>
+      <span
+        style="
+          display: inline-block;
+          vertical-align: middle;
+          margin-left: 0.7rem;
+        "
+        >Task
+      </span>
+    </h3>
+  </ion-list-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3"></ion-col>
+      <ion-col size="6">
+        <ion-card
+          class="card-core ion-no-margin"
+          mode="ios"
+          (click)="openPage('/operator/tabs/tab2')"
+        >
+          <ion-card-content class="ion-no-padding">
+            <img src="assets/svg/reading.svg" />
+          </ion-card-content>
+          <ion-card-header class="ion-no-padding ion-padding-bottom">
+            <p class="ion-no-margin ion-text-center ion-text-bold">
+              Operational Reading
+            </p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

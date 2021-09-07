@@ -1,0 +1,89 @@
+<!-- <ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-no-border">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="content-core">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <ion-img src="assets/svg/analytics.svg"></ion-img>
+      <h1 class="ion-text-center">Track & Monitor</h1>
+      <p class="ion-text-center">
+        Track & monitor your work activity assigned to increase productivity &
+        efficiency
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <ion-img src="assets/svg/efficient.svg"></ion-img>
+      <h1 class="ion-text-center">Analyse</h1>
+      <p class="ion-text-center">
+        Examine the data to make a better decision making
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <ion-img src="assets/svg/personal_finance.svg"></ion-img>
+      <h1 class="ion-text-center">Save Cost</h1>
+      <p class="ion-text-center">
+        Cost to maintain the asset become more reasonable than before
+      </p>
+    </ion-slide>
+  </ion-slides>
+
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="login()" style="margin:0px;">
+    <h3 class="ion-margin-start">Sign in</h3>
+    <ion-item lines="none">
+      <ion-label position="stacked">Username</ion-label>
+      <ion-input type="text" formControlName="username" placeholder="Your username"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.username">
+        <div class="error-message"
+          *ngIf="validations_form.get('username').hasError(validation.type) && (validations_form.get('username').dirty || validations_form.get('username').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+    </ion-item>
+    <ion-grid>
+      <!-- <ion-row>
+        <ion-col class="ion-padding-start" size="6">
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-checkbox [(ngModel)]="isLogin" [ngModelOptions]="{standalone: true}" slot="start"
+              class="ion-no-margin"></ion-checkbox>
+            <ion-label>
+              <p>Stay Login?</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-text-right" size="6">
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-label class="ion-text-right">
+              <p>
+                <a (click)="navigateForgotPage()">Forgot Password </a>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row> -->
+    </ion-grid>
+    <ion-button *ngIf="!isLoading" shape="round" expand="block" color="primary" mode="ios"
+      class="ion-margin-start ion-margin-end ion-margin-top" [disabled]="!validations_form.valid" (click)="login()">
+      Sign in
+    </ion-button>
+    <ion-button disabled *ngIf="isLoading" type="submit" shape="round" expand="block" color="primary" mode="ios"
+      class="ion-margin-start ion-margin-end ion-margin-top">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-button>
+  </form>
+  <div class="lower-content" style="bottom:0;width:100%;text-align:center;">
+    <div>
+      <p class="text-center">Version 1.0.1 (DEV)</p>
+      <div style="height:250px;">&nbsp;</div>
+    </div>
+  </div>
+</ion-content>

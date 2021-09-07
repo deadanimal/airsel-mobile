@@ -1,0 +1,9 @@
+{
+  "name": "air-selangor-rfid",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "eb0c7c8e"
+}
