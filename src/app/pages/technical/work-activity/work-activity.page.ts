@@ -168,9 +168,9 @@ export class WorkActivityPage implements OnInit {
       buttons: [
         {
           text: "OK",
-          // handler: () => {
-          //   this.router.navigate(["/technical/maintenance-work-detail"]);
-          // },
+          handler: () => {
+            this.router.navigate(["/technical/maintenance-work-list"]);
+          },
         },
       ],
     });
@@ -519,7 +519,7 @@ export class WorkActivityPage implements OnInit {
                                       navigationExtras
                                     );
                                   } else {
-                                    this.presentAlert(
+                                    this.warningAlert(
                                       "Error",
                                       "Sorry, asset is not found in the database."
                                     );
@@ -529,7 +529,7 @@ export class WorkActivityPage implements OnInit {
                                   console.error("err", err);
                                   loading.dismiss();
 
-                                  this.presentAlert(
+                                  this.warningAlert(
                                     "Error",
                                     "Sorry, there is a technical problem going on."
                                   );
@@ -541,7 +541,7 @@ export class WorkActivityPage implements OnInit {
                           console.log("err assetlsService = ", err);
                           loading.dismiss();
 
-                          this.presentAlert(
+                          this.warningAlert(
                             "Error",
                             "Sorry, there is a technical problem going on."
                           );
@@ -549,7 +549,7 @@ export class WorkActivityPage implements OnInit {
                       );
                   });
               } else {
-                this.presentAlert(
+                this.warningAlert(
                   "Error",
                   "Please enter badge number to find asset detail"
                 );
@@ -722,7 +722,7 @@ export class WorkActivityPage implements OnInit {
                         navigationExtras
                       );
                     } else {
-                      this.presentAlert(
+                      this.warningAlert(
                         "Error",
                         "Batch number not match. Please try again,"
                       );
@@ -730,7 +730,7 @@ export class WorkActivityPage implements OnInit {
                   }
                   // else, suggest the user to use QR scanner OR search by badge number
                   else {
-                    this.presentAlert(
+                    this.warningAlert(
                       "Error",
                       "The asset is not found in the database. Please try again by using QR scanner OR search by badge number."
                     );
@@ -740,7 +740,7 @@ export class WorkActivityPage implements OnInit {
                   console.log("err assetlsService = ", err);
                   loading.dismiss();
 
-                  this.presentAlert(
+                  this.warningAlert(
                     "Error",
                     "Sorry, there is a technical problem going on."
                   );
@@ -748,7 +748,7 @@ export class WorkActivityPage implements OnInit {
               );
             });
         } else {
-          this.presentAlert("Error", "RFID is invalid. Please try again.");
+          this.warningAlert("Error", "RFID is invalid. Please try again.");
         }
       });
   }
@@ -807,7 +807,7 @@ export class WorkActivityPage implements OnInit {
                               navigationExtras
                             );
                           } else {
-                            this.presentAlert(
+                            this.warningAlert(
                               "Error",
                               "Sorry, asset is not found in the database."
                             );
@@ -817,7 +817,7 @@ export class WorkActivityPage implements OnInit {
                           console.error("err", err);
                           loading.dismiss();
 
-                          this.presentAlert(
+                          this.warningAlert(
                             "Error",
                             "Sorry, there is a technical problem going on."
                           );
@@ -829,7 +829,7 @@ export class WorkActivityPage implements OnInit {
                     console.log("err assetlsService = ", err);
                     loading.dismiss();
 
-                    this.presentAlert(
+                    this.warningAlert(
                       "Error",
                       "Sorry, there is a technical problem going on."
                     );
@@ -843,7 +843,7 @@ export class WorkActivityPage implements OnInit {
           //   );
           // }
         } else {
-          this.presentAlert("Error", "QR code is invalid. Please try again.");
+          this.warningAlert("Error", "QR code is invalid. Please try again.");
         }
       });
   }
