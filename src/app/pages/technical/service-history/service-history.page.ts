@@ -522,6 +522,8 @@ export class ServiceHistoryPage implements OnInit {
                 service_histories: woacalalData
               }
 
+              console.log("updateservhistaaa1", this.servHist.id)
+              console.log("updateservhistaaa1", woacassLocAssLisFormData)
               this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe(
                 (woacalalRes) => {
                   console.log("woacalalRes =", woacalalRes)
@@ -535,6 +537,8 @@ export class ServiceHistoryPage implements OnInit {
             }
           )
         } else {
+          console.log("updateservhistaaa2", idToBeUpdate)
+          console.log("updateservhistaaa2", assLocAssLisSerHisData)
           this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe(
             (res) => {
               console.log("updatefailureformData = ", res)
@@ -560,7 +564,6 @@ export class ServiceHistoryPage implements OnInit {
         }
       }
     } else if (this.selectedAssetType == 'Downtime') {
-
       if (this.downtime_start == '' && this.downtime_end == '' && this.downtime_reason == '' && this.downtime_comment == '') {
         this.alertWarning('Warning', 'Please answer all question.')
       } else {
@@ -586,6 +589,8 @@ export class ServiceHistoryPage implements OnInit {
                 service_histories: woacalalData
               }
 
+              console.log("updateservhistaaa3", this.servHist.id)
+              console.log("updateservhistaaa3", woacassLocAssLisFormData)
               this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe(
                 (woacalalRes) => {
                   console.log("woacalalRes =", woacalalRes)
@@ -599,7 +604,9 @@ export class ServiceHistoryPage implements OnInit {
             }
           )
         } else {
-          console.log("this is a existing data ", idToBeUpdate)
+          //console.log("this is a existing data ", idToBeUpdate)
+          console.log("updateservhistaaa4", idToBeUpdate)
+          console.log("updateservhistaaa4", assLocAssLisSerHisData)
           this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe(
             (res) => {
               console.log("updatefailureformData = ", res)
@@ -732,7 +739,8 @@ export class ServiceHistoryPage implements OnInit {
                               let woacassLocAssLisFormData = {
                                 service_histories: woacalalData
                               }
-
+                              console.log("updateservhistaaa5", this.servHist.id)
+                              console.log("updateservhistaaa5", woacassLocAssLisFormData)
                               this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe(
                                 (woacalalRes) => {
                                   console.log("woacalalRes =", woacalalRes)
@@ -749,7 +757,8 @@ export class ServiceHistoryPage implements OnInit {
                             }
                           )
                         } else {
-                          console.log(assLocAssLisSerHisData)
+                          console.log("updateservhistaaa6", assLocAssLisSerHisData)
+                          console.log("updateservhistaaa6", idToBeUpdate)
                           this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe(
                             (alslshRes) => {
                               console.log("alslshRes", alslshRes)

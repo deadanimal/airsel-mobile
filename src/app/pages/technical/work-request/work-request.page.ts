@@ -434,10 +434,12 @@ export class WorkRequestPage implements OnInit {
   }
 
   onChangePlanner(event: { component: IonicSelectableComponent; value: any }) {
+    console.log("this.plannerSelected = ", event.value.planner);
     this.plannerSelected = event.value.planner;
   }
 
   submit() {
+    console.log("this.plannerSelected = ", this.plannerSelected);
     this.workrequestFormGroup.patchValue({
       // creation_user: this.authService.userID,
       required_by_date: format(
@@ -445,6 +447,10 @@ export class WorkRequestPage implements OnInit {
         "yyyy-MM-dd"
       ),
       planner: this.plannerSelected,
+      creation_datetime :format(
+        new Date(),
+        "yyyy-MM-dd HH:mm:ss"
+      )
     });
 
     console.log("workrequestFormGroup = ", this.workrequestFormGroup.value);

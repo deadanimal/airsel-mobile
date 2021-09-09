@@ -157,6 +157,8 @@ export class WorkActivityPage implements OnInit {
   ngOnInit() {
     broadcaster._debug = true;
     this.menu.enable(false, "menuNotification");
+    this.workactivityData= this.workactivityData;
+
   }
 
   async presentAlert(header: string, message: string) {
@@ -483,8 +485,8 @@ export class WorkActivityPage implements OnInit {
                             loading.dismiss();
                             let navigationExtras: NavigationExtras = {
                               state: {
-                                badge_no: res[0].badge_no,
-                                asset,
+                                badge_no: data.badge_no,
+                                asset:asset,
                                 work_activity: this.workactivity,
                               },
                             };
@@ -507,7 +509,7 @@ export class WorkActivityPage implements OnInit {
                                     let navigationExtras: NavigationExtras = {
                                       state: {
                                         badge_no: data.badge_no,
-                                        asset,
+                                        asset: asset,
                                         work_activity: this.workactivity,
                                       },
                                     };
@@ -587,15 +589,17 @@ export class WorkActivityPage implements OnInit {
               if (this.bBarcode) {
                 loading.dismiss();
                 broadcaster.removeEventListener(ev, listener);
-                this.updateQrbarcode(event.data, asset);
-                // if(event.data == asset.badge_number){
-                //   this.updateQrbarcode(event.data, asset);
-                // }else{
-                //     this.warningAlert(
-                //       "Error",
-                //       "Batch number not match. Please try again,"
-                //     );
-                // }
+                //this.updateQrbarcode(event.data, asset);
+                var data = event.data.trim();
+                var badge = asset.badge_number.trim();
+                if(data == badge){
+                  this.updateQrbarcode(event.data, asset);
+                }else{
+                    this.warningAlert(
+                      "Error",
+                      "Batch number not match. Please try again,"
+                    );
+                }
                 
               }
             });
@@ -708,8 +712,7 @@ export class WorkActivityPage implements OnInit {
                       let navigationExtras: NavigationExtras = {
                         state: {
                           badge_no: res[0].badge_no,
-                          asset,
-                          work_activity: this.workactivity,
+                          asset: asset,
                         },
                       };
 
@@ -756,7 +759,7 @@ export class WorkActivityPage implements OnInit {
         this.scanValue = data;
 
         if (this.scanValue != "") {
-          if (this.scanValue == asset.badge_number) {
+        //  if (this.scanValue == asset.badge_number) {
             this.loadingController
               .create({
                 message: "Please wait...",
@@ -772,7 +775,7 @@ export class WorkActivityPage implements OnInit {
                       let navigationExtras: NavigationExtras = {
                         state: {
                           badge_no: res[0].badge_no,
-                          asset
+                          asset: asset,
                         },
                       };
 
@@ -831,12 +834,12 @@ export class WorkActivityPage implements OnInit {
                   }
                 );
               });
-          } else {
-            this.warningAlert(
-              "Error",
-              "Batch number not match. Please try again,"
-            );
-          }
+          // } else {
+          //   this.warningAlert(
+          //     "Error",
+          //     "Batch number not match. Please try again,"
+          //   );
+          // }
         } else {
           this.presentAlert("Error", "QR code is invalid. Please try again.");
         }

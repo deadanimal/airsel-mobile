@@ -41,6 +41,8 @@ export class WorkActivityAssetPage implements OnInit {
   workOrderActivityCompletionAssLocAssLisDataReq = []
   buttonStatusArr = []
   buttonStatus: boolean
+  serviceHistArr = [];
+  workactivity:any;
 
   // Form
   workactivityassetFormGroup: FormGroup;
@@ -74,6 +76,7 @@ export class WorkActivityAssetPage implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.getAllData()
+        this.workactivity = this.router.getCurrentNavigation().extras.state.work_activity
       }
     });
   }
@@ -81,7 +84,7 @@ export class WorkActivityAssetPage implements OnInit {
 
   workOrdActComAssLocAssLisReq: any = []
   worOrdActComAssLocAssLisNot: any = []
-  serviceHistArr = []
+  //serviceHistArr = []
   buttonDisable: boolean
   getAllData() {
 
@@ -105,8 +108,11 @@ export class WorkActivityAssetPage implements OnInit {
     this.workOrderActivityCompletionAssLocAssLisData = [];
     this.workOrderActivityCompletionAssLocAssLisDataAll = [];
     this.workOrderActivityCompletionAssLocAssLisDataReq = [];
+    this.serviceHistArr = [];
 
-    this.workactivityasset.service_histories.forEach(element => {
+    this.workOrderActivityCompletionAssLocAssListService.getOne(this.workactivityasset.id).subscribe(
+    (resWoacalal) => {
+    resWoacalal.service_histories.forEach(element => {
       // this.buttonStatus : Boolean
       this.assetLocationAssetListServiceHistoriesService.getOne(element).subscribe(
         (res) => {
@@ -204,6 +210,7 @@ export class WorkActivityAssetPage implements OnInit {
               this.serviceHistArr.push(res.service_history_type)
             }
           }
+          console.log("serviceHistArr1", this.serviceHistArr) 
           this.buttonStatusArr.push(bstat)
           console.log("this.buttonStatusArr = ", this.buttonStatusArr)
           if (this.buttonStatusArr.indexOf('no') == -1) {
@@ -227,17 +234,17 @@ export class WorkActivityAssetPage implements OnInit {
       console.log("workOrderActivityCompletionAssLocAssLisDataReq", this.workOrderActivityCompletionAssLocAssLisDataReq)
     }, 1000);
 
+    console.log("serviceHistArr2", this.serviceHistArr) 
     // if (this.router.getCurrentNavigation().extras.state.badge_no) {
-    let badge_no = this.router.getCurrentNavigation().extras.state
-      .badge_no;
-    // console.log("badge_no = ", badge_no)
+    var badge_no = this.workactivityasset.badge_number
+    console.log("badge_no = ", badge_no)
     // if (badge_no == this.workactivityasset.badge_number) {
 
     this.assetsService
       .filter("badge_no=" + badge_no)
       .subscribe(
         (res) => {
-          // console.log("res qweqwe", res)
+          console.log("res qweqwe", res)
           this.workactivityassetFormGroup.patchValue({
             asset_type: res[0].asset_type,
             badge_number: badge_no,
@@ -256,6 +263,10 @@ export class WorkActivityAssetPage implements OnInit {
     //   );
     // }
     // }
+    }, () => {
+
+    }
+    )
   }
 
   getAllData2() {
@@ -351,27 +362,30 @@ export class WorkActivityAssetPage implements OnInit {
                 //   }
                 // }
               }
-
+              console.log("serviceHistArr", res) 
               if (res.service_history_type == "FAILURE") {
                 if (res.failure_type != '' && res.failure_root_cause != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
                   this.workOrderActivityCompletionAssLocAssLisData.push(res)
                   // bstat = 'yes'
                   this.serviceHistArr.push(res.service_history_type)
+                  console.log("serviceHistArr", this.serviceHistArr) 
                 }
               } else if (res.service_history_type == "DOWNTIME") {
                 if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
                   this.workOrderActivityCompletionAssLocAssLisData.push(res)
                   // bstat = 'yes'
                   this.serviceHistArr.push(res.service_history_type)
+                  console.log("serviceHistArr", this.serviceHistArr) 
                 }
               } else {
                 if (res.question.length > 0) {
                   this.workOrderActivityCompletionAssLocAssLisData.push(res)
                   // bstat = 'yes'
                   this.serviceHistArr.push(res.service_history_type)
+                  console.log("serviceHistArr", this.serviceHistArr) 
                 }
               }
-              console.log("this.buttonStatusArr.length = ", this.buttonStatusArr.length)
+              //console.log("this.buttonStatusArr.length = ", this.buttonStatusArr.length)
               // console.log("this.workOrderActivityCompletionAssLocAssLisDataReq.length = ", this.workOrderActivityCompletionAssLocAssLisDataReq.length)
               // console.log("workOrderActivityCompletionAssLocAssLisDataReq = ", this.workOrderActivityCompletionAssLocAssLisDataReq)
               // var workOrderActivityCompletionAssLocAssLisDataReqtrue = new Set(this.workOrderActivityCompletionAssLocAssLisDataReq);
@@ -386,7 +400,7 @@ export class WorkActivityAssetPage implements OnInit {
               // } else {
               //   this.buttonStatus = true
               // }
-
+              console.log("serviceHistArr", this.serviceHistArr) 
             }, (err) => {
               console.log(err)
             }
@@ -476,7 +490,7 @@ export class WorkActivityAssetPage implements OnInit {
       // }
       if (element.svc_hist_type_req_fl == 'W1YS') {
         console.log("elementW1YS-----", element)
-
+        check.push(element.service_history_type)
         // if (element.service_history_type == "FAILURE") {
         //   console.log("sini fail")
         //   if (element.failure_type != '' && element.failure_root_cause != '' && element.failure_repair != '' && element.failure_mode != '' && element.failure_component != '') {
@@ -497,26 +511,26 @@ export class WorkActivityAssetPage implements OnInit {
         //   }
         // }
 
-        var duplicate = false;
-        if (element.service_history_type != '') {
-          if (check.length == 0){
-            check.push(element.service_history_type)
-            duplicate = true;
-          }else{
-            check.forEach(check => {
-              console.log("1t", check)
-              console.log("2t", element.service_history_type)
-                if(check == element.service_history_type){
-                  duplicate = true;
-                }
-            });
-          }
-          if(duplicate == false){
-           check.push(element.service_history_type)
-          }
-        } else {
-          console.log(element)
-        }
+        // var duplicate = false;
+        // if (element.service_history_type != '') {
+        //   if (check.length == 0){
+        //     check.push(element.service_history_type)
+        //     duplicate = true;
+        //   }else{
+        //     check.forEach(check => {
+        //       console.log("1t", check)
+        //       console.log("2t", element.service_history_type)
+        //         if(check == element.service_history_type){
+        //           duplicate = true;
+        //         }
+        //     });
+        //   }
+        //   if(duplicate == false){
+        //    check.push(element.service_history_type)
+        //   }
+        // } else {
+        //   console.log(element)
+        // }
       }
 
     });
@@ -549,6 +563,11 @@ export class WorkActivityAssetPage implements OnInit {
   }
 
   async alertWorkActivityAsset(header, message) {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        work_activity: this.workactivity,
+      },
+    };
     const alert = await this.alertController.create({
       header,
       message,
@@ -556,7 +575,11 @@ export class WorkActivityAssetPage implements OnInit {
         {
           text: "OK",
           handler: () => {
-            this.router.navigate(["/technical/work-activity"]);
+            this.router.navigateByUrl('/technical/maintenance-work-detail', { skipLocationChange: true }).then(() => {
+                this.router.navigate(['/technical/work-activity'],navigationExtras);
+            }); 
+            //this.router.navigate(["/technical/work-activity"]);
+            //this.router.navigate(["/technical/maintenance-work-detail"]);
           },
         },
       ],
@@ -581,10 +604,19 @@ export class WorkActivityAssetPage implements OnInit {
   }
 
   clickBack() {
-    this.router.navigate(["/technical/work-activity"]);
+    let navigationExtras: NavigationExtras = {
+      state: {
+        work_activity: this.workactivity,
+      },
+    };
+    this.router.navigateByUrl('/technical/maintenance-work-detail', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/technical/work-activity'],navigationExtras);
+    });
   }
 
   async clickAddServiceHistory(servicehistory) {
+    console.log("serv_hist", servicehistory)
+    console.log("serv_hist2", this.serviceHistArr)
     let obj = {
       servicehistory: servicehistory,
       servHistArr: this.serviceHistArr
