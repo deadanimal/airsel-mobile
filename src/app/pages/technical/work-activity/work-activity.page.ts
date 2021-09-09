@@ -713,6 +713,7 @@ export class WorkActivityPage implements OnInit {
                         state: {
                           badge_no: res[0].badge_no,
                           asset: asset,
+                          work_activity: this.workactivity
                         },
                       };
 
@@ -776,6 +777,7 @@ export class WorkActivityPage implements OnInit {
                         state: {
                           badge_no: res[0].badge_no,
                           asset: asset,
+                          work_activity: this.workactivity
                         },
                       };
 
