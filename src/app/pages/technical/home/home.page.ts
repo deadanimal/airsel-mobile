@@ -70,20 +70,41 @@ export class HomePage implements OnInit {
       woacArr = res;
       woacArr.forEach(element => {
 
-        // console.log("currentDate", this.getCurrentDateTime())
-        // console.log("required_by_dt", element.required_by_dt)
+        if (element['bo_status_cd'] == 'COMPLETE') {
+          let obj = {
+            status: 'Completed'
+          }
 
+          element['status'] = "Completed";
+          console.log("woac-element", element.status)
+          this.workOrderActivityCompletionService.update(element['id'], obj).subscribe(
+            (resUp) => {console.log("resUp", resUp)}
+            , (errUp) => {console.log("errUp", errUp)}
+          )
+
+        } else if (element['bo_status_cd'] == 'CANCELED') {
+          let obj = {
+            status: 'Cancelled'
+          }
+
+          element.status = 'Cancelled'
+          console.log("woac-element", element.status)
+          this.workOrderActivityCompletionService.update(element['id'], obj).subscribe(
+            (resUp) => {console.log("resUp", resUp)}
+            , (errUp) => {console.log("errUp", errUp)}
+          )
+
+        }
+        
         if (element.required_by_dt < this.getCurrentDateTime()) {
 
-          if (element['status'] != 'Completed' || element['status'] != 'BackLog') {
+          if (element['status'] != 'Completed' || element['status'] != 'BackLog' || element['bo_status_cd'] != 'CANCELED') {
             let obj = {
               status: 'BackLog'
             }
-            // console.log("backlog")
 
             element.status = 'BackLog'
-            this.workactivities.push(element)
-            // this.workactivities.push(element)
+            //this.workactivities.push(element)
 
             this.workOrderActivityCompletionService.update(element['id'], obj).subscribe(
               (resUp) => {
@@ -93,15 +114,16 @@ export class HomePage implements OnInit {
               }
             )
           } else {
-
-            console.log("completed")
-            this.workactivities.push(element)
-
+            console.log("Completed")
+            //this.workactivities.push(element)
           }
         } else {
           console.log("New")
-          this.workactivities.push(element)
+          //this.workactivities.push(element)
         }
+
+        this.workactivities.push(element)
+
       })
     },
       (err) => {
@@ -187,11 +209,14 @@ export class HomePage implements OnInit {
       (res) => {
         console.log("workOrderActivityCompletionService_res", res);
         res.forEach(function (data) {
-          if (data.field_2 == userId || data.field_2 == '') {
-            array.push(data)
-          } else {
-            console.log('tak sama user id')
+          if(data.bo_status != "Completed" && data.bo_status != "Canceled"){
+            if (data.field_2 == userId || data.field_2 == '') {
+              array.push(data)
+            } else {
+              console.log('tak sama user id')
+            }
           }
+          
         })
         this.workOrderActComp = array
         //this.workOrderActComp = res

@@ -24,17 +24,17 @@
     <ion-card *ngFor="let workrequest of workrequests">
       <ion-card-header>
         <ion-fab horizontal="end">
-          <ion-fab-button *ngIf="workrequest.approval_profile == ''" size="small" color="primary"
+          <ion-fab-button *ngIf="workrequest.approval_profile == '' || workrequest.work_request_status == 'PENDAPPROVAL'" size="small" color="primary"
             (click)="clickEdit(workrequest)">
             <ion-icon name="document-text"></ion-icon>
           </ion-fab-button>
 
-          <ion-fab-button *ngIf="workrequest.approval_profile != ''" size="small" color="success"
+          <ion-fab-button *ngIf="workrequest.approval_profile != '' && workrequest.work_request_status == 'SUCCESS'" size="small" color="success"
             (click)="clickEdit(workrequest)">
             <ion-icon name="document-text"></ion-icon>
           </ion-fab-button>
 
-          <ion-fab-button *ngIf="workrequest.work_request_status == 'CREATED'" size="small" color="tertiary"
+          <ion-fab-button *ngIf="workrequest.work_request_status == 'CREATED' || workrequest.work_request_status == 'PENDAPPROVAL'" size="small" color="tertiary"
             (click)="clickApprove(workrequest)">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </ion-fab-button>

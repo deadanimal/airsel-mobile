@@ -323,6 +323,8 @@ export class WorkRequestListPage implements OnInit {
       approval_profile: data,
     };
 
+    console.log("WR-obj", obj);
+
     this.workrequestService.submit_approval_profile(obj).subscribe(
       (res) => {
         if (res) {
