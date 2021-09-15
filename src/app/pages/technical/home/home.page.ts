@@ -98,7 +98,7 @@ export class HomePage implements OnInit {
         
         if (element.required_by_dt < this.getCurrentDateTime()) {
 
-          if (element['status'] != 'Completed' || element['status'] != 'BackLog' || element['bo_status_cd'] != 'CANCELED') {
+          if (element['status'] != 'Completed' && element['status'] != 'BackLog' && element['bo_status_cd'] == 'ACTIVE') {
             let obj = {
               status: 'BackLog'
             }
