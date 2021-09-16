@@ -1,6 +1,6 @@
 export class WorkOrderActivityCompletionModel {
   public id: string;
-  public bo_status: string;
+  public bo_status_cd: string;
   public required_by_date: string;
   public activity_id: string;
   public work_class: string;
@@ -33,7 +33,7 @@ export class WorkOrderActivityCompletionModel {
 
   constructor(
     id: string,
-    bo_status: string,
+    bo_status_cd: string,
     required_by_date: string,
     activity_id: string,
     work_class: string,
@@ -65,7 +65,7 @@ export class WorkOrderActivityCompletionModel {
     field_2: string,
   ) {
     this.id = id;
-    this.bo_status = bo_status;
+    this.bo_status_cd = bo_status_cd;
     this.required_by_date = required_by_date;
     this.activity_id = activity_id;
     this.work_class = work_class;

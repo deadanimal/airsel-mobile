@@ -209,11 +209,12 @@ export class HomePage implements OnInit {
       (res) => {
         console.log("workOrderActivityCompletionService_res", res);
         res.forEach(function (data) {
-          if(data.bo_status != "Completed" && data.bo_status != "Canceled"){
+          console.log('test7',data.bo_status_cd)
+          if(data.bo_status_cd != "COMPLETE" && data.bo_status_cd != "CANCELED"){
             if (data.field_2 == userId || data.field_2 == '') {
               array.push(data)
             } else {
-              console.log('tak sama user id')
+              //console.log('tak sama user id')
             }
           }
           
