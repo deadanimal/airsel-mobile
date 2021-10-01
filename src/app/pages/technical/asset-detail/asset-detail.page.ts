@@ -168,15 +168,6 @@ export class AssetDetailPage implements OnInit {
   assetAttributedatas: any = []
   assetAttrData: any[]
   updateAssetData: any
-  // Forms
-  // firstFormGroup: FormGroup;
-  // secondFormGroup: FormGroup;
-  // thirdFormGroup: FormGroup;
-  // fourthFormGroup: FormGroup;
-  // fifthFormGroup: FormGroup;
-  // sixthFormGroup: FormGroup;
-  // seventhFormGroup: FormGroup;
-  // validation_messages = [];
 
   myDate = new Date();
   assetAttributeId = []
@@ -203,18 +194,12 @@ export class AssetDetailPage implements OnInit {
       if (this.router.getCurrentNavigation().extras.state) {
         this.asset_detail = this.router.getCurrentNavigation().extras.state.asset_detail;
 
-        // console.log("this.asset_detail==>><<", this.asset_detail)
-
         let asset_attributes = this.asset_detail["asset_attributes"];
-        // console.log('assetType = ', assetType)
-        // this.getAssetAttributeData()
         this.getAssetAttributeData(asset_attributes)
 
-        // console.log("this.asset_detail ooooo = ", this.asset_detail)
-        // console.log("this.asset_detail asset_id = ", this.asset_detail.asset_type)
         let asset_type = "asset_type_code=" + this.asset_detail['asset_type']
         this.assetAttributeId = this.asset_detail['asset_attributes']
-        // console.log("this.assetAttributeId----", this.assetAttributeId)
+        
         this.assetTypesService.filter(asset_type).subscribe(
           (assTypeRes) => {
             // console.log("assTypeRes", assTypeRes)
@@ -234,24 +219,14 @@ export class AssetDetailPage implements OnInit {
           }
         )
 
-        // if (this.asset_detail.asset_primary_category.match(/Pump/i)) {
-        //   this.asset_type = "Pump";
-        // } else if (this.asset_detail.asset_primary_category.match(/Motor/i)) {
-        //   this.asset_type = "Motor";
-        // }
-
         if (this.asset_detail['attached_to_asset_id'] == '') {
           this.assetLocatioSyncService.filter("node_id=" + this.asset_detail['node_id']).subscribe(
             (res) => {
-              // console.log("assetLocatioSyncServiceres", res);
-              // this.assetregistrations = res;
-              // this.assetLocatioSyncdata = res[0].description
               if (res.length > 0) {
                 this.assetLocatioSyncdata = res[0].description
               } else {
                 this.assetLocatioSyncdata = '-'
               }
-              // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
             },
             (err) => {
               console.error("err", err);
@@ -271,7 +246,6 @@ export class AssetDetailPage implements OnInit {
                   } else {
                     this.assetLocatioSyncdata = '-'
                   }
-                  // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
                 },
                 (err) => {
                   console.error("err", err);
@@ -282,23 +256,6 @@ export class AssetDetailPage implements OnInit {
             }
           )
         }
-        // this.assetLocatioSyncService.filter("node_id=" + this.asset_detail.node_id).subscribe(
-        //   (res) => {
-        //     // console.log("assetLocatioSyncServiceres", res);
-        //     // this.assetregistrations = res;
-        //     if (res.length > 0) {
-        //       this.assetLocatioSyncdata = res[0].description
-        //     } else {
-        //       this.assetLocatioSyncdata = '-'
-        //     }
-        //     // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
-        //   },
-        //   (err) => {
-        //     console.error("err", err);
-        //   }
-        // );
-
-
       }
     });
   }
@@ -309,37 +266,16 @@ export class AssetDetailPage implements OnInit {
   assetAttrCollumn: any = []
   arraytype = []
   getAssAttrColumnData(assAttCol) {
-    // arraytype = []
     setTimeout(() => {
-      // console.log("this.assetAttributedatas<>><><>", this.assetAttributedatas)
-
-      // this.assetAttributedatas.forEach((elementqq) => {
-      //   console.log("elementqq = ", elementqq)
-      //   arraytype.push(elementqq.field_name)
-      // })
-
-      // for (let key in this.assetAttributedatas) {
-      //   let child = this.assetAttributedatas[key];
-      //   console.log("qweqweqweqqwe", this.assetAttributedatas[key])
-      // }
-
-      // for (let i = 0; i <= this.assetAttributedatas.length; i++) {
-      //   console.log("this.assetAttributedatas = ", this.assetAttributedatas[i])
-      //   arraytype.push(this.assetAttributedatas[i].field_name)
-      // }
-
-      // console.log("this.arraytype>>>>>>>", this.arraytype)
       if (assAttCol['bottom_water_level'] == true) {
         if (this.arraytype.indexOf('bottom_water_level') == -1) {
           let assAttColTemp = []
           assAttColTemp['id'] = ''
           assAttColTemp['action_type'] = ''
-          // assAttColTemp['adhoc_value'] = null
           assAttColTemp['characteristic_type'] = ''
           assAttColTemp['characteristic_type_name'] = 'bottom_water_level'
           assAttColTemp['field_name'] = 'bottom_water_level'
           assAttColTemp['field_value'] = ''
-          // assAttColTemp['characteristic_value'] = null
           this.assetAttributedatas.push(assAttColTemp)
         }
       }
@@ -1464,7 +1400,7 @@ export class AssetDetailPage implements OnInit {
   }
 
   clickBack() {
-    this.router.navigate(["/technical/tabs/tab2"]);
+    this.router.navigate(["/technical/tabs/tab1"]);
   }
 
   openNotification() {
