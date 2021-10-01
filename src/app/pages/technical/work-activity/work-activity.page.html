@@ -59,12 +59,12 @@
     <ion-card *ngFor="let workActData of workactivityData">
       <ion-card-header>
         <ion-fab horizontal="end">
-          <ion-fab-button *ngIf="workActData.reading_datetime == null" size="small" color="primary"
+          <ion-fab-button *ngIf="workActData.reading_datetime == '1997-10-06T00:00:00+00:00'" size="small" color="primary"
             (click)="clickViewAsset(workActData)">
             <ion-icon name="search"></ion-icon>
           </ion-fab-button>
 
-          <ion-fab-button *ngIf="workActData.reading_datetime != null" size="small" color="success"
+          <ion-fab-button *ngIf="workActData.reading_datetime != '1997-10-06T00:00:00+00:00'" size="small" color="success"
             (click)="clickViewAsset(workActData)">
             <ion-icon name="search"></ion-icon>
             <!-- <ion-icon name="checkmark-circle"></ion-icon> -->
