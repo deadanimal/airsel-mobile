@@ -53,6 +53,7 @@ export class ServiceHistoryPage implements OnInit {
   assetTypeData = []
   updateformData = []
   servHistArr = []
+  WorkActAsset = any
 
   // serHisQueFormData: FormGroup;
 
@@ -80,6 +81,7 @@ export class ServiceHistoryPage implements OnInit {
 
     this.servHist = this.navParams.get("servicehistory")
     this.servHistArr = this.navParams.get("servHistArr")
+    this.WorkActAsset = this.navParams.get("WAA")
     console.log("this.servHist servHistArr = ", this.servHistArr)
     console.log("this.servHist servHist = ", this.servHist)
     this.getWorkOrderActComAssLocAssLis(this.servHist)
@@ -237,7 +239,7 @@ export class ServiceHistoryPage implements OnInit {
   }
 
   clickBack() {
-    this.modalController.dismiss();
+    this.modalController.dismiss(this.serviceHistoryArray);
     // await this.modalController.dismiss(onClosedData);
   }
 
@@ -249,7 +251,7 @@ export class ServiceHistoryPage implements OnInit {
         {
           text: "OK",
           handler: () => {
-            this.modalController.dismiss();
+            this.modalController.dismiss(this.serviceHistoryArray);
           },
         },
       ],
@@ -286,7 +288,7 @@ export class ServiceHistoryPage implements OnInit {
 
     // console.log("assetType = ", assetType)
     // console.log("assetType = ", assetType['service_hist_desc'])
-    this.selectedServiceHistory = assetType['service_hist_desc']
+    this.selectedServiceHistory = assetType['service_hist_type']
     this.selectedAssetType = assetType['category']
     this.selectedServiceHistoryType = assetType['service_hist_type']
     console.log(this.selectedAssetType, "---", this.selectedServiceHistory)
@@ -390,23 +392,34 @@ export class ServiceHistoryPage implements OnInit {
   // }
 
   safeDataToArray(value, row) {
-    console.log("row", row);
-    console.log("value", value);
+    var func = "";
 
     let obj = {
-      // ...row,
       question_id: row.question.id,
       question_cd: row.question.question_cd,
       question_desc: row.question.question_desc,
       question_seq: row.question.question_seq,
       valid_value: row.answer,
-      answer_id: value,
-      // answer_id: value,
-      // answer_id: value
+      answer_id: value
     }
-    this.updateformData.push(obj);
+    func = "add";
+    if(this.updateformData.length == 0){
+      func = "add";
+    }else{
+      for (let x = 0; x < this.updateformData.length; x++){
+        if(this.updateformData[x].question_id == row.question.id){
+          func = "update";
+          this.updateformData[x].answer_id = value;
+        }
+      }
+    }
 
-    console.log("qnaPostData", this.updateformData);
+    if(func == "add"){
+      this.updateformData.push(obj);
+    }
+        
+    // console.log("qnaPostData", func);
+    // console.log("qnaPostData", this.updateformData);
   }
 
   failure_type = ''
@@ -454,28 +467,12 @@ export class ServiceHistoryPage implements OnInit {
     let alalshData = []
     let idToBeUpdate = ''
 
-    // if (this.workOrderActComAssLocAssLis.service_histories.length > 0) {
-    //   console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-    //   this.workOrderActComAssLocAssLis.service_histories
-    //     .forEach(element => {
-    //       // this.AssLocAssLisArrId
-    //       woacalalData.push(element)
-    //     });
-    // } else {
-    //   console.log("sini length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-    //   woacalalData = []
-    // }
-
     if (this.listOfAllrequired.length > 0) {
       console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length)
       this.listOfAllrequired.forEach(element => {
         // this.AssLocAssLisArrId
         console.log("element==>>", element)
 
-        // // set for question_id
-        // servHistQues.push(element.id)
-
-        // set for service_history_id
         woacalalData.push(element.id)
 
         console.log(this.selectedServiceHistoryType, "==", element.service_history_type)
@@ -495,7 +492,7 @@ export class ServiceHistoryPage implements OnInit {
 
     if (this.selectedAssetType == 'Failure') {
 
-      if (this.failure_type == '' && this.failure_mode == '' && this.failure_repair == '' && this.failure_component == '' && this.failure_remark == '') {
+      if (this.failure_type == '' || this.failure_mode == '' || this.failure_repair == '' || this.failure_component == '') {
 
         this.alertWarning('Warning', 'Please answer all question.')
       } else {
@@ -506,7 +503,11 @@ export class ServiceHistoryPage implements OnInit {
           failure_mode: this.failure_mode,
           failure_repair: this.failure_repair,
           failure_component: this.failure_component,
-          comments: this.failure_remark
+          comments: this.failure_remark,
+          start_date_time: new Date(),
+          end_date_time: new Date(),
+          downtime_reason: "NPL",
+          failure_root_cause: "AGING" 
         }
 
         console.log("assLocAssLisSerHisData = ", assLocAssLisSerHisData)
@@ -564,7 +565,7 @@ export class ServiceHistoryPage implements OnInit {
         }
       }
     } else if (this.selectedAssetType == 'Downtime') {
-      if (this.downtime_start == '' && this.downtime_end == '' && this.downtime_reason == '' && this.downtime_comment == '') {
+      if (this.downtime_start == '' || this.downtime_end == '' || this.downtime_reason == '') {
         this.alertWarning('Warning', 'Please answer all question.')
       } else {
         let assLocAssLisSerHisData = {
@@ -572,7 +573,12 @@ export class ServiceHistoryPage implements OnInit {
           start_date_time: this.downtime_start,
           end_date_time: this.downtime_end,
           downtime_reason: this.downtime_reason,
-          comments: this.downtime_comment
+          comments: this.downtime_comment,
+          failure_type: "AGING",
+          failure_mode: "JAMMED",
+          failure_repair: "ASSET-REPLACEMENT",
+          failure_component: "SENSOR",
+          failure_root_cause: "AGING"
         }
 
         console.log("assLocAssLisSerHisData = ", assLocAssLisSerHisData)
@@ -637,21 +643,18 @@ export class ServiceHistoryPage implements OnInit {
       if (this.questionAndAnswerData.length != this.updateformData.length) {
         this.alertWarning('Warning', 'Please answer all question.')
       } else {
-        // this.updateformData.forEach(element1 => {
         for (let x = 0; x < this.updateformData.length; x++) {
 
           console.log("xxxxxx = ", x)
           console.log("this.updateformData[x] = ", this.updateformData[x])
           console.log("element1['valid_value'] = ", this.updateformData[x]['valid_value'].length)
 
-          // let validvalue: any = []
           let styleDiv = ''
           let questionvalueData: string[]
           let questionvalue = [];
           let validvalue = [];
           let responseRadio = ''
 
-          // this.updateformData[x]['valid_value'].forEach(element2 => {
           let valid_value_data = this.updateformData[x]['valid_value']
 
           for (let i = 0; i < valid_value_data.length; i++) {
@@ -675,10 +678,6 @@ export class ServiceHistoryPage implements OnInit {
                 console.log("res queValValRes = ", queValValRes)
 
                 let obj2 = [queValValRes.id]
-                // validvalue.push(this.updateformData[x].id);
-
-                // questionvalue.push(obj2);
-                // validvalue[i] = queValValRes.id
                 console.log("validvalue array = ", obj2)
 
                 validvalue.push(queValValRes.id)
@@ -715,14 +714,15 @@ export class ServiceHistoryPage implements OnInit {
                         let assLocAssLisSerHisData = {
                           comments: this.updateformData[x].question_seq,
                           service_history_type: this.selectedServiceHistory,
-                          // failure_type: this.updateformData[x].question_seq,
-                          // failure_mode: this.updateformData[x].question_seq,
-                          // failure_repair: this.updateformData[x].question_seq,
-                          // failure_component: this.updateformData[x].question_seq,
-                          // failure_root_cause: this.updateformData[x].question_seq,
-                          // svc_hist_type_req_fl: this.updateformData[x].question_seq,
-                          // downtime_reason: this.updateformData[x].question_seq,
-                          question: servHistQues
+                          question: servHistQues,
+                          start_date_time: new Date(),
+                          end_date_time: new Date(),
+                          downtime_reason: "NPL",
+                          failure_type: "AGING",
+                          failure_mode: "JAMMED",
+                          failure_repair: "ASSET-REPLACEMENT",
+                          failure_component: "SENSOR",
+                          failure_root_cause: "AGING"
                         }
                         console.log("assLocAssLisSerHisData>><<<<><", assLocAssLisSerHisData)
                         if (idToBeUpdate == '') {
@@ -734,8 +734,6 @@ export class ServiceHistoryPage implements OnInit {
 
                               woacalalData.push(alslshRes.id)
 
-                              // let woacassLocAssLisDataFormData = new FormData();
-                              // woacassLocAssLisDataFormData.append('service_histories',woacalalData)
                               let woacassLocAssLisFormData = {
                                 service_histories: woacalalData
                               }
@@ -745,7 +743,7 @@ export class ServiceHistoryPage implements OnInit {
                                 (woacalalRes) => {
                                   console.log("woacalalRes =", woacalalRes)
                                   this.alertWorkActivityAsset('Work Activity', 'Your service history has been successfully updated.')
-                                  // this.presentAlertConfirm()
+
                                 }, (woacalalErr) => {
                                   console.log(woacalalErr)
                                 }
@@ -762,37 +760,7 @@ export class ServiceHistoryPage implements OnInit {
                           this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe(
                             (alslshRes) => {
                               console.log("alslshRes", alslshRes)
-
-                              // console.log("siniiiiii length = ", this.workOrderActComAssLocAssLis)
-                              // if (this.workOrderActComAssLocAssLis.service_histories.length > 0) {
-                              //   console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-                              //   this.workOrderActComAssLocAssLis.service_histories
-                              //     .forEach(element => {
-                              //       // this.AssLocAssLisArrId
-                              //       woacalalData.push(element)
-                              //     });
-                              // } else {
-                              //   console.log("sini length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-                              //   woacalalData = []
-                              // }
-
-                              // woacalalData.push(alslshRes.id)
-
-                              // let woacassLocAssLisDataFormData = new FormData();
-                              // woacassLocAssLisDataFormData.append('service_histories',woacalalData)
-                              // let woacassLocAssLisFormData = {
-                              //   service_histories: woacalalData
-                              // }
-
-                              // this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe(
-                              //   (woacalalRes) => {
-                              //     console.log("woacalalRes =", woacalalRes)
                               this.alertWorkActivityAsset('Work Activity', 'SuccessFully Save Data.')
-                              //     // this.presentAlertConfirm()
-                              //   }, (woacalalErr) => {
-                              //     console.log(woacalalErr)
-                              //   }
-                              // )
 
                             }, (alslshErr) => {
                               console.log("alslshErr", alslshErr)
@@ -800,8 +768,6 @@ export class ServiceHistoryPage implements OnInit {
                             }
                           )
                         }
-                        // console.log("here 111111111111")
-
                       }
 
                     },
@@ -854,7 +820,7 @@ export class ServiceHistoryPage implements OnInit {
           handler: () => {
             // this.router.navigate(["/technical/maintenance-work-list"]);
             // this.router.navigate(["/technical/work-activity-asset"]);
-            this.modalController.dismiss();
+            this.modalController.dismiss(this.serviceHistoryArray);
           },
         },
       ],
