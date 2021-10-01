@@ -87,10 +87,9 @@ export class WorkActivityAssetPage implements OnInit {
   //serviceHistArr = []
   buttonDisable: boolean
   getAllData() {
-
-    this.workactivityasset = this.router.getCurrentNavigation().extras.state.asset;
-    console.log("this.workactivityasset = ", this.workactivityasset)
-
+      this.workactivityasset = this.router.getCurrentNavigation().extras.state.asset;
+      console.log("this.workactivityasset = ", this.workactivityasset);
+    
     this.workactivityassetFormGroup.patchValue({
       id: this.workactivityasset.id,
       bo_status: this.workactivityasset.bo_status,
@@ -134,18 +133,18 @@ export class WorkActivityAssetPage implements OnInit {
           if (res.svc_hist_type_req_fl == 'W1YS') {
             console.log("datares>>", this.workOrderActivityCompletionAssLocAssLisDataReq)
             var duplicate = false;
-            var check_history = res.service_history_type.replace(/\-/g, '');
-            check_history = res.service_history_type.replace(/\s/g, '');
+            // var check_history = res.service_history_type.replace(/\-/g, '');
+            // check_history = res.service_history_type.replace(/\s/g, '');
             if (this.workOrderActivityCompletionAssLocAssLisDataReq.length == 0){
               this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type)
               duplicate = true;
             }else{
               this.workOrderActivityCompletionAssLocAssLisDataReq.forEach(element => {
-                var check_elemenent = element.replace(/\-/g, '');
-                check_elemenent = element.replace(/\s/g, '');
-                console.log("sktlg-DUPLICATE---", check_elemenent+"+++++"+check_history)
-                console.log("sktlg", element+"+++++"+res.service_history_type)
-                  if(check_elemenent == check_history){
+                // var check_elemenent = element.replace(/\-/g, '');
+                // check_elemenent = element.replace(/\s/g, '');
+                // console.log("sktlg-DUPLICATE---", element+"+++++"+res.service_history_type)
+                // console.log("sktlg", element+"+++++"+res.service_history_type)
+                  if(element == res.service_history_type){
                      duplicate = true;
                      console.log("sktlg-DUPLICATE!!!", element+"+++++"+res.service_history_type)
                   }
@@ -192,13 +191,13 @@ export class WorkActivityAssetPage implements OnInit {
           }
 
           if (res.service_history_type == "FAILURE") {
-            if (res.failure_type != '' && res.failure_mode != '' && res.failure_repair && res.failure_component != '' && res.comments != '') {
+            if (res.failure_type != '' && res.failure_mode != '' && res.failure_repair && res.failure_component != '') {
               this.workOrderActivityCompletionAssLocAssLisData.push(res)
               // bstat = 'yes'
               this.serviceHistArr.push(res.service_history_type)
             }
           } else if (res.service_history_type == "DOWNTIME") {
-            if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+            if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
               this.workOrderActivityCompletionAssLocAssLisData.push(res)
               // bstat = 'yes'
               this.serviceHistArr.push(res.service_history_type)
@@ -307,18 +306,18 @@ export class WorkActivityAssetPage implements OnInit {
 
               if (res.svc_hist_type_req_fl == 'W1YS') {
                 var duplicate = false;
-                var check_history = res.service_history_type.replace(/\-/g, '');
-                check_history = res.service_history_type.replace(/\s/g, '');
+                // var check_history = res.service_history_type.replace(/\-/g, '');
+                // check_history = res.service_history_type.replace(/\s/g, '');
                 if (this.workOrderActivityCompletionAssLocAssLisDataReq.length == 0){
                   this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type)
                   duplicate = true;
                 }else{
                   this.workOrderActivityCompletionAssLocAssLisDataReq.forEach(element => {
-                    var check_elemenent = element.replace(/\-/g, '');
-                    check_elemenent = element.replace(/\s/g, '');
-                    console.log("sktlg-DUPLICATE---", check_elemenent+"+++++"+check_history)
-                    console.log("sktlg", element+"+++++"+res.service_history_type)
-                      if(check_elemenent == check_history){
+                    // var check_elemenent = element.replace(/\-/g, '');
+                    // check_elemenent = element.replace(/\s/g, '');
+                    // console.log("sktlg-DUPLICATE---", check_elemenent+"+++++"+check_history)
+                    // console.log("sktlg", element+"+++++"+res.service_history_type)
+                      if(element == res.service_history_type){
                         duplicate = true;
                         console.log("sktlg-DUPLICATE!!!", element+"+++++"+res.service_history_type)
                       }
@@ -335,7 +334,7 @@ export class WorkActivityAssetPage implements OnInit {
                     this.buttonStatusArr.push(bstat)
                   }
                 } else if (res.service_history_type == "DOWNTIME") {
-                  if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                  if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
                     this.workOrdActComAssLocAssLisReq.push(res)
                     bstat = 'yes'
                     this.buttonStatusArr.push(bstat)
@@ -371,7 +370,7 @@ export class WorkActivityAssetPage implements OnInit {
                   console.log("serviceHistArr", this.serviceHistArr) 
                 }
               } else if (res.service_history_type == "DOWNTIME") {
-                if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
                   this.workOrderActivityCompletionAssLocAssLisData.push(res)
                   // bstat = 'yes'
                   this.serviceHistArr.push(res.service_history_type)
@@ -623,11 +622,26 @@ export class WorkActivityAssetPage implements OnInit {
     }
     const modal = await this.modalController.create({
       component: ServiceHistoryPage, 
-      componentProps: { servicehistory: servicehistory, servHistArr: this.serviceHistArr },
+      componentProps: { servicehistory: servicehistory, servHistArr: this.serviceHistArr, WAA: this.workactivityasset},
     });
     modal.onDidDismiss().then((data) => {
-
-      this.getAllData2()
+      //naqib
+      let navigationExtras: NavigationExtras = {
+        state: {
+          badge_no: this.workactivityasset.badge_number,
+          asset: this.workactivityasset,
+          work_activity: this.workactivity
+        },
+      };
+      console.log("test321-1", navigationExtras)
+      console.log("test321-2", this.serviceHistArr)
+      console.log("test321-3", data)
+      //this.router.navigateByUrl('/technical/work-activity');
+      this.router.navigateByUrl('/technical/work-activity', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/technical/work-activity-asset'],navigationExtras);
+      });
+      this.serviceHistArr = data['data'];
+      //this.getAllData2()
 
       // if (data) this.servicehistories.push(data.data);
       // console.log("this.servicehistories = ", this.servicehistories)
