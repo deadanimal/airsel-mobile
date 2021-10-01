@@ -1,4 +1,4 @@
-declare var broadcaster: any;
+declare var broadcaster: any; 
 
 import { Component, OnInit, NgZone, ElementRef } from "@angular/core";
 import { NavigationExtras, Router } from "@angular/router";
@@ -151,6 +151,14 @@ export class TabsPage implements OnInit {
             this.searchBadgeNo();
           },
         },
+        // {
+        //   text: "Multiple Tagging.",
+        //   icon: "locate",
+        //   handler: () => {
+        //     this.MultipleRetag();
+        //     //this.router.navigate(["/technical/multiple-retagging"]);
+        //   },
+        // },
         {
           text: "Cancel",
           role: "cancel",
@@ -163,6 +171,48 @@ export class TabsPage implements OnInit {
     });
     await actionSheet.present();
   }
+
+  async MultipleRetag() {
+    const actionSheet = await this.actionSheetController.create({
+      header: "Choose method",
+      buttons: [
+        {
+          text: "RFID",
+          icon: "scan",
+          handler: () => {
+            let navigationExtras: NavigationExtras = {
+              state: {
+                type: "RFID"
+              },
+            };
+            this.router.navigate(["/technical/multiple-retagging"], navigationExtras);
+          },
+        },
+        {
+          text: "QR Code",
+          icon: "qr-code",
+          handler: () => {
+            let navigationExtras: NavigationExtras = {
+              state: {
+                type: "QRC"
+              },
+            };
+            this.router.navigate(["/technical/multiple-retagging"], navigationExtras);
+          },
+        },
+        {
+          text: "Back",
+          //role: "cancel",
+          icon: "arrow-back",
+          handler: () => {
+            this.scan();
+            //console.log("Cancel clicked");
+          },
+        },
+      ],
+    });
+    await actionSheet.present();
+}
 
   async searchBadgeNo() {
     const alert = await this.alertController.create({
@@ -194,26 +244,26 @@ export class TabsPage implements OnInit {
                 .then((loading) => {
                   loading.present();
 
-                  this.assetsService
-                    .filter("badge_no=" + data.badge_no)
-                    .subscribe(
-                      (res) => {
+                  // this.assetsService
+                  //   .filter("badge_no=" + data.badge_no)
+                  //   .subscribe(
+                  //     (res) => {
                         // if find, go to asset detail list
-                        if (res.length > 0) {
-                          loading.dismiss();
-                          let navigationExtras: NavigationExtras = {
-                            state: {
-                              badge_no: res[0].badge_no,
-                            },
-                          };
+                        // if (res.length > 0) {
+                        //   loading.dismiss();
+                        //   let navigationExtras: NavigationExtras = {
+                        //     state: {
+                        //       badge_no: res[0].badge_no,
+                        //     },
+                        //   };
 
-                          this.router.navigate(
-                            ["/technical/asset-detail-list"],
-                            navigationExtras
-                          );
-                        }
+                        //   this.router.navigate(
+                        //     ["/technical/asset-detail-list"],
+                        //     navigationExtras
+                        //   );
+                        // }
                         // else, find the asset in the wams to pump into PIPE's asset table
-                        else {
+                        //else {
                           // get data from wams
                           this.wamsService
                             .getAssetBadgeNo(data.badge_no)
@@ -221,7 +271,7 @@ export class TabsPage implements OnInit {
                               (res) => {
                                 loading.dismiss();
 
-                                if (res.results.length > 0) {
+                                // if (res.results.length > 0) {
                                   let navigationExtras: NavigationExtras = {
                                     state: {
                                       badge_no: data.badge_no,
@@ -232,12 +282,12 @@ export class TabsPage implements OnInit {
                                     ["/technical/asset-detail-list"],
                                     navigationExtras
                                   );
-                                } else {
-                                  this.presentAlert(
-                                    "Error",
-                                    "Sorry, asset is not found in the database."
-                                  );
-                                }
+                                // } else {
+                                //   this.presentAlert(
+                                //     "Error",
+                                //     "Sorry, asset is not found in the database."
+                                //   );
+                                // }
                               },
                               (err) => {
                                 console.error("err", err);
@@ -249,18 +299,18 @@ export class TabsPage implements OnInit {
                                 );
                               }
                             );
-                        }
-                      },
-                      (err) => {
-                        console.log("err assetlsService = ", err);
-                        loading.dismiss();
+                        //}
+                      //},
+                      // (err) => {
+                      //   console.log("err assetlsService = ", err);
+                      //   loading.dismiss();
 
-                        this.presentAlert(
-                          "Error",
-                          "Sorry, there is a technical problem going on."
-                        );
-                      }
-                    );
+                      //   this.presentAlert(
+                      //     "Error",
+                      //     "Sorry, there is a technical problem going on."
+                      //   );
+                      // }
+                    //);
                 });
             } else {
               this.presentAlert(
@@ -291,8 +341,7 @@ export class TabsPage implements OnInit {
   updateRfid(data) {
     if (this.bRfid)
       this.ngZone.run(() => {
-        this.scanValue = data;
-
+        this.scanValue = data.trim();
         if (this.scanValue != "") {
           this.loadingController
             .create({
@@ -300,33 +349,44 @@ export class TabsPage implements OnInit {
             })
             .then((loading) => {
               loading.present(); 
-
               this.assetsService.filter("hex_code=" + this.scanValue).subscribe(
                 (res) => {
-                  loading.dismiss();
-                  // if find, go to asset detail list
-                  if (res.length > 0) {
-                    let navigationExtras: NavigationExtras = {
-                      state: {
-                        badge_no: res[0].badge_no,
-                      },
-                    };
-
-                    this.router.navigate(
-                      ["/technical/asset-detail-list"],
-                      navigationExtras
-                    );
-                  }
-                  // else, suggest the user to use QR scanner OR search by badge number
-                  else {
-                    this.presentAlert(
-                      "Error",
-                      "The asset is not found in the database. Please try again by using QR scanner OR search by badge number."
-                    );
-                  }
+                  this.scanValue = res[0].badge_no;
+                  this.wamsService.getAssetBadgeNo(this.scanValue).subscribe(
+                    (res) => {
+                      loading.dismiss();
+    
+                      // if (res.results.length > 0) {
+                        let navigationExtras: NavigationExtras = {
+                          state: {
+                            badge_no: this.scanValue,
+                          },
+                        };
+    
+                        this.router.navigate(
+                          ["/technical/asset-detail-list"],
+                          navigationExtras
+                        );
+                      // } else {
+                      //   this.presentAlert(
+                      //     "Error",
+                      //     "Sorry, asset is not found in the database."
+                      //   );
+                      // }
+                    },
+                    (err) => {
+                      console.error("err", err);
+                      loading.dismiss();
+    
+                      this.presentAlert(
+                        "Error",
+                        "Sorry, there is a technical problem going on."
+                      );
+                    }
+                  );
                 },
                 (err) => {
-                  console.log("err assetlsService = ", err);
+                  console.error("err", err);
                   loading.dismiss();
 
                   this.presentAlert(
@@ -334,7 +394,42 @@ export class TabsPage implements OnInit {
                     "Sorry, there is a technical problem going on."
                   );
                 }
-              );
+              )
+
+              // this.assetsService.filter("hex_code=" + this.scanValue).subscribe(
+              //   (res) => {
+              //     loading.dismiss();
+              //     // if find, go to asset detail list
+              //     if (res.length > 0) {
+              //       let navigationExtras: NavigationExtras = {
+              //         state: {
+              //           badge_no: res[0].badge_no,
+              //         },
+              //       };
+
+              //       this.router.navigate(
+              //         ["/technical/asset-detail-list"],
+              //         navigationExtras
+              //       );
+              //     }
+              //     // else, suggest the user to use QR scanner OR search by badge number
+              //     else {
+              //       this.presentAlert(
+              //         "Error",
+              //         "The asset is not found in the database. Please try again by using QR scanner OR search by badge number."
+              //       );
+              //     }
+              //  },
+              //   (err) => {
+              //     console.log("err assetlsService = ", err);
+              //     loading.dismiss();
+
+              //     this.presentAlert(
+              //       "Error",
+              //       "Sorry, there is a technical problem going on."
+              //     );
+              //   }
+              // );
             });
         } else {
           this.presentAlert("Error", "RFID is invalid. Please try again.");
@@ -346,8 +441,7 @@ export class TabsPage implements OnInit {
   updateQrbarcode(data) {
     if (this.bBarcode)
       this.ngZone.run(() => {
-        this.scanValue = data;
-
+        this.scanValue = data.trim();
         if (this.scanValue != "") {
           this.loadingController
             .create({
@@ -356,30 +450,30 @@ export class TabsPage implements OnInit {
             .then((loading) => {
               loading.present();
 
-              this.assetsService.filter("badge_no=" + this.scanValue).subscribe(
-                (res) => {
-                  // if find, go to asset detail list
-                  if (res.length > 0) {
-                    loading.dismiss();
-                    let navigationExtras: NavigationExtras = {
-                      state: {
-                        badge_no: res[0].badge_no,
-                      },
-                    };
+              // this.assetsService.filter("badge_no=" + this.scanValue).subscribe(
+              //   (res) => {
+              //     // if find, go to asset detail list
+              //     if (res.length > 0) {
+              //       loading.dismiss();
+              //       let navigationExtras: NavigationExtras = {
+              //         state: {
+              //           badge_no: res[0].badge_no,
+              //         },
+              //       };
 
-                    this.router.navigate(
-                      ["/technical/asset-detail-list"],
-                      navigationExtras
-                    );
-                  }
-                  // else, find the asset in the wams to pump into PIPE's asset table
-                  else {
+              //       this.router.navigate(
+              //         ["/technical/asset-detail-list"],
+              //         navigationExtras
+              //       );
+              //     }
+              //     // else, find the asset in the wams to pump into PIPE's asset table
+              //     else {
                     // get data from wams
                     this.wamsService.getAssetBadgeNo(this.scanValue).subscribe(
                       (res) => {
                         loading.dismiss();
 
-                        if (res.results.length > 0) {
+                        // if (res.results.length > 0) {
                           let navigationExtras: NavigationExtras = {
                             state: {
                               badge_no: this.scanValue,
@@ -390,12 +484,12 @@ export class TabsPage implements OnInit {
                             ["/technical/asset-detail-list"],
                             navigationExtras
                           );
-                        } else {
-                          this.presentAlert(
-                            "Error",
-                            "Sorry, asset is not found in the database."
-                          );
-                        }
+                        // } else {
+                        //   this.presentAlert(
+                        //     "Error",
+                        //     "Sorry, asset is not found in the database."
+                        //   );
+                        // }
                       },
                       (err) => {
                         console.error("err", err);
@@ -407,18 +501,18 @@ export class TabsPage implements OnInit {
                         );
                       }
                     );
-                  }
-                },
-                (err) => {
-                  console.log("err assetlsService = ", err);
-                  loading.dismiss();
+                  //}
+                //},
+                // (err) => {
+                //   console.log("err assetlsService = ", err);
+                //   loading.dismiss();
 
-                  this.presentAlert(
-                    "Error",
-                    "Sorry, there is a technical problem going on."
-                  );
-                }
-              );
+                //   this.presentAlert(
+                //     "Error",
+                //     "Sorry, there is a technical problem going on."
+                //   );
+                // }
+              //);
             });
         } else {
           this.presentAlert("Error", "QR code is invalid. Please try again.");
