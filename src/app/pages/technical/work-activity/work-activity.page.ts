@@ -321,13 +321,12 @@ export class WorkActivityPage implements OnInit {
       this.workOrderActivityCompletionAssLocAssListService.getOne(woacalsl).subscribe(
         (Res) => {
           console.log("1test",Res)
-          console.log("2test",Res.service_histories)
-          if(Res.service_histories == [] || Res.service_histories == undefined || Res.service_histories.length == 0){
-            console.log("3test",datetime)
-            Res.reading_datetime = datetime
-            console.log("4test",Res.reading_datetime)
-          }
           this.workactivityData.push(Res)
+          // if(Res.service_histories == [] || Res.service_histories == undefined || Res.service_histories.length == 0){
+          //   console.log("3test",datetime)
+          //   Res.reading_datetime = datetime
+          //   console.log("4test",Res.reading_datetime)
+          // }
           console.log("5test",this.workactivityData)
           console.log(Res)
         },
@@ -339,7 +338,7 @@ export class WorkActivityPage implements OnInit {
       setTimeout(() => {
         this.workactivityData.forEach(element => {
           console.log("workactivityData=>>>", element)
-          console.log("reading_datetime=>>>", element.reading_datetime)
+          console.log("badge_number=>>>", element.badge_number)
           let asset_id = "asset_id=" + element.asset_id
 
           /// set data to array for submit button
@@ -351,6 +350,10 @@ export class WorkActivityPage implements OnInit {
             (res) => {
               element.badge_number = res[0].badge_no
               element.description = res[0].description
+
+              if(element.badge_number == "" || element.badge_number == undefined){
+                element.reading_datetime = datetime
+              }
             }, (errAs) => {
 
             }
@@ -410,10 +413,12 @@ export class WorkActivityPage implements OnInit {
 
     var checker = true;
     this.workactivityData.forEach(element => {
-      if(element.reading_datetime == '' || element.reading_datetime == null){
+      if(element.reading_datetime == "1997-10-06T00:00:00+00:00"){
         checker = false;
       }
     }); 
+
+    console.log("checker", checker)
 
     if(checker == true){ 
       let woacassLocAssLisFormData = {
@@ -421,7 +426,8 @@ export class WorkActivityPage implements OnInit {
         completiondatetime: new Date(),
         submitted_datetime: new Date(),
       };
-  
+
+      
       console.log("this.workactivity.id>>>>>>>", this.workactivity.id)
       console.log("woacassLocAssLisFormData>>>>>>>", woacassLocAssLisFormData);
       
@@ -430,7 +436,7 @@ export class WorkActivityPage implements OnInit {
         (res) => {
           console.log("res = ", res);
   
-          this.presentAlert("Success", "Successfully update data.");
+           this.presentAlert("Success", "Successfully update data.");
         },
         (err) => {
           console.log("workOrderActivityCompletionService err", err)
@@ -797,7 +803,7 @@ export class WorkActivityPage implements OnInit {
                             let navigationExtras: NavigationExtras = {
                               state: {
                                 badge_no: this.scanValue,
-                                asset,
+                                asset: asset,
                                 work_activity: this.workactivity,
                               },
                             };
