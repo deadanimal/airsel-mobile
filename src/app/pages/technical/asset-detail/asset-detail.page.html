@@ -68,7 +68,7 @@
           value="{{assetAttr.field_value}}">
         </ion-input>
 
-        <ion-select *ngIf="assetAttr.dropdown == 'yes'" (ionChange)="onKey($event.target.value,assetAttr)" value="{{assetAttr.field_value}}">
+        <ion-select *ngIf="assetAttr.dropdown == 'yes'" (ionChange)="onKey($event.target.value,assetAttr)">
           <ion-select-option *ngFor="let assAtt of assetAttr.option" [value]="assAtt.characteristic_value">
             {{assAtt.characteristic_value}}</ion-select-option>
         </ion-select>
