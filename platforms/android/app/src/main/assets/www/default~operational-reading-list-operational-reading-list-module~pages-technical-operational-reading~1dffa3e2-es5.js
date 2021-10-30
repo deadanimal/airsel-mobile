@@ -559,11 +559,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                               _this6.assetsService.filter("badge_no=" + data.badge_no).subscribe(function (res) {
                                 // if find, go to asset detail list
-                                if (res.length > 0) {
+                                if (res['results'].length > 0) {
                                   loading.dismiss();
                                   var navigationExtras = {
                                     state: {
-                                      badge_no: res[0].badge_no
+                                      badge_no: res['results'][0].badge_no
                                     }
                                   };
 
@@ -668,10 +668,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this7.assetsService.filter("hex_code=" + _this7.scanValue).subscribe(function (res) {
                   loading.dismiss(); // if find, go to asset detail list
 
-                  if (res.length > 0) {
+                  if (res['results'].length > 0) {
                     var navigationExtras = {
                       state: {
-                        badge_no: res[0].badge_no
+                        badge_no: res['results'][0].badge_no
                       }
                     };
 
@@ -708,11 +708,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                 _this8.assetsService.filter("badge_no=" + _this8.scanValue).subscribe(function (res) {
                   // if find, go to asset detail list
-                  if (res.length > 0) {
+                  if (res['results'].length > 0) {
                     loading.dismiss();
                     var navigationExtras = {
                       state: {
-                        badge_no: res[0].badge_no
+                        badge_no: res['results'][0].badge_no
                       }
                     };
 

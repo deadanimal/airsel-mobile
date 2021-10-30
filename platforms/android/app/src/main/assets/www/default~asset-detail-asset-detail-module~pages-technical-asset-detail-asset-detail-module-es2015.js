@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Asset Detail </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"scanQrCode()\">\n      <ion-icon name=\"scan\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab> -->\n  <div class=\"ion-padding\">\n    <ion-list class=\"ion-padding line-input\">\n\n      <ion-item>\n        <ion-label position=\"stacked\">Badge No</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.badge_no\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset ID</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.asset_id\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Type</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" readonly [value]=\"asset_detail.asset_type\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Description</ion-label>\n        <!-- <ion-input type=\"text\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\">\n        </ion-input> -->\n        <ion-textarea rows=\"3\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\"></ion-textarea>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Location</ion-label>\n        <ion-textarea rows=\"3\" [disabled]=\"true\" [value]=\"assetLocatioSyncdata\" readonly></ion-textarea>\n      </ion-item>\n    </ion-list>\n\n\n    <ion-list-header *ngIf=\"assetAttrColumn != []\">\n      <ion-label>Asset Attribute </ion-label>\n    </ion-list-header>\n\n    <ion-list class=\"ion-padding line-input\">\n      <ion-item *ngFor=\"let assetAttr of assetAttributedatas\">\n        <ion-label position=\"stacked\">{{assetAttr.field_name | titlecase}}</ion-label>\n\n        <ion-input type=\"text\" *ngIf=\"assetAttr.dropdown == 'no'\" (change)=\"onKey($event.target.value,assetAttr)\"\n          value=\"{{assetAttr.field_value}}\">\n        </ion-input>\n\n        <ion-select *ngIf=\"assetAttr.dropdown == 'yes'\" (ionChange)=\"onKey($event.target.value,assetAttr)\">\n          <ion-select-option *ngFor=\"let assAtt of assetAttr.option\" [value]=\"assAtt.characteristic_value\">\n            {{assAtt.characteristic_value}}</ion-select-option>\n        </ion-select>\n\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n  <div class=\"ion-padding ion-text-center\">\n    <ion-button color=\"light\" (click)=\"cancel()\">Cancel</ion-button>\n    <ion-button color=\"primary\" (click)=\"updateDetails()\">Update</ion-button>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Asset Detail </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"scanQrCode()\">\n      <ion-icon name=\"scan\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab> -->\n  <div class=\"ion-padding\">\n    <ion-list class=\"ion-padding line-input\">\n\n      <ion-item>\n        <ion-label position=\"stacked\">Badge No</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.badge_no\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset ID</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.asset_id\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Type</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" readonly [value]=\"asset_detail.asset_type\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Description</ion-label>\n        <!-- <ion-input type=\"text\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\">\n        </ion-input> -->\n        <ion-textarea rows=\"3\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\"></ion-textarea>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Location</ion-label>\n        <ion-textarea rows=\"3\" [disabled]=\"true\" [value]=\"assetLocatioSyncdata\" readonly></ion-textarea>\n      </ion-item>\n    </ion-list>\n\n\n    <ion-list-header *ngIf=\"assetAttrColumn != []\">\n      <ion-label>Asset Attribute </ion-label>\n    </ion-list-header>\n\n    <ion-list class=\"ion-padding line-input\">\n      <ion-item *ngFor=\"let assetAttr of assetAttributedatas\">\n        <ion-label position=\"stacked\">{{assetAttr.field_name | titlecase}}</ion-label>\n\n        <ion-input *ngIf=\"assetAttr.dropdown != 'yes'\" type=\"text\" (change)=\"onKey($event.target.value,assetAttr)\"\n          value=\"{{assetAttr.field_value}}\">\n        </ion-input>\n\n        <ion-select *ngIf=\"assetAttr.dropdown == 'yes'\" (ionChange)=\"onKey($event.target.value,assetAttr)\" value=\"{{assetAttr.field_value}}\">\n          <ion-select-option *ngFor=\"let assAtt of assetAttr.option\" [value]=\"assAtt.characteristic_value\">\n            {{assAtt.characteristic_value}}</ion-select-option>\n        </ion-select>\n\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n  <div class=\"ion-padding ion-text-center\">\n    <ion-button color=\"light\" (click)=\"cancel()\">Cancel</ion-button>\n    <ion-button color=\"primary\" (click)=\"updateDetails()\">Update</ion-button>\n    <div style=\"height:250px;\">&nbsp;</div>\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -304,15 +304,6 @@ let AssetDetailPage = class AssetDetailPage {
             modified_at: "",
         };
         this.assetAttributedatas = [];
-        // Forms
-        // firstFormGroup: FormGroup;
-        // secondFormGroup: FormGroup;
-        // thirdFormGroup: FormGroup;
-        // fourthFormGroup: FormGroup;
-        // fifthFormGroup: FormGroup;
-        // sixthFormGroup: FormGroup;
-        // seventhFormGroup: FormGroup;
-        // validation_messages = [];
         this.myDate = new Date();
         this.assetAttributeId = [];
         this.assetAttributeColumnFormData = [];
@@ -322,16 +313,11 @@ let AssetDetailPage = class AssetDetailPage {
         this.route.queryParams.subscribe((params) => {
             if (this.router.getCurrentNavigation().extras.state) {
                 this.asset_detail = this.router.getCurrentNavigation().extras.state.asset_detail;
-                // console.log("this.asset_detail==>><<", this.asset_detail)
                 let asset_attributes = this.asset_detail["asset_attributes"];
-                // console.log('assetType = ', assetType)
-                // this.getAssetAttributeData()
+                console.log("trylain", asset_attributes);
                 this.getAssetAttributeData(asset_attributes);
-                // console.log("this.asset_detail ooooo = ", this.asset_detail)
-                // console.log("this.asset_detail asset_id = ", this.asset_detail.asset_type)
                 let asset_type = "asset_type_code=" + this.asset_detail['asset_type'];
                 this.assetAttributeId = this.asset_detail['asset_attributes'];
-                // console.log("this.assetAttributeId----", this.assetAttributeId)
                 this.assetTypesService.filter(asset_type).subscribe((assTypeRes) => {
                     // console.log("assTypeRes", assTypeRes)
                     // console.log("assTypeRes", assTypeRes[0]['asset_type_description'])
@@ -346,31 +332,22 @@ let AssetDetailPage = class AssetDetailPage {
                 }, (err) => {
                     console.log(err);
                 });
-                // if (this.asset_detail.asset_primary_category.match(/Pump/i)) {
-                //   this.asset_type = "Pump";
-                // } else if (this.asset_detail.asset_primary_category.match(/Motor/i)) {
-                //   this.asset_type = "Motor";
-                // }
                 if (this.asset_detail['attached_to_asset_id'] == '') {
                     this.assetLocatioSyncService.filter("node_id=" + this.asset_detail['node_id']).subscribe((res) => {
-                        // console.log("assetLocatioSyncServiceres", res);
-                        // this.assetregistrations = res;
-                        // this.assetLocatioSyncdata = res[0].description
                         if (res.length > 0) {
                             this.assetLocatioSyncdata = res[0].description;
                         }
                         else {
                             this.assetLocatioSyncdata = '-';
                         }
-                        // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
                     }, (err) => {
                         console.error("err", err);
                     });
                 }
                 else {
                     this.assetsService.filter("asset_id=" + this.asset_detail['attached_to_asset_id']).subscribe((resA) => {
-                        console.log("assetqqqqqqqqq=res", resA);
-                        this.assetLocatioSyncService.filter("node_id=" + resA[0]['node_id']).subscribe((resAls) => {
+                        console.log("assetqqqqqqqqq=res", resA['results']);
+                        this.assetLocatioSyncService.filter("node_id=" + resA['results'][0]['node_id']).subscribe((resAls) => {
                             console.log("resAls>><<>>", resAls);
                             if (resAls.length > 0) {
                                 this.assetLocatioSyncdata = resAls[0].description;
@@ -378,7 +355,6 @@ let AssetDetailPage = class AssetDetailPage {
                             else {
                                 this.assetLocatioSyncdata = '-';
                             }
-                            // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
                         }, (err) => {
                             console.error("err", err);
                         });
@@ -386,53 +362,21 @@ let AssetDetailPage = class AssetDetailPage {
                         console.log(error);
                     });
                 }
-                // this.assetLocatioSyncService.filter("node_id=" + this.asset_detail.node_id).subscribe(
-                //   (res) => {
-                //     // console.log("assetLocatioSyncServiceres", res);
-                //     // this.assetregistrations = res;
-                //     if (res.length > 0) {
-                //       this.assetLocatioSyncdata = res[0].description
-                //     } else {
-                //       this.assetLocatioSyncdata = '-'
-                //     }
-                //     // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
-                //   },
-                //   (err) => {
-                //     console.error("err", err);
-                //   }
-                // );
             }
         });
     }
     ngOnInit() { }
     getAssAttrColumnData(assAttCol) {
-        // arraytype = []
         setTimeout(() => {
-            // console.log("this.assetAttributedatas<>><><>", this.assetAttributedatas)
-            // this.assetAttributedatas.forEach((elementqq) => {
-            //   console.log("elementqq = ", elementqq)
-            //   arraytype.push(elementqq.field_name)
-            // })
-            // for (let key in this.assetAttributedatas) {
-            //   let child = this.assetAttributedatas[key];
-            //   console.log("qweqweqweqqwe", this.assetAttributedatas[key])
-            // }
-            // for (let i = 0; i <= this.assetAttributedatas.length; i++) {
-            //   console.log("this.assetAttributedatas = ", this.assetAttributedatas[i])
-            //   arraytype.push(this.assetAttributedatas[i].field_name)
-            // }
-            // console.log("this.arraytype>>>>>>>", this.arraytype)
             if (assAttCol['bottom_water_level'] == true) {
                 if (this.arraytype.indexOf('bottom_water_level') == -1) {
                     let assAttColTemp = [];
                     assAttColTemp['id'] = '';
                     assAttColTemp['action_type'] = '';
-                    // assAttColTemp['adhoc_value'] = null
                     assAttColTemp['characteristic_type'] = '';
                     assAttColTemp['characteristic_type_name'] = 'bottom_water_level';
                     assAttColTemp['field_name'] = 'bottom_water_level';
                     assAttColTemp['field_value'] = '';
-                    // assAttColTemp['characteristic_value'] = null
                     this.assetAttributedatas.push(assAttColTemp);
                 }
             }
@@ -509,7 +453,7 @@ let AssetDetailPage = class AssetDetailPage {
                 }
             }
             if (assAttCol['manufacturer'] == true) {
-                // console.log("gggggggg")
+                console.log("gggggggg");
                 if (this.arraytype.indexOf('manufacturer') == -1) {
                     // console.log("hhhhhhh")
                     let assAttColTemp = [];
@@ -1409,17 +1353,26 @@ let AssetDetailPage = class AssetDetailPage {
             this.assetAttributedatas.forEach(ele => {
                 console.log("eleeleeleeleele", ele);
                 let filter = "attribute_field_name=" + ele.characteristic_type_name;
-                this.assetAttributePredefineService.filter(filter).subscribe((res) => {
-                    if (res.length > 0) {
-                        ele.dropdown = 'yes';
-                        ele.option = res;
-                    }
-                    else {
-                        ele.dropdown = 'no';
-                        ele.option = [];
-                    }
-                }, (err) => {
-                });
+                // ele.dropdown = 'no';
+                // ele.option = [];
+                if (ele.characteristic_type_name == "" || ele.characteristic_type_name == null) {
+                    ele.dropdown = 'no';
+                    ele.option = [];
+                }
+                else {
+                    this.assetAttributePredefineService.filter(filter).subscribe((res) => {
+                        if (res.length > 0) {
+                            //console.log("testing123", res)
+                            ele.dropdown = 'yes';
+                            ele.option = res;
+                        }
+                        else {
+                            ele.dropdown = 'no';
+                            ele.option = [];
+                        }
+                    }, (err) => {
+                    });
+                }
             });
             // setTimeout(() => {
             console.log("this.assetAttributedatas ==== ", this.assetAttributedatas);
@@ -1535,7 +1488,7 @@ let AssetDetailPage = class AssetDetailPage {
         this.router.navigate([path]);
     }
     clickBack() {
-        this.router.navigate(["/technical/tabs/tab2"]);
+        this.router.navigate(["/technical/tabs/tab1"]);
     }
     openNotification() {
         this.menu.enable(true, "menuNotification");
@@ -1547,7 +1500,7 @@ let AssetDetailPage = class AssetDetailPage {
         asset_attr.forEach(element => {
             this.field_value = null;
             this.assetAttributeService.getOne(element).subscribe((aasRes) => {
-                // console.log('assetAttributeService>>=// ', aasRes)
+                console.log('assetAttributeService>>=// ', aasRes);
                 // this.assetAttributedatas.push(aasRes)
                 // console.log("assetAttributedatas = ", this.assetAttributedatas)
                 let assct = aasRes.characteristic_type;
@@ -1616,6 +1569,7 @@ let AssetDetailPage = class AssetDetailPage {
         console.log("row === ", row);
         console.log("value === ", value);
         this.assetAttributedatas.forEach(element => {
+            console.log("testelement", element);
             // check in the form data 
             if (element.field_name == row.field_name) {
                 let characteristic_type_list = ["CM-MFG", "CM-WASTC", "CM-VRTVD", "CM-VOWNS", "CM-VROWN", "CM-VINPT"];
@@ -1655,28 +1609,25 @@ let AssetDetailPage = class AssetDetailPage {
                     });
                 }
                 else {
-                    element.action_type = 'UPDATE';
-                    updateformData['action_type'] = 'UPDATE';
-                    // console.log('exist cok')
-                    this.assetAttributeService.update(element.id, updateformData).subscribe((res) => {
-                        // console.log(res)
-                        // this.assetAttributedatas.push(res)
-                        // console.log("resAAS = ", res)
-                        // this.assetAttributeId.push(res.id)
-                        // element.id = res.id;
-                        // let obj = {
-                        //   submitted_datetime: this.getCurrentDateTime(),
-                        // }
-                        // this.assetsService.update(this.asset_detail['id'], obj).subscribe(
-                        //   (resp) => {
-                        //     console.log('berjaya cok', resp)
-                        //   }, (error) => {
-                        //     console.log('tidak berjaya cok', error)
-                        //   }
-                        // )
-                    }, (err) => {
-                        console.error("err", err);
-                    });
+                    console.log("testtrycubatrytest", element.field_value);
+                    console.log("testtrycubatrytest", updateformData['adhoc_value']);
+                    if (updateformData['adhoc_value'] == "") {
+                        element.action_type = 'UNCHANGED';
+                        updateformData['action_type'] = 'UNCHANGED';
+                        this.assetAttributeService.update(element.id, updateformData).subscribe((res) => {
+                        }, (err) => {
+                            console.error("err", err);
+                        });
+                    }
+                    else {
+                        element.action_type = 'UPDATE';
+                        updateformData['action_type'] = 'UPDATE';
+                        // console.log('exist cok')
+                        this.assetAttributeService.update(element.id, updateformData).subscribe((res) => {
+                        }, (err) => {
+                            console.error("err", err);
+                        });
+                    }
                 }
             }
         });
@@ -1689,7 +1640,9 @@ let AssetDetailPage = class AssetDetailPage {
         // setTimeout(() => {
         // console.log("assetAttributedatas --==][ ", this.assetAttributedatas)
         let assetAttrIdExist = [];
+        console.log("naq1", this.assetAttributedatas);
         this.assetAttributedatas.forEach(element => {
+            console.log("naq", element.id);
             // console.log("element --- ", element.id)
             if (element.id != '') {
                 // console.log('masuk')
@@ -1708,6 +1661,7 @@ let AssetDetailPage = class AssetDetailPage {
         // let roo = this.asset_detail["effective_datetime"].setHours(this.asset_detail["effective_datetime"].getHours() - 2);
         // console.log("datetime", roo)
         console.log("obj = ", obj);
+        console.log("objtrytest = ", this.asset_detail['id']);
         console.log(" this.selectedDate", selectedDate);
         console.log("this.getCurrentDateTime()", this.getCurrentDateTime());
         var twoHoursBefore = new Date();
@@ -1716,7 +1670,7 @@ let AssetDetailPage = class AssetDetailPage {
         this.assetsService.update(this.asset_detail['id'], obj).subscribe((resp) => {
             console.log('berjaya cok', resp);
         }, (error) => {
-            // console.log('tidak berjaya cok', error)
+            console.log('tidak berjaya cok', error);
         }, () => {
             this.update();
         });
@@ -2387,7 +2341,9 @@ __webpack_require__.r(__webpack_exports__);
 let AssetsService = class AssetsService {
     constructor(http) {
         this.http = http;
+        //url: string = environment.assetUrl;
         this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/";
+        //url: string = environment.baseUrl + "v1/assets/";
         // Data 
         this.amodels = [];
     }

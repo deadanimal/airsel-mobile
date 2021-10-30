@@ -306,9 +306,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.workOrderActivityCompletionAssLocAssLisDataAll = [];
         this.workOrderActivityCompletionAssLocAssLisDataReq = [];
         this.buttonStatusArr = [];
+        this.serviceHistArr = [];
         this.workOrdActComAssLocAssLisReq = [];
         this.worOrdActComAssLocAssLisNot = [];
-        this.serviceHistArr = [];
         this.workactivityassetFormGroup = this.formBuilder.group({
           id: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](""),
           bo_status: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](""),
@@ -321,6 +321,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.route.queryParams.subscribe(function (params) {
           if (_this.router.getCurrentNavigation().extras.state) {
             _this.getAllData();
+
+            _this.workactivity = _this.router.getCurrentNavigation().extras.state.work_activity;
           }
         });
       }
@@ -347,157 +349,163 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.workOrderActivityCompletionAssLocAssLisData = [];
           this.workOrderActivityCompletionAssLocAssLisDataAll = [];
           this.workOrderActivityCompletionAssLocAssLisDataReq = [];
-          this.workactivityasset.service_histories.forEach(function (element) {
-            // this.buttonStatus : Boolean
-            _this2.assetLocationAssetListServiceHistoriesService.getOne(element).subscribe(function (res) {
-              console.log("serviceHistoryQuestionService", res);
+          this.serviceHistArr = [];
+          this.workOrderActivityCompletionAssLocAssListService.getOne(this.workactivityasset.id).subscribe(function (resWoacalal) {
+            resWoacalal.service_histories.forEach(function (element) {
+              // this.buttonStatus : Boolean
+              _this2.assetLocationAssetListServiceHistoriesService.getOne(element).subscribe(function (res) {
+                console.log("serviceHistoryQuestionService", res);
 
-              _this2.workOrderActivityCompletionAssLocAssLisDataAll.push(res);
+                _this2.workOrderActivityCompletionAssLocAssLisDataAll.push(res);
 
-              console.log("res.service_history_type>>", res.service_history_type);
-              console.log("res.svc_hist_type_req_fl>>", res.svc_hist_type_req_fl); // if (res.svc_hist_type_req_fl == "W1YS") {
-              //   this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type)
-              //   this.workOrdActComAssLocAssLisReq.push(res)
-              //   console.log("----------<<<<<")
-              // } else {
-              //   console.log("---------->>>>>")
-              //   this.worOrdActComAssLocAssLisNot.push(res)
-              // }
+                console.log("res.service_history_type>>", res.service_history_type);
+                console.log("res.svc_hist_type_req_fl>>", res.svc_hist_type_req_fl); // if (res.svc_hist_type_req_fl == "W1YS") {
+                //   this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type)
+                //   this.workOrdActComAssLocAssLisReq.push(res)
+                //   console.log("----------<<<<<")
+                // } else {
+                //   console.log("---------->>>>>")
+                //   this.worOrdActComAssLocAssLisNot.push(res)
+                // }
 
-              if (res.svc_hist_type_req_fl == 'W1YS') {
-                console.log("datares>>", _this2.workOrderActivityCompletionAssLocAssLisDataReq);
-                var duplicate = false;
-                var check_history = res.service_history_type.replace(/\-/g, '');
-                check_history = res.service_history_type.replace(/\s/g, '');
+                if (res.svc_hist_type_req_fl == 'W1YS') {
+                  console.log("datares>>", _this2.workOrderActivityCompletionAssLocAssLisDataReq);
+                  var duplicate = false; // var check_history = res.service_history_type.replace(/\-/g, '');
+                  // check_history = res.service_history_type.replace(/\s/g, '');
 
-                if (_this2.workOrderActivityCompletionAssLocAssLisDataReq.length == 0) {
-                  _this2.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
+                  if (_this2.workOrderActivityCompletionAssLocAssLisDataReq.length == 0) {
+                    _this2.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
 
-                  duplicate = true;
-                } else {
-                  _this2.workOrderActivityCompletionAssLocAssLisDataReq.forEach(function (element) {
-                    var check_elemenent = element.replace(/\-/g, '');
-                    check_elemenent = element.replace(/\s/g, '');
-                    console.log("sktlg-DUPLICATE---", check_elemenent + "+++++" + check_history);
-                    console.log("sktlg", element + "+++++" + res.service_history_type);
+                    duplicate = true;
+                  } else {
+                    _this2.workOrderActivityCompletionAssLocAssLisDataReq.forEach(function (element) {
+                      // var check_elemenent = element.replace(/\-/g, '');
+                      // check_elemenent = element.replace(/\s/g, '');
+                      // console.log("sktlg-DUPLICATE---", element+"+++++"+res.service_history_type)
+                      // console.log("sktlg", element+"+++++"+res.service_history_type)
+                      if (element == res.service_history_type) {
+                        duplicate = true;
+                        console.log("sktlg-DUPLICATE!!!", element + "+++++" + res.service_history_type);
+                      }
+                    });
+                  }
 
-                    if (check_elemenent == check_history) {
-                      duplicate = true;
-                      console.log("sktlg-DUPLICATE!!!", element + "+++++" + res.service_history_type);
+                  if (duplicate == false) {
+                    _this2.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
+                  }
+
+                  if (res.service_history_type == "FAILURE") {
+                    console.log("yyyyyyyyyyy");
+
+                    if (res.failure_type != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
+                      _this2.workOrdActComAssLocAssLisReq.push(res);
+
+                      console.log("workOrdActComAssLocAssLisReq", res);
+                      bstat = 'yes';
                     }
-                  });
-                }
+                  } else if (res.service_history_type == "DOWNTIME") {
+                    if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
+                      _this2.workOrdActComAssLocAssLisReq.push(res);
 
-                if (duplicate == false) {
-                  _this2.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
+                      console.log("workOrdActComAssLocAssLisReq", res);
+                      bstat = 'yes';
+                    }
+                  } else {
+                    if (res.question.length > 0) {
+                      _this2.workOrdActComAssLocAssLisReq.push(res);
+
+                      console.log('res.question != []----<<<>>>', res.question.length);
+                      bstat = 'yes';
+                    }
+                  }
+                } else {
+                  // if (res.service_history_type == "FAILURE") {
+                  // if (res.failure_type != '' && res.failure_root_cause != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
+                  _this2.worOrdActComAssLocAssLisNot.push(res); // }
+                  // } else if (res.service_history_type == "DOWNTIME") {
+                  //   if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                  //     this.worOrdActComAssLocAssLisNot.push(res)
+                  //   }
+                  // } else {
+                  //   if (res.question.length > 0) {
+                  //     this.worOrdActComAssLocAssLisNot.push(res)
+                  //   }
+                  // }
+
                 }
 
                 if (res.service_history_type == "FAILURE") {
-                  console.log("yyyyyyyyyyy");
+                  if (res.failure_type != '' && res.failure_mode != '' && res.failure_repair && res.failure_component != '') {
+                    _this2.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
 
-                  if (res.failure_type != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
-                    _this2.workOrdActComAssLocAssLisReq.push(res);
 
-                    console.log("workOrdActComAssLocAssLisReq", res);
-                    bstat = 'yes';
+                    _this2.serviceHistArr.push(res.service_history_type);
                   }
                 } else if (res.service_history_type == "DOWNTIME") {
                   if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
-                    _this2.workOrdActComAssLocAssLisReq.push(res);
+                    _this2.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
 
-                    console.log("workOrdActComAssLocAssLisReq", res);
-                    bstat = 'yes';
+
+                    _this2.serviceHistArr.push(res.service_history_type);
                   }
                 } else {
                   if (res.question.length > 0) {
-                    _this2.workOrdActComAssLocAssLisReq.push(res);
+                    _this2.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
 
-                    console.log('res.question != []----<<<>>>', res.question.length);
-                    bstat = 'yes';
+
+                    _this2.serviceHistArr.push(res.service_history_type);
                   }
                 }
-              } else {
-                // if (res.service_history_type == "FAILURE") {
-                // if (res.failure_type != '' && res.failure_root_cause != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
-                _this2.worOrdActComAssLocAssLisNot.push(res); // }
-                // } else if (res.service_history_type == "DOWNTIME") {
-                //   if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
-                //     this.worOrdActComAssLocAssLisNot.push(res)
-                //   }
-                // } else {
-                //   if (res.question.length > 0) {
-                //     this.worOrdActComAssLocAssLisNot.push(res)
-                //   }
-                // }
 
+                console.log("serviceHistArr1", _this2.serviceHistArr);
+
+                _this2.buttonStatusArr.push(bstat);
+
+                console.log("this.buttonStatusArr = ", _this2.buttonStatusArr);
+
+                if (_this2.buttonStatusArr.indexOf('no') == -1) {
+                  _this2.buttonStatus = false;
+                } else {
+                  _this2.buttonStatus = true;
+                }
+              }, function (err) {
+                console.log(err);
+              });
+            });
+            setTimeout(function () {
+              if (_this2.workOrdActComAssLocAssLisReq.length == _this2.workOrderActivityCompletionAssLocAssLisDataReq.length) {
+                _this2.buttonDisable = false;
+              } else {
+                _this2.buttonDisable = true;
               }
 
-              if (res.service_history_type == "FAILURE") {
-                if (res.failure_type != '' && res.failure_mode != '' && res.failure_repair && res.failure_component != '' && res.comments != '') {
-                  _this2.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
+              console.log("workOrderActivityCompletionAssLocAssLisDataReq", _this2.workOrderActivityCompletionAssLocAssLisDataReq);
+            }, 1000);
+            console.log("serviceHistArr2", _this2.serviceHistArr); // if (this.router.getCurrentNavigation().extras.state.badge_no) {
 
+            var badge_no = _this2.workactivityasset.badge_number;
+            console.log("badge_no = ", badge_no); // if (badge_no == this.workactivityasset.badge_number) {
 
-                  _this2.serviceHistArr.push(res.service_history_type);
-                }
-              } else if (res.service_history_type == "DOWNTIME") {
-                if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
-                  _this2.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
+            _this2.assetsService.filter("badge_no=" + badge_no).subscribe(function (res) {
+              console.log("res qweqwe", res['results']);
 
-
-                  _this2.serviceHistArr.push(res.service_history_type);
-                }
-              } else {
-                if (res.question.length > 0) {
-                  _this2.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
-
-
-                  _this2.serviceHistArr.push(res.service_history_type);
-                }
-              }
-
-              _this2.buttonStatusArr.push(bstat);
-
-              console.log("this.buttonStatusArr = ", _this2.buttonStatusArr);
-
-              if (_this2.buttonStatusArr.indexOf('no') == -1) {
-                _this2.buttonStatus = false;
-              } else {
-                _this2.buttonStatus = true;
-              }
+              _this2.workactivityassetFormGroup.patchValue({
+                asset_type: res['results'][0].asset_type,
+                badge_number: badge_no,
+                // serial_number: res[0].serial_number,
+                detailed_description: res['results'][0].description
+              });
             }, function (err) {
-              console.log(err);
-            });
-          });
-          setTimeout(function () {
-            if (_this2.workOrdActComAssLocAssLisReq.length == _this2.workOrderActivityCompletionAssLocAssLisDataReq.length) {
-              _this2.buttonDisable = false;
-            } else {
-              _this2.buttonDisable = true;
-            }
+              console.error("err", err);
+            }); // } else {
+            //   this.alertErrorWorkActivityAsset(
+            //     "Work Activity",
+            //     "The QR code is not same with the asset. Please try again."
+            //   );
+            // }
+            // }
 
-            console.log("workOrderActivityCompletionAssLocAssLisDataReq", _this2.workOrderActivityCompletionAssLocAssLisDataReq);
-          }, 1000); // if (this.router.getCurrentNavigation().extras.state.badge_no) {
-
-          var badge_no = this.router.getCurrentNavigation().extras.state.badge_no; // console.log("badge_no = ", badge_no)
-          // if (badge_no == this.workactivityasset.badge_number) {
-
-          this.assetsService.filter("badge_no=" + badge_no).subscribe(function (res) {
-            // console.log("res qweqwe", res)
-            _this2.workactivityassetFormGroup.patchValue({
-              asset_type: res[0].asset_type,
-              badge_number: badge_no,
-              // serial_number: res[0].serial_number,
-              detailed_description: res[0].description
-            });
-          }, function (err) {
-            console.error("err", err);
-          }); // } else {
-          //   this.alertErrorWorkActivityAsset(
-          //     "Work Activity",
-          //     "The QR code is not same with the asset. Please try again."
-          //   );
-          // }
-          // }
+          }, function () {});
         }
       }, {
         key: "getAllData2",
@@ -537,9 +545,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 // }
 
                 if (res.svc_hist_type_req_fl == 'W1YS') {
-                  var duplicate = false;
-                  var check_history = res.service_history_type.replace(/\-/g, '');
-                  check_history = res.service_history_type.replace(/\s/g, '');
+                  var duplicate = false; // var check_history = res.service_history_type.replace(/\-/g, '');
+                  // check_history = res.service_history_type.replace(/\s/g, '');
 
                   if (_this3.workOrderActivityCompletionAssLocAssLisDataReq.length == 0) {
                     _this3.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
@@ -547,12 +554,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     duplicate = true;
                   } else {
                     _this3.workOrderActivityCompletionAssLocAssLisDataReq.forEach(function (element) {
-                      var check_elemenent = element.replace(/\-/g, '');
-                      check_elemenent = element.replace(/\s/g, '');
-                      console.log("sktlg-DUPLICATE---", check_elemenent + "+++++" + check_history);
-                      console.log("sktlg", element + "+++++" + res.service_history_type);
-
-                      if (check_elemenent == check_history) {
+                      // var check_elemenent = element.replace(/\-/g, '');
+                      // check_elemenent = element.replace(/\s/g, '');
+                      // console.log("sktlg-DUPLICATE---", check_elemenent+"+++++"+check_history)
+                      // console.log("sktlg", element+"+++++"+res.service_history_type)
+                      if (element == res.service_history_type) {
                         duplicate = true;
                         console.log("sktlg-DUPLICATE!!!", element + "+++++" + res.service_history_type);
                       }
@@ -572,7 +578,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       _this3.buttonStatusArr.push(bstat);
                     }
                   } else if (res.service_history_type == "DOWNTIME") {
-                    if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                    if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
                       _this3.workOrdActComAssLocAssLisReq.push(res);
 
                       bstat = 'yes';
@@ -604,19 +610,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                 }
 
+                console.log("serviceHistArr", res);
+
                 if (res.service_history_type == "FAILURE") {
                   if (res.failure_type != '' && res.failure_root_cause != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
                     _this3.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
 
 
                     _this3.serviceHistArr.push(res.service_history_type);
+
+                    console.log("serviceHistArr", _this3.serviceHistArr);
                   }
                 } else if (res.service_history_type == "DOWNTIME") {
-                  if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                  if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
                     _this3.workOrderActivityCompletionAssLocAssLisData.push(res); // bstat = 'yes'
 
 
                     _this3.serviceHistArr.push(res.service_history_type);
+
+                    console.log("serviceHistArr", _this3.serviceHistArr);
                   }
                 } else {
                   if (res.question.length > 0) {
@@ -624,13 +636,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
                     _this3.serviceHistArr.push(res.service_history_type);
-                  }
-                }
 
-                console.log("this.buttonStatusArr.length = ", _this3.buttonStatusArr.length); // console.log("this.workOrderActivityCompletionAssLocAssLisDataReq.length = ", this.workOrderActivityCompletionAssLocAssLisDataReq.length)
+                    console.log("serviceHistArr", _this3.serviceHistArr);
+                  }
+                } //console.log("this.buttonStatusArr.length = ", this.buttonStatusArr.length)
+                // console.log("this.workOrderActivityCompletionAssLocAssLisDataReq.length = ", this.workOrderActivityCompletionAssLocAssLisDataReq.length)
                 // console.log("workOrderActivityCompletionAssLocAssLisDataReq = ", this.workOrderActivityCompletionAssLocAssLisDataReq)
                 // var workOrderActivityCompletionAssLocAssLisDataReqtrue = new Set(this.workOrderActivityCompletionAssLocAssLisDataReq);
                 // console.log("workOrderActivityCompletionAssLocAssLisDataReqtrue", workOrderActivityCompletionAssLocAssLisDataReqtrue)
+
 
                 if (_this3.workOrderActivityCompletionAssLocAssLisDataReq.length == _this3.buttonStatusArr.length) {
                   _this3.buttonStatus = true;
@@ -642,6 +656,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 //   this.buttonStatus = true
                 // }
 
+
+                console.log("serviceHistArr", _this3.serviceHistArr);
               }, function (err) {
                 console.log(err);
               });
@@ -746,7 +762,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // }
 
             if (element.svc_hist_type_req_fl == 'W1YS') {
-              console.log("elementW1YS-----", element); // if (element.service_history_type == "FAILURE") {
+              console.log("elementW1YS-----", element);
+              check.push(element.service_history_type); // if (element.service_history_type == "FAILURE") {
               //   console.log("sini fail")
               //   if (element.failure_type != '' && element.failure_root_cause != '' && element.failure_repair != '' && element.failure_mode != '' && element.failure_component != '') {
               //     check.push(element.service_history_type)
@@ -765,30 +782,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               //     console.log('else')
               //   }
               // }
-
-              var duplicate = false;
-
-              if (element.service_history_type != '') {
-                if (check.length == 0) {
-                  check.push(element.service_history_type);
-                  duplicate = true;
-                } else {
-                  check.forEach(function (check) {
-                    console.log("1t", check);
-                    console.log("2t", element.service_history_type);
-
-                    if (check == element.service_history_type) {
-                      duplicate = true;
-                    }
-                  });
-                }
-
-                if (duplicate == false) {
-                  check.push(element.service_history_type);
-                }
-              } else {
-                console.log(element);
-              }
+              // var duplicate = false;
+              // if (element.service_history_type != '') {
+              //   if (check.length == 0){
+              //     check.push(element.service_history_type)
+              //     duplicate = true;
+              //   }else{
+              //     check.forEach(check => {
+              //       console.log("1t", check)
+              //       console.log("2t", element.service_history_type)
+              //         if(check == element.service_history_type){
+              //           duplicate = true;
+              //         }
+              //     });
+              //   }
+              //   if(duplicate == false){
+              //    check.push(element.service_history_type)
+              //   }
+              // } else {
+              //   console.log(element)
+              // }
             }
           });
           console.log("check==", check);
@@ -816,29 +829,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           regeneratorRuntime.mark(function _callee2() {
             var _this5 = this;
 
-            var alert;
+            var navigationExtras, alert;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
-                    _context2.next = 2;
+                    navigationExtras = {
+                      state: {
+                        work_activity: this.workactivity
+                      }
+                    };
+                    _context2.next = 3;
                     return this.alertController.create({
                       header: header,
                       message: message,
                       buttons: [{
                         text: "OK",
                         handler: function handler() {
-                          _this5.router.navigate(["/technical/work-activity"]);
+                          _this5.router.navigateByUrl('/technical/maintenance-work-detail', {
+                            skipLocationChange: true
+                          }).then(function () {
+                            _this5.router.navigate(['/technical/work-activity'], navigationExtras);
+                          }); //this.router.navigate(["/technical/work-activity"]);
+                          //this.router.navigate(["/technical/maintenance-work-detail"]);
+
                         }
                       }]
                     });
 
-                  case 2:
+                  case 3:
                     alert = _context2.sent;
-                    _context2.next = 5;
+                    _context2.next = 6;
                     return alert.present();
 
-                  case 5:
+                  case 6:
                   case "end":
                     return _context2.stop();
                 }
@@ -883,7 +907,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "clickBack",
         value: function clickBack() {
-          this.router.navigate(["/technical/work-activity"]);
+          var _this6 = this;
+
+          var navigationExtras = {
+            state: {
+              work_activity: this.workactivity
+            }
+          };
+          this.router.navigateByUrl('/technical/maintenance-work-detail', {
+            skipLocationChange: true
+          }).then(function () {
+            _this6.router.navigate(['/technical/work-activity'], navigationExtras);
+          });
         }
       }, {
         key: "clickAddServiceHistory",
@@ -891,30 +926,52 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee4() {
-            var _this6 = this;
+            var _this7 = this;
 
             var obj, modal;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
                 switch (_context4.prev = _context4.next) {
                   case 0:
+                    console.log("serv_hist", servicehistory);
+                    console.log("serv_hist2", this.serviceHistArr);
                     obj = {
                       servicehistory: servicehistory,
                       servHistArr: this.serviceHistArr
                     };
-                    _context4.next = 3;
+                    _context4.next = 5;
                     return this.modalController.create({
                       component: _service_history_service_history_page__WEBPACK_IMPORTED_MODULE_5__["ServiceHistoryPage"],
                       componentProps: {
                         servicehistory: servicehistory,
-                        servHistArr: this.serviceHistArr
+                        servHistArr: this.serviceHistArr,
+                        WAA: this.workactivityasset
                       }
                     });
 
-                  case 3:
+                  case 5:
                     modal = _context4.sent;
                     modal.onDidDismiss().then(function (data) {
-                      _this6.getAllData2(); // if (data) this.servicehistories.push(data.data);
+                      //naqib
+                      var navigationExtras = {
+                        state: {
+                          badge_no: _this7.workactivityasset.badge_number,
+                          asset: _this7.workactivityasset,
+                          work_activity: _this7.workactivity
+                        }
+                      };
+                      console.log("test321-1", navigationExtras);
+                      console.log("test321-2", _this7.serviceHistArr);
+                      console.log("test321-3", data); //this.router.navigateByUrl('/technical/work-activity');
+
+                      _this7.router.navigateByUrl('/technical/work-activity', {
+                        skipLocationChange: true
+                      }).then(function () {
+                        _this7.router.navigate(['/technical/work-activity-asset'], navigationExtras);
+                      });
+
+                      _this7.serviceHistArr = data['data']; //this.getAllData2()
+                      // if (data) this.servicehistories.push(data.data);
                       // console.log("this.servicehistories = ", this.servicehistories)
                       // this.workactivityService.getOne(this.workactivityasset.id).subscribe(
                       //   (res) => {
@@ -928,15 +985,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       //     console.error("err", err);
                       //   }
                       // );
-
                     });
-                    _context4.next = 7;
+                    _context4.next = 9;
                     return modal.present();
 
-                  case 7:
+                  case 9:
                     return _context4.abrupt("return", _context4.sent);
 
-                  case 8:
+                  case 10:
                   case "end":
                     return _context4.stop();
                 }

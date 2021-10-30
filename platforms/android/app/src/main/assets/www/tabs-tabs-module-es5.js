@@ -325,7 +325,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected:#3880ff ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvaW52ZW50b3J5LW1hbmFnZW1lbnQvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvaW52ZW50b3J5LW1hbmFnZW1lbnQvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLHlCQUFBO0FDQUoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9pbnZlbnRvcnktbWFuYWdlbWVudC90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC8vIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IzM4ODBmZlxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiMzODgwZmYgO1xufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected:#3880ff ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL2ludmVudG9yeS1tYW5hZ2VtZW50L3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2ludmVudG9yeS1tYW5hZ2VtZW50L3RhYnMvdGFicy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSx5QkFBQTtBQ0FKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvaW52ZW50b3J5LW1hbmFnZW1lbnQvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAvLyAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiMzODgwZmZcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDojMzg4MGZmIDtcbn0iXX0= */";
     /***/
   },
 
@@ -588,7 +588,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvaW52ZW50b3J5L3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2ludmVudG9yeS90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUNBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2ludmVudG9yeS90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSkgO1xufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL2ludmVudG9yeS90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9pbnZlbnRvcnkvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFDQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9pbnZlbnRvcnkvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogcmdiYSg3NiwxODUsMTk2LDEpIDtcbn0iXX0= */";
     /***/
   },
 
@@ -851,7 +851,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvb3BlcmF0b3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvb3BlcmF0b3IvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDBDQUFBO0FDQ0Y7O0FERUE7RUFDRSxxQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvb3BlcmF0b3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tdGFiLWJhciB7XG4gIC0tYm9yZGVyOiB0cmFuc3BhcmVudDtcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tdGFiLWJhciB7XG4gIC0tYm9yZGVyOiB0cmFuc3BhcmVudDtcbn0iXX0= */";
+    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL29wZXJhdG9yL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL29wZXJhdG9yL3RhYnMvdGFicy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSwwQ0FBQTtBQ0NGOztBREVBO0VBQ0UscUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL29wZXJhdG9yL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59XG4iLCJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59Il19 */";
     /***/
   },
 
@@ -1114,7 +1114,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvc3RvcmUta2VlcGVyL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3N0b3JlLWtlZXBlci90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUNBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3N0b3JlLWtlZXBlci90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSkgO1xufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3N0b3JlLWtlZXBlci90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9zdG9yZS1rZWVwZXIvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFDQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9zdG9yZS1rZWVwZXIvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogcmdiYSg3NiwxODUsMTk2LDEpIDtcbn0iXX0= */";
     /***/
   },
 
@@ -1377,7 +1377,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9zdG9yZS1zdXBlcnZpc29yL3RhYnMvdGFicy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQ0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSkgO1xufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3N0b3JlLXN1cGVydmlzb3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUNBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3N0b3JlLXN1cGVydmlzb3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogcmdiYSg3NiwxODUsMTk2LDEpIDtcbn0iXX0= */";
     /***/
   },
 
@@ -1652,7 +1652,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvdGVjaG5pY2FsL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3RlY2huaWNhbC90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMENBQUE7QUNDRjs7QURFQTtFQUNFLHFCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy90ZWNobmljYWwvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tdGFiLWJhciB7XG4gIC0tYm9yZGVyOiB0cmFuc3BhcmVudDtcbn0iLCJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59Il19 */";
+    __webpack_exports__["default"] = "ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3RlY2huaWNhbC90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy90ZWNobmljYWwvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDBDQUFBO0FDQ0Y7O0FERUE7RUFDRSxxQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvdGVjaG5pY2FsL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59IiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi10YWItYmFyIHtcbiAgLS1ib3JkZXI6IHRyYW5zcGFyZW50O1xufSJdfQ== */";
     /***/
   },
 
@@ -1872,7 +1872,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                           _this4.searchBadgeNo();
                         }
-                      }, {
+                      }, // {
+                      //   text: "Multiple Tagging.",
+                      //   icon: "locate",
+                      //   handler: () => {
+                      //     this.MultipleRetag();
+                      //     //this.router.navigate(["/technical/multiple-retagging"]);
+                      //   },
+                      // },
+                      {
                         text: "Cancel",
                         role: "cancel",
                         icon: "close",
@@ -1896,19 +1904,83 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
-        key: "searchBadgeNo",
-        value: function searchBadgeNo() {
+        key: "MultipleRetag",
+        value: function MultipleRetag() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee2() {
             var _this5 = this;
 
-            var alert;
+            var actionSheet;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
                     _context2.next = 2;
+                    return this.actionSheetController.create({
+                      header: "Choose method",
+                      buttons: [{
+                        text: "RFID",
+                        icon: "scan",
+                        handler: function handler() {
+                          var navigationExtras = {
+                            state: {
+                              type: "RFID"
+                            }
+                          };
+
+                          _this5.router.navigate(["/technical/multiple-retagging"], navigationExtras);
+                        }
+                      }, {
+                        text: "QR Code",
+                        icon: "qr-code",
+                        handler: function handler() {
+                          var navigationExtras = {
+                            state: {
+                              type: "QRC"
+                            }
+                          };
+
+                          _this5.router.navigate(["/technical/multiple-retagging"], navigationExtras);
+                        }
+                      }, {
+                        text: "Back",
+                        //role: "cancel",
+                        icon: "arrow-back",
+                        handler: function handler() {
+                          _this5.scan(); //console.log("Cancel clicked");
+
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    actionSheet = _context2.sent;
+                    _context2.next = 5;
+                    return actionSheet.present();
+
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "searchBadgeNo",
+        value: function searchBadgeNo() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
+          /*#__PURE__*/
+          regeneratorRuntime.mark(function _callee3() {
+            var _this6 = this;
+
+            var alert;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
                     return this.alertController.create({
                       header: "Badge No.",
                       message: "Enter a badge number to search the asset",
@@ -1927,71 +1999,107 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         text: "Search",
                         handler: function handler(data) {
                           if (data.badge_no) {
-                            _this5.loadingController.create({
+                            _this6.loadingController.create({
                               message: "Please wait..."
                             }).then(function (loading) {
                               loading.present();
 
-                              _this5.assetsService.filter("badge_no=" + data.badge_no).subscribe(function (res) {
-                                // if find, go to asset detail list
-                                if (res.length > 0) {
-                                  loading.dismiss();
-                                  var navigationExtras = {
-                                    state: {
-                                      badge_no: res[0].badge_no
-                                    }
-                                  };
+                              _this6.assetsService.filter("badge_no=" + data.badge_no).subscribe(function (res) {
+                                console.log("reslength", res['results'].length);
 
-                                  _this5.router.navigate(["/technical/asset-detail-list"], navigationExtras);
-                                } // else, find the asset in the wams to pump into PIPE's asset table
-                                else {
-                                    // get data from wams
-                                    _this5.wamsService.getAssetBadgeNo(data.badge_no).subscribe(function (res) {
-                                      loading.dismiss();
+                                if (res['results'].length > 0) {
+                                  var lastmodified = res['results'][0].modified_date;
+                                  lastmodified = new Date(lastmodified);
+                                  var oneday = new Date(new Date().getTime() - 2 * 60 * 60 * 1000);
+                                  console.log("dateTime", lastmodified);
+                                  console.log("dateTime", oneday);
 
-                                      if (res.results.length > 0) {
-                                        var _navigationExtras = {
-                                          state: {
-                                            badge_no: data.badge_no
-                                          }
-                                        };
+                                  if (lastmodified.getTime() < oneday.getTime()) {
+                                    console.log("dateTime update");
 
-                                        _this5.router.navigate(["/technical/asset-detail-list"], _navigationExtras);
-                                      } else {
-                                        _this5.presentAlert("Error", "Sorry, asset is not found in the database.");
-                                      }
+                                    _this6.wamsService.getAssetBadgeNo(data.badge_no).subscribe(function (res) {
+                                      loading.dismiss(); // if (res.results.length > 0) {
+
+                                      var navigationExtras = {
+                                        state: {
+                                          badge_no: data.badge_no
+                                        }
+                                      };
+
+                                      _this6.router.navigate(["/technical/asset-detail-list"], navigationExtras); // } else {
+                                      //   this.presentAlert(
+                                      //     "Error",
+                                      //     "Sorry, asset is not found in the database."
+                                      //   );
+                                      // }
+
                                     }, function (err) {
                                       console.error("err", err);
                                       loading.dismiss();
 
-                                      _this5.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                      _this6.presentAlert("Error", "Sorry, there is a technical problem going on.");
                                     });
+                                  } else if (lastmodified.getTime() > oneday.getTime()) {
+                                    console.log("dateTime update takyah");
+                                    loading.dismiss();
+                                    var navigationExtras = {
+                                      state: {
+                                        badge_no: res['results'][0].badge_no
+                                      }
+                                    };
+
+                                    _this6.router.navigate(["/technical/asset-detail-list"], navigationExtras);
                                   }
+                                } else {
+                                  // get data from wams
+                                  _this6.wamsService.getAssetBadgeNo(data.badge_no).subscribe(function (res) {
+                                    loading.dismiss(); // if (res.results.length > 0) {
+
+                                    var navigationExtras = {
+                                      state: {
+                                        badge_no: data.badge_no
+                                      }
+                                    };
+
+                                    _this6.router.navigate(["/technical/asset-detail-list"], navigationExtras); // } else {
+                                    //   this.presentAlert(
+                                    //     "Error",
+                                    //     "Sorry, asset is not found in the database."
+                                    //   );
+                                    // }
+
+                                  }, function (err) {
+                                    console.error("err", err);
+                                    loading.dismiss();
+
+                                    _this6.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                  });
+                                }
                               }, function (err) {
                                 console.log("err assetlsService = ", err);
                                 loading.dismiss();
 
-                                _this5.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                _this6.presentAlert("Error", "Sorry, there is a technical problem going on.");
                               });
                             });
                           } else {
-                            _this5.presentAlert("Error", "Please enter badge number to find asset detail");
+                            _this6.presentAlert("Error", "Please enter badge number to find asset detail");
                           }
                         }
                       }]
                     });
 
                   case 2:
-                    alert = _context2.sent;
-                    _context2.next = 5;
+                    alert = _context3.sent;
+                    _context3.next = 5;
                     return alert.present();
 
                   case 5:
                   case "end":
-                    return _context2.stop();
+                    return _context3.stop();
                 }
               }
-            }, _callee2, this);
+            }, _callee3, this);
           }));
         }
       }, {
@@ -2009,52 +2117,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateRfid",
         value: function updateRfid(data) {
-          var _this6 = this;
-
-          if (this.bRfid) this.ngZone.run(function () {
-            _this6.scanValue = data;
-
-            if (_this6.scanValue != "") {
-              _this6.loadingController.create({
-                message: "Please wait..."
-              }).then(function (loading) {
-                loading.present();
-
-                _this6.assetsService.filter("hex_code=" + _this6.scanValue).subscribe(function (res) {
-                  loading.dismiss(); // if find, go to asset detail list
-
-                  if (res.length > 0) {
-                    var navigationExtras = {
-                      state: {
-                        badge_no: res[0].badge_no
-                      }
-                    };
-
-                    _this6.router.navigate(["/technical/asset-detail-list"], navigationExtras);
-                  } // else, suggest the user to use QR scanner OR search by badge number
-                  else {
-                      _this6.presentAlert("Error", "The asset is not found in the database. Please try again by using QR scanner OR search by badge number.");
-                    }
-                }, function (err) {
-                  console.log("err assetlsService = ", err);
-                  loading.dismiss();
-
-                  _this6.presentAlert("Error", "Sorry, there is a technical problem going on.");
-                });
-              });
-            } else {
-              _this6.presentAlert("Error", "RFID is invalid. Please try again.");
-            }
-          });
-        } // qr code
-
-      }, {
-        key: "updateQrbarcode",
-        value: function updateQrbarcode(data) {
           var _this7 = this;
 
-          if (this.bBarcode) this.ngZone.run(function () {
-            _this7.scanValue = data;
+          if (this.bRfid) this.ngZone.run(function () {
+            _this7.scanValue = data.trim();
 
             if (_this7.scanValue != "") {
               _this7.loadingController.create({
@@ -2062,50 +2128,145 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }).then(function (loading) {
                 loading.present();
 
-                _this7.assetsService.filter("badge_no=" + _this7.scanValue).subscribe(function (res) {
-                  // if find, go to asset detail list
-                  if (res.length > 0) {
-                    loading.dismiss();
-                    var navigationExtras = {
-                      state: {
-                        badge_no: res[0].badge_no
-                      }
-                    };
+                _this7.assetsService.filter("hex_code=" + _this7.scanValue).subscribe(function (res) {
+                  loading.dismiss(); // if find, go to asset detail list
 
-                    _this7.router.navigate(["/technical/asset-detail-list"], navigationExtras);
-                  } // else, find the asset in the wams to pump into PIPE's asset table
-                  else {
-                      // get data from wams
-                      _this7.wamsService.getAssetBadgeNo(_this7.scanValue).subscribe(function (res) {
+                  if (res['results'].length > 0) {
+                    var lastmodified = res['results'][0].modified_date;
+                    lastmodified = new Date(lastmodified);
+                    var oneday = new Date(new Date().getTime() - 2 * 60 * 60 * 1000);
+
+                    if (lastmodified.getTime() < oneday.getTime()) {
+                      _this7.wamsService.getAssetBadgeNo(res['results'][0].badge_no).subscribe(function (res) {
                         loading.dismiss();
+                        var navigationExtras = {
+                          state: {
+                            badge_no: res['results'][0].badge_no
+                          }
+                        };
 
-                        if (res.results.length > 0) {
-                          var _navigationExtras2 = {
-                            state: {
-                              badge_no: _this7.scanValue
-                            }
-                          };
-
-                          _this7.router.navigate(["/technical/asset-detail-list"], _navigationExtras2);
-                        } else {
-                          _this7.presentAlert("Error", "Sorry, asset is not found in the database.");
-                        }
+                        _this7.router.navigate(["/technical/asset-detail-list"], navigationExtras);
                       }, function (err) {
                         console.error("err", err);
                         loading.dismiss();
 
                         _this7.presentAlert("Error", "Sorry, there is a technical problem going on.");
                       });
+                    } else {
+                      var _navigationExtras = {
+                        state: {
+                          badge_no: res['results'][0].badge_no
+                        }
+                      };
+
+                      _this7.router.navigate(["/technical/asset-detail-list"], _navigationExtras);
                     }
+
+                    var navigationExtras = {
+                      state: {
+                        badge_no: res['results'][0].badge_no
+                      }
+                    };
+
+                    _this7.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                  } else {
+                    _this7.presentAlert("Error", "The asset is not found in the database. Please try again by using QR scanner OR search by badge number.");
+                  }
                 }, function (err) {
-                  console.log("err assetlsService = ", err);
+                  console.error("err", err);
                   loading.dismiss();
 
                   _this7.presentAlert("Error", "Sorry, there is a technical problem going on.");
                 });
               });
             } else {
-              _this7.presentAlert("Error", "QR code is invalid. Please try again.");
+              _this7.presentAlert("Error", "RFID is invalid. Please try again.");
+            }
+          });
+        } // qr code
+
+      }, {
+        key: "updateQrbarcode",
+        value: function updateQrbarcode(data) {
+          var _this8 = this;
+
+          if (this.bBarcode) this.ngZone.run(function () {
+            _this8.scanValue = data.trim();
+
+            if (_this8.scanValue != "") {
+              _this8.loadingController.create({
+                message: "Please wait..."
+              }).then(function (loading) {
+                loading.present();
+
+                _this8.assetsService.filter("badge_no=" + _this8.scanValue).subscribe(function (res) {
+                  // if find, go to asset detail list
+                  if (res['results'].length > 0) {
+                    var lastmodified = res['results'][0].modified_date;
+                    lastmodified = new Date(lastmodified);
+                    var oneday = new Date(new Date().getTime() - 2 * 60 * 60 * 1000);
+
+                    if (lastmodified.getTime() < oneday.getTime()) {
+                      _this8.wamsService.getAssetBadgeNo(_this8.scanValue).subscribe(function (res) {
+                        loading.dismiss();
+                        var navigationExtras = {
+                          state: {
+                            badge_no: _this8.scanValue
+                          }
+                        };
+
+                        _this8.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                      }, function (err) {
+                        console.error("err", err);
+                        loading.dismiss();
+
+                        _this8.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                      });
+                    } else {
+                      loading.dismiss();
+                      var navigationExtras = {
+                        state: {
+                          badge_no: _this8.scanValue
+                        }
+                      };
+
+                      _this8.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                    }
+                  } // else, find the asset in the wams to pump into PIPE's asset table
+                  else {
+                      // get data from wams
+                      _this8.wamsService.getAssetBadgeNo(_this8.scanValue).subscribe(function (res) {
+                        loading.dismiss(); // if (res.results.length > 0) {
+
+                        var navigationExtras = {
+                          state: {
+                            badge_no: _this8.scanValue
+                          }
+                        };
+
+                        _this8.router.navigate(["/technical/asset-detail-list"], navigationExtras); // } else {
+                        //   this.presentAlert(
+                        //     "Error",
+                        //     "Sorry, asset is not found in the database."
+                        //   );
+                        // }
+
+                      }, function (err) {
+                        console.error("err", err);
+                        loading.dismiss();
+
+                        _this8.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                      });
+                    }
+                }, function (err) {
+                  console.log("err assetlsService = ", err);
+                  loading.dismiss();
+
+                  _this8.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                });
+              });
+            } else {
+              _this8.presentAlert("Error", "QR code is invalid. Please try again.");
             }
           });
         }
@@ -2202,8 +2363,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function AssetsService(http) {
         _classCallCheck(this, AssetsService);
 
-        this.http = http;
-        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; // Data 
+        this.http = http; //url: string = environment.assetUrl;
+
+        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; //url: string = environment.baseUrl + "v1/assets/";
+        // Data 
 
         this.amodels = [];
       }
@@ -2218,22 +2381,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "get",
         value: function get() {
-          var _this8 = this;
+          var _this9 = this;
 
           return this.http.get(this.url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
             console.log("AssetsModel", res);
-            _this8.amodels = res;
+            _this9.amodels = res;
           }));
         }
       }, {
         key: "getOne",
         value: function getOne(id) {
-          var _this9 = this;
+          var _this10 = this;
 
           var urlID = this.url + id + "/";
           return this.http.get(urlID).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
             console.log("AssetsModel", res);
-            _this9.amodel = res;
+            _this10.amodel = res;
           }));
         } // update(body: Form): Observable<AssetsModel> {
         //   return this.http.patch<AssetsModel>(this.url, body).pipe(
@@ -2269,12 +2432,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOneExtended",
         value: function getOneExtended(id) {
-          var _this10 = this;
+          var _this11 = this;
 
           var urlID = this.url + id + "/extended/";
           return this.http.get(urlID).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
             console.log("AssetsModel", res);
-            _this10.amodel = res;
+            _this11.amodel = res;
           }));
         }
       }, {

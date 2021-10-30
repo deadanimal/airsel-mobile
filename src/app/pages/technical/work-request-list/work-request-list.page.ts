@@ -90,7 +90,7 @@ export class WorkRequestListPage implements OnInit {
         this.assetService.filter("asset_id=" + element.asset_id).subscribe(
           (res) => {
             // console.log("res assetsService = ", res);
-            if (res.length > 0) element.badge_no = res[0].badge_no;
+            if (res['results'].length > 0) element.badge_no = res[0].badge_no;
           },
           (err) => {
             // console.log("err assetsService = ", err);
@@ -198,11 +198,11 @@ export class WorkRequestListPage implements OnInit {
                     .subscribe(
                       (res) => {
                         // if find, go to asset detail list
-                        if (res.length > 0) {
+                        if (res['results'].length > 0) {
                           loading.dismiss();
                           let navigationExtras: NavigationExtras = {
                             state: {
-                              badge_no: res[0].badge_no,
+                              badge_no: res['results'][0].badge_no,
                             },
                           };
 
@@ -365,10 +365,10 @@ export class WorkRequestListPage implements OnInit {
                 (res) => {
                   loading.dismiss();
                   // if find, go to asset detail list
-                  if (res.length > 0) {
+                  if (res['results'].length > 0) {
                     let navigationExtras: NavigationExtras = {
                       state: {
-                        badge_no: res[0].badge_no,
+                        badge_no: res['results'][0].badge_no,
                       },
                     };
 

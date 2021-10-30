@@ -41,8 +41,8 @@ export class AssetDetailListPage implements OnInit {
     this.assetsService.filter("badge_no=" + badge_no).subscribe(
       (res) => {
         console.log("assetregistrations=res", res);
-        this.assetregistrations = res;
-        if (res[0].attached_to_asset_id == '') {
+        this.assetregistrations = res['results'];
+        if (res['results'][0].attached_to_asset_id == '') {
           this.assetLocatioSyncService.filter("node_id=" + this.assetregistrations[0].node_id).subscribe(
             (res) => {
               console.log("assetLocatioSyncServiceres>>>", res);
@@ -61,11 +61,11 @@ export class AssetDetailListPage implements OnInit {
           );
         } else {
 
-          this.assetsService.filter("asset_id=" + res[0].attached_to_asset_id).subscribe(
+          this.assetsService.filter("asset_id=" + res['results'][0].attached_to_asset_id).subscribe(
             (resA) => {
               console.log("assetqqqqqqqqq=res", resA);
 
-              this.assetLocatioSyncService.filter("node_id=" + resA[0]['node_id']).subscribe(
+              this.assetLocatioSyncService.filter("node_id=" + resA['results'][0]['node_id']).subscribe(
                 (resAls) => {
                   console.log("resAls>><<>>", resAls)
                   if (resAls.length > 0) {
@@ -80,7 +80,7 @@ export class AssetDetailListPage implements OnInit {
                 }
               );
 
-              this.assetregistrations = res;
+              //this.assetregistrations = res;
             }, (error) => {
               console.log(error)
             }
@@ -116,6 +116,7 @@ export class AssetDetailListPage implements OnInit {
       },
     };
 
+    console.log("try1", assetregistration);
     this.router.navigate(["/technical/asset-detail"], navigationExtras);
   }
 

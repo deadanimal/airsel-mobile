@@ -107,7 +107,9 @@ __webpack_require__.r(__webpack_exports__);
 let AssetsService = class AssetsService {
     constructor(http) {
         this.http = http;
+        //url: string = environment.assetUrl;
         this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/";
+        //url: string = environment.baseUrl + "v1/assets/";
         // Data 
         this.amodels = [];
     }

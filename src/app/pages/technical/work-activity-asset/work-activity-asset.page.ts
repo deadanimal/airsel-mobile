@@ -243,12 +243,12 @@ export class WorkActivityAssetPage implements OnInit {
       .filter("badge_no=" + badge_no)
       .subscribe(
         (res) => {
-          console.log("res qweqwe", res)
+          console.log("res qweqwe", res['results'])
           this.workactivityassetFormGroup.patchValue({
-            asset_type: res[0].asset_type,
+            asset_type: res['results'][0].asset_type,
             badge_number: badge_no,
             // serial_number: res[0].serial_number,
-            detailed_description: res[0].description,
+            detailed_description: res['results'][0].description,
           });
         },
         (err) => {

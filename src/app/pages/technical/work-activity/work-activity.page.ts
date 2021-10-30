@@ -348,8 +348,8 @@ export class WorkActivityPage implements OnInit {
 
           this.assetsService.filter(asset_id).subscribe(
             (res) => {
-              element.badge_number = res[0].badge_no
-              element.description = res[0].description
+              element.badge_number = res['results'][0].badge_no
+              element.description = res['results'][0].description
 
               if(element.badge_number == "" || element.badge_number == undefined){
                 element.reading_datetime = datetime
@@ -487,7 +487,7 @@ export class WorkActivityPage implements OnInit {
                       .subscribe(
                         (res) => {
                           // if find, go to asset detail list
-                          if (res.length > 0) {
+                          if (res['results'].length > 0) {
                             loading.dismiss();
                             let navigationExtras: NavigationExtras = {
                               state: {
@@ -713,11 +713,11 @@ export class WorkActivityPage implements OnInit {
                 (res) => {
                   loading.dismiss();
                   // if find, go to asset detail list
-                  if (res.length > 0) {
-                    if (res[0].badge_no == asset.badge_number) {
+                  if (res['results'].length > 0) {
+                    if (res['results'][0].badge_no == asset.badge_number) {
                       let navigationExtras: NavigationExtras = {
                         state: {
-                          badge_no: res[0].badge_no,
+                          badge_no: res['results'][0].badge_no,
                           asset: asset,
                           work_activity: this.workactivity
                         },
@@ -777,11 +777,11 @@ export class WorkActivityPage implements OnInit {
                 this.assetsService.filter("badge_no=" + this.scanValue).subscribe(
                   (res) => {
                     // if find, go to asset detail list
-                    if (res.length > 0) {
+                    if (res['results'].length > 0) {
                       loading.dismiss();
                       let navigationExtras: NavigationExtras = {
                         state: {
-                          badge_no: res[0].badge_no,
+                          badge_no: res['results'][0].badge_no,
                           asset: asset,
                           work_activity: this.workactivity
                         },

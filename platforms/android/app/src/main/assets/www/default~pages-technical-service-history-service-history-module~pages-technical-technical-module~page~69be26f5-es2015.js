@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Service History</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"servicehistoryFormGroup\">\n        <ion-item>\n          <ion-label position=\"stacked\">Service History Type</ion-label>\n          <ion-select (ionChange)=\"onChangeServiceHistory($event.target.value)\">\n            <ion-select-option *ngFor=\"let serHis of ServiceHistoryList\" [value]=\"serHis.id\">\n              {{serHis.service_hist_desc}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n        <div *ngIf=\"questionAndAnswerDiv == '1'\">\n          <!-- <div> -->\n          <ion-item *ngFor=\"let qna of questionAndAnswerData\">\n            <ion-label position=\"stacked\">{{qna.question.question_desc}}</ion-label>\n            <ion-select (ionChange)=\"safeDataToArray($event.target.value,qna)\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ans of qna.answer\" [value]=\"ans.answer_cd\">{{ans.answer_text}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerDowntimeDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Start Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'start')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'start')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">End Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'end')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'end')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Downtime Reason</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n              <ion-select-option value=\"PL\">Planned</ion-select-option>\n              <ion-select-option value=\"NPL\">Not Planned\n              </ion-select-option>\n            </ion-select>\n            <!-- <ion-input type=\"text\" (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n            </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Comment</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'comment')\" required>\n            </ion-input>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerFailureDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Cause</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'type')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansType of failureTypeData\" [value]=\"ansType.failure_type\">\n                {{ansType.failure_type}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Mode</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'mode')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansMode of failureModeData\" [value]=\"ansMode.failure_mode\">\n                {{ansMode.failure_mode}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Repair</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'repair')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansRepair of failureRepairData\" [value]=\"ansRepair.failure_repair\">\n                {{ansRepair.failure_repair}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Component</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'component')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansComp of failureComponentData\" [value]=\"ansComp.failure_comp\">\n                {{ansComp.failure_comp}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Remark</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'remark')\" required>\n            </ion-input>\n          </ion-item>\n\n        </div>\n\n      </form>\n    </ion-list>\n\n    <div class=\"ion-text-center\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Cancel</ion-button>\n      <ion-button color=\"primary\" (click)=\"presentAlertConfirm()\">Save</ion-button>\n    </div>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Service History</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"servicehistoryFormGroup\">\n        <ion-item>\n          <ion-label position=\"stacked\">Service History Type</ion-label>\n          <ion-select (ionChange)=\"onChangeServiceHistory($event.target.value)\">\n            <ion-select-option *ngFor=\"let serHis of ServiceHistoryList\" [value]=\"serHis.id\">\n              {{serHis.service_hist_desc}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n        <div *ngIf=\"questionAndAnswerDiv == '1'\">\n          <!-- <div> -->\n          <ion-item *ngFor=\"let qna of questionAndAnswerData\">\n            <ion-label position=\"stacked\">{{qna.question.question_desc}}</ion-label>\n            <ion-select (ionChange)=\"safeDataToArray($event.target.value,qna)\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ans of qna.answer\" [value]=\"ans.answer_cd\">{{ans.answer_text}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerDowntimeDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Start Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'start')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'start')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">End Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'end')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'end')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Downtime Reason</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n              <ion-select-option value=\"PL\">Planned</ion-select-option>\n              <ion-select-option value=\"NPL\">Not Planned\n              </ion-select-option>\n            </ion-select>\n            <!-- <ion-input type=\"text\" (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n            </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Comment</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'comment')\" required>\n            </ion-input>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerFailureDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Cause</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'type')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansType of failureTypeData\" [value]=\"ansType.failure_type\">\n                {{ansType.failure_type}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Mode</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'mode')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansMode of failureModeData\" [value]=\"ansMode.failure_mode\">\n                {{ansMode.failure_mode}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Repair</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'repair')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansRepair of failureRepairData\" [value]=\"ansRepair.failure_repair\">\n                {{ansRepair.failure_repair}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Component</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'component')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansComp of failureComponentData\" [value]=\"ansComp.failure_comp\">\n                {{ansComp.failure_comp}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Comment</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'remark')\" required>\n            </ion-input>\n          </ion-item>\n\n        </div>\n\n      </form>\n    </ion-list>\n\n    <div class=\"ion-text-center\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Cancel</ion-button>\n      <ion-button color=\"primary\" (click)=\"presentAlertConfirm()\">Save</ion-button>\n    </div>\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -50,9 +50,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_shared_services_service_histories_question_service_histories_question_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/shared/services/service-histories-question/service-histories-question.service */ "./src/app/shared/services/service-histories-question/service-histories-question.service.ts");
 /* harmony import */ var src_app_shared_services_service_history_question_service_history_question_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/shared/services/service-history-question/service-history-question.service */ "./src/app/shared/services/service-history-question/service-history-question.service.ts");
 /* harmony import */ var src_app_shared_services_questions_value_valid_questions_value_valid_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/shared/services/questions-value-valid/questions-value-valid.service */ "./src/app/shared/services/questions-value-valid/questions-value-valid.service.ts");
-/* harmony import */ var src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! src/app/shared/services/asset-location-asset-list-service-histories/asset-location-asset-list-service-histories.service */ "./src/app/shared/services/asset-location-asset-list-service-histories/asset-location-asset-list-service-histories.service.ts");
-/* harmony import */ var src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service */ "./src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service.ts");
-/* harmony import */ var src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! src/app/shared/services/failure-profile/failure-profile.service */ "./src/app/shared/services/failure-profile/failure-profile.service.ts");
+/* harmony import */ var _amcharts_amcharts4_internal_core_utils_Array__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @amcharts/amcharts4/.internal/core/utils/Array */ "./node_modules/@amcharts/amcharts4/.internal/core/utils/Array.js");
+/* harmony import */ var src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! src/app/shared/services/asset-location-asset-list-service-histories/asset-location-asset-list-service-histories.service */ "./src/app/shared/services/asset-location-asset-list-service-histories/asset-location-asset-list-service-histories.service.ts");
+/* harmony import */ var src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service */ "./src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service.ts");
+/* harmony import */ var src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! src/app/shared/services/failure-profile/failure-profile.service */ "./src/app/shared/services/failure-profile/failure-profile.service.ts");
+
 
 
 
@@ -106,6 +108,7 @@ let ServiceHistoryPage = class ServiceHistoryPage {
         this.assetTypeData = [];
         this.updateformData = [];
         this.servHistArr = [];
+        this.WorkActAsset = _amcharts_amcharts4_internal_core_utils_Array__WEBPACK_IMPORTED_MODULE_14__["any"];
         this.serviceHistoryArray = [];
         this.listOfAllrequired = [];
         this.failureTypeData = [];
@@ -126,17 +129,18 @@ let ServiceHistoryPage = class ServiceHistoryPage {
         this.downtime_comment = '';
         this.servHist = this.navParams.get("servicehistory");
         this.servHistArr = this.navParams.get("servHistArr");
+        this.WorkActAsset = this.navParams.get("WAA");
         console.log("this.servHist servHistArr = ", this.servHistArr);
         console.log("this.servHist servHist = ", this.servHist);
         this.getWorkOrderActComAssLocAssLis(this.servHist);
         this.assetsService
             .filter("asset_id=" + this.servHist.asset_id)
             .subscribe((assServres) => {
-            console.log("assetsService res", assServres);
+            console.log("assetsService res", assServres['results']);
             // console.log("assetsService res", res[0]['asset_type'])
             // console.log("assetsService res", res[0].asset_type)
             this.assetTypesService
-                .filter("asset_type_code=" + assServres[0]['asset_type'])
+                .filter("asset_type_code=" + assServres['results'][0]['asset_type'])
                 .subscribe((assTypeServres) => {
                 console.log("assetTypesService res", assTypeServres);
                 this.assetTypeData.push(assTypeServres[0]);
@@ -244,7 +248,7 @@ let ServiceHistoryPage = class ServiceHistoryPage {
         this.menu.open("menuNotification");
     }
     clickBack() {
-        this.modalController.dismiss();
+        this.modalController.dismiss(this.serviceHistoryArray);
         // await this.modalController.dismiss(onClosedData);
     }
     alertServiceHistory(header, message) {
@@ -256,7 +260,7 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                     {
                         text: "OK",
                         handler: () => {
-                            this.modalController.dismiss();
+                            this.modalController.dismiss(this.serviceHistoryArray);
                         },
                     },
                 ],
@@ -280,7 +284,7 @@ let ServiceHistoryPage = class ServiceHistoryPage {
         });
         // console.log("assetType = ", assetType)
         // console.log("assetType = ", assetType['service_hist_desc'])
-        this.selectedServiceHistory = assetType['service_hist_desc'];
+        this.selectedServiceHistory = assetType['service_hist_type'];
         this.selectedAssetType = assetType['category'];
         this.selectedServiceHistoryType = assetType['service_hist_type'];
         console.log(this.selectedAssetType, "---", this.selectedServiceHistory);
@@ -365,19 +369,32 @@ let ServiceHistoryPage = class ServiceHistoryPage {
     //   // updateformData = null;
     // }
     safeDataToArray(value, row) {
-        console.log("row", row);
-        console.log("value", value);
+        var func = "";
         let obj = {
-            // ...row,
             question_id: row.question.id,
             question_cd: row.question.question_cd,
             question_desc: row.question.question_desc,
             question_seq: row.question.question_seq,
             valid_value: row.answer,
-            answer_id: value,
+            answer_id: value
         };
-        this.updateformData.push(obj);
-        console.log("qnaPostData", this.updateformData);
+        func = "add";
+        if (this.updateformData.length == 0) {
+            func = "add";
+        }
+        else {
+            for (let x = 0; x < this.updateformData.length; x++) {
+                if (this.updateformData[x].question_id == row.question.id) {
+                    func = "update";
+                    this.updateformData[x].answer_id = value;
+                }
+            }
+        }
+        if (func == "add") {
+            this.updateformData.push(obj);
+        }
+        // console.log("qnaPostData", func);
+        // console.log("qnaPostData", this.updateformData);
     }
     saveFailureDontimeArray(value, field) {
         // this.updatefailureformData = []
@@ -419,25 +436,11 @@ let ServiceHistoryPage = class ServiceHistoryPage {
         let woacalalData = [];
         let alalshData = [];
         let idToBeUpdate = '';
-        // if (this.workOrderActComAssLocAssLis.service_histories.length > 0) {
-        //   console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-        //   this.workOrderActComAssLocAssLis.service_histories
-        //     .forEach(element => {
-        //       // this.AssLocAssLisArrId
-        //       woacalalData.push(element)
-        //     });
-        // } else {
-        //   console.log("sini length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-        //   woacalalData = []
-        // }
         if (this.listOfAllrequired.length > 0) {
             console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length);
             this.listOfAllrequired.forEach(element => {
                 // this.AssLocAssLisArrId
                 console.log("element==>>", element);
-                // // set for question_id
-                // servHistQues.push(element.id)
-                // set for service_history_id
                 woacalalData.push(element.id);
                 console.log(this.selectedServiceHistoryType, "==", element.service_history_type);
                 if (this.selectedServiceHistoryType == element.service_history_type) {
@@ -454,7 +457,7 @@ let ServiceHistoryPage = class ServiceHistoryPage {
         console.log('idToBeUpdate>>>', idToBeUpdate);
         console.log('servHistQues>>>', servHistQues);
         if (this.selectedAssetType == 'Failure') {
-            if (this.failure_type == '' && this.failure_mode == '' && this.failure_repair == '' && this.failure_component == '' && this.failure_remark == '') {
+            if (this.failure_type == '' || this.failure_mode == '' || this.failure_repair == '' || this.failure_component == '') {
                 this.alertWarning('Warning', 'Please answer all question.');
             }
             else {
@@ -464,7 +467,11 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                     failure_mode: this.failure_mode,
                     failure_repair: this.failure_repair,
                     failure_component: this.failure_component,
-                    comments: this.failure_remark
+                    comments: this.failure_remark,
+                    start_date_time: new Date(),
+                    end_date_time: new Date(),
+                    downtime_reason: "NPL",
+                    failure_root_cause: "AGING"
                 };
                 console.log("assLocAssLisSerHisData = ", assLocAssLisSerHisData);
                 if (idToBeUpdate == '') {
@@ -474,6 +481,8 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                         let woacassLocAssLisFormData = {
                             service_histories: woacalalData
                         };
+                        console.log("updateservhistaaa1", this.servHist.id);
+                        console.log("updateservhistaaa1", woacassLocAssLisFormData);
                         this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe((woacalalRes) => {
                             console.log("woacalalRes =", woacalalRes);
                             this.alertWorkActivityAsset('Work Activity', 'SuccessFully Save Data.');
@@ -485,6 +494,8 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                     });
                 }
                 else {
+                    console.log("updateservhistaaa2", idToBeUpdate);
+                    console.log("updateservhistaaa2", assLocAssLisSerHisData);
                     this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe((res) => {
                         console.log("updatefailureformData = ", res);
                         // woacalalData.push(res.id)
@@ -506,7 +517,7 @@ let ServiceHistoryPage = class ServiceHistoryPage {
             }
         }
         else if (this.selectedAssetType == 'Downtime') {
-            if (this.downtime_start == '' && this.downtime_end == '' && this.downtime_reason == '' && this.downtime_comment == '') {
+            if (this.downtime_start == '' || this.downtime_end == '' || this.downtime_reason == '') {
                 this.alertWarning('Warning', 'Please answer all question.');
             }
             else {
@@ -515,7 +526,12 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                     start_date_time: this.downtime_start,
                     end_date_time: this.downtime_end,
                     downtime_reason: this.downtime_reason,
-                    comments: this.downtime_comment
+                    comments: this.downtime_comment,
+                    failure_type: "AGING",
+                    failure_mode: "JAMMED",
+                    failure_repair: "ASSET-REPLACEMENT",
+                    failure_component: "SENSOR",
+                    failure_root_cause: "AGING"
                 };
                 console.log("assLocAssLisSerHisData = ", assLocAssLisSerHisData);
                 if (idToBeUpdate == '') {
@@ -526,6 +542,8 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                         let woacassLocAssLisFormData = {
                             service_histories: woacalalData
                         };
+                        console.log("updateservhistaaa3", this.servHist.id);
+                        console.log("updateservhistaaa3", woacassLocAssLisFormData);
                         this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe((woacalalRes) => {
                             console.log("woacalalRes =", woacalalRes);
                             this.alertWorkActivityAsset('Work Activity', 'SuccessFully Save Data.');
@@ -537,7 +555,9 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                     });
                 }
                 else {
-                    console.log("this is a existing data ", idToBeUpdate);
+                    //console.log("this is a existing data ", idToBeUpdate)
+                    console.log("updateservhistaaa4", idToBeUpdate);
+                    console.log("updateservhistaaa4", assLocAssLisSerHisData);
                     this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe((res) => {
                         console.log("updatefailureformData = ", res);
                         // woacalalData.push(res.id)
@@ -565,18 +585,15 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                 this.alertWarning('Warning', 'Please answer all question.');
             }
             else {
-                // this.updateformData.forEach(element1 => {
                 for (let x = 0; x < this.updateformData.length; x++) {
                     console.log("xxxxxx = ", x);
                     console.log("this.updateformData[x] = ", this.updateformData[x]);
                     console.log("element1['valid_value'] = ", this.updateformData[x]['valid_value'].length);
-                    // let validvalue: any = []
                     let styleDiv = '';
                     let questionvalueData;
                     let questionvalue = [];
                     let validvalue = [];
                     let responseRadio = '';
-                    // this.updateformData[x]['valid_value'].forEach(element2 => {
                     let valid_value_data = this.updateformData[x]['valid_value'];
                     for (let i = 0; i < valid_value_data.length; i++) {
                         console.log("valid_value res = ", valid_value_data[i]);
@@ -593,9 +610,6 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                         this.questionValidValueService.post(validValueFormData).subscribe((queValValRes) => {
                             console.log("res queValValRes = ", queValValRes);
                             let obj2 = [queValValRes.id];
-                            // validvalue.push(this.updateformData[x].id);
-                            // questionvalue.push(obj2);
-                            // validvalue[i] = queValValRes.id
                             console.log("validvalue array = ", obj2);
                             validvalue.push(queValValRes.id);
                             console.log("questionvalue qweqwe res = ", validvalue);
@@ -623,14 +637,15 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                                         let assLocAssLisSerHisData = {
                                             comments: this.updateformData[x].question_seq,
                                             service_history_type: this.selectedServiceHistory,
-                                            // failure_type: this.updateformData[x].question_seq,
-                                            // failure_mode: this.updateformData[x].question_seq,
-                                            // failure_repair: this.updateformData[x].question_seq,
-                                            // failure_component: this.updateformData[x].question_seq,
-                                            // failure_root_cause: this.updateformData[x].question_seq,
-                                            // svc_hist_type_req_fl: this.updateformData[x].question_seq,
-                                            // downtime_reason: this.updateformData[x].question_seq,
-                                            question: servHistQues
+                                            question: servHistQues,
+                                            start_date_time: new Date(),
+                                            end_date_time: new Date(),
+                                            downtime_reason: "NPL",
+                                            failure_type: "AGING",
+                                            failure_mode: "JAMMED",
+                                            failure_repair: "ASSET-REPLACEMENT",
+                                            failure_component: "SENSOR",
+                                            failure_root_cause: "AGING"
                                         };
                                         console.log("assLocAssLisSerHisData>><<<<><", assLocAssLisSerHisData);
                                         if (idToBeUpdate == '') {
@@ -639,15 +654,14 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                                                 console.log("alslshRes", alslshRes);
                                                 console.log("alslshRes", alslshRes.id);
                                                 woacalalData.push(alslshRes.id);
-                                                // let woacassLocAssLisDataFormData = new FormData();
-                                                // woacassLocAssLisDataFormData.append('service_histories',woacalalData)
                                                 let woacassLocAssLisFormData = {
                                                     service_histories: woacalalData
                                                 };
+                                                console.log("updateservhistaaa5", this.servHist.id);
+                                                console.log("updateservhistaaa5", woacassLocAssLisFormData);
                                                 this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe((woacalalRes) => {
                                                     console.log("woacalalRes =", woacalalRes);
                                                     this.alertWorkActivityAsset('Work Activity', 'Your service history has been successfully updated.');
-                                                    // this.presentAlertConfirm()
                                                 }, (woacalalErr) => {
                                                     console.log(woacalalErr);
                                                 });
@@ -657,42 +671,16 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                                             });
                                         }
                                         else {
-                                            console.log(assLocAssLisSerHisData);
+                                            console.log("updateservhistaaa6", assLocAssLisSerHisData);
+                                            console.log("updateservhistaaa6", idToBeUpdate);
                                             this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe((alslshRes) => {
                                                 console.log("alslshRes", alslshRes);
-                                                // console.log("siniiiiii length = ", this.workOrderActComAssLocAssLis)
-                                                // if (this.workOrderActComAssLocAssLis.service_histories.length > 0) {
-                                                //   console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-                                                //   this.workOrderActComAssLocAssLis.service_histories
-                                                //     .forEach(element => {
-                                                //       // this.AssLocAssLisArrId
-                                                //       woacalalData.push(element)
-                                                //     });
-                                                // } else {
-                                                //   console.log("sini length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-                                                //   woacalalData = []
-                                                // }
-                                                // woacalalData.push(alslshRes.id)
-                                                // let woacassLocAssLisDataFormData = new FormData();
-                                                // woacassLocAssLisDataFormData.append('service_histories',woacalalData)
-                                                // let woacassLocAssLisFormData = {
-                                                //   service_histories: woacalalData
-                                                // }
-                                                // this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe(
-                                                //   (woacalalRes) => {
-                                                //     console.log("woacalalRes =", woacalalRes)
                                                 this.alertWorkActivityAsset('Work Activity', 'SuccessFully Save Data.');
-                                                //     // this.presentAlertConfirm()
-                                                //   }, (woacalalErr) => {
-                                                //     console.log(woacalalErr)
-                                                //   }
-                                                // )
                                             }, (alslshErr) => {
                                                 console.log("alslshErr", alslshErr);
                                             }, () => {
                                             });
                                         }
-                                        // console.log("here 111111111111")
                                     }
                                 }, (err) => {
                                     console.error("err", err);
@@ -732,7 +720,7 @@ let ServiceHistoryPage = class ServiceHistoryPage {
                         handler: () => {
                             // this.router.navigate(["/technical/maintenance-work-list"]);
                             // this.router.navigate(["/technical/work-activity-asset"]);
-                            this.modalController.dismiss();
+                            this.modalController.dismiss(this.serviceHistoryArray);
                         },
                     },
                 ],
@@ -784,9 +772,9 @@ ServiceHistoryPage.ctorParameters = () => [
     { type: src_app_shared_services_service_history_question_service_history_question_service__WEBPACK_IMPORTED_MODULE_12__["ServiceHistoryQuestionService"] },
     { type: src_app_shared_services_questions_value_valid_questions_value_valid_service__WEBPACK_IMPORTED_MODULE_13__["QuestionValidValueService"] },
     { type: src_app_shared_services_service_histories_question_service_histories_question_service__WEBPACK_IMPORTED_MODULE_11__["ServiceHistoriesQuestionService"] },
-    { type: src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_14__["AssetLocationAssetListServiceHistoriesService"] },
-    { type: src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_15__["WorkOrderActivityCompletionAssLocAssListService"] },
-    { type: src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_16__["FailureProfileModelService"] }
+    { type: src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_15__["AssetLocationAssetListServiceHistoriesService"] },
+    { type: src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_16__["WorkOrderActivityCompletionAssLocAssListService"] },
+    { type: src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_17__["FailureProfileModelService"] }
 ];
 ServiceHistoryPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -809,9 +797,9 @@ ServiceHistoryPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         src_app_shared_services_service_history_question_service_history_question_service__WEBPACK_IMPORTED_MODULE_12__["ServiceHistoryQuestionService"],
         src_app_shared_services_questions_value_valid_questions_value_valid_service__WEBPACK_IMPORTED_MODULE_13__["QuestionValidValueService"],
         src_app_shared_services_service_histories_question_service_histories_question_service__WEBPACK_IMPORTED_MODULE_11__["ServiceHistoriesQuestionService"],
-        src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_14__["AssetLocationAssetListServiceHistoriesService"],
-        src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_15__["WorkOrderActivityCompletionAssLocAssListService"],
-        src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_16__["FailureProfileModelService"]])
+        src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_15__["AssetLocationAssetListServiceHistoriesService"],
+        src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_16__["WorkOrderActivityCompletionAssLocAssListService"],
+        src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_17__["FailureProfileModelService"]])
 ], ServiceHistoryPage);
 
 
@@ -1070,7 +1058,9 @@ __webpack_require__.r(__webpack_exports__);
 let AssetsService = class AssetsService {
     constructor(http) {
         this.http = http;
+        //url: string = environment.assetUrl;
         this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/";
+        //url: string = environment.baseUrl + "v1/assets/";
         // Data 
         this.amodels = [];
     }
@@ -1527,82 +1517,6 @@ ServiceHistoryService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
 ], ServiceHistoryService);
-
-
-
-/***/ }),
-
-/***/ "./src/app/shared/services/work-activities/work-activities.service.ts":
-/*!****************************************************************************!*\
-  !*** ./src/app/shared/services/work-activities/work-activities.service.ts ***!
-  \****************************************************************************/
-/*! exports provided: WorkActivitiesService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkActivitiesService", function() { return WorkActivitiesService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-
-
-
-
-
-let WorkActivitiesService = class WorkActivitiesService {
-    constructor(http) {
-        this.http = http;
-        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/work-activities/";
-        // Data
-        this.wamodels = [];
-    }
-    post(body) {
-        return this.http.post(this.url, body).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((res) => {
-            console.log("WorkActivitiesModel", res);
-        }));
-    }
-    get() {
-        return this.http.get(this.url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((res) => {
-            console.log("WorkActivitiesModel", res);
-            this.wamodels = res;
-        }));
-    }
-    getOne(id) {
-        let urlID = this.url + id + "/";
-        return this.http.get(urlID).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((res) => {
-            console.log("WorkActivitiesModel", res);
-            this.wamodel = res;
-        }));
-    }
-    update(id, body) {
-        return this.http.patch(this.url + id + '/', body).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((res) => {
-            console.log("WorkActivitiesModel", res);
-        }));
-    }
-    delete(id) {
-        return this.http.delete(this.url + id + "/").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((res) => {
-            console.log("WorkActivitiesModel", res);
-        }));
-    }
-    filter(field) {
-        let urlFilter = this.url + "?" + field;
-        return this.http.get(urlFilter).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((res) => {
-            console.log("WorkActivitiesModel", res);
-        }));
-    }
-};
-WorkActivitiesService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
-];
-WorkActivitiesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: "root",
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
-], WorkActivitiesService);
 
 
 

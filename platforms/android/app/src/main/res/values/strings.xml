@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">TAMS-WAMS Mobile</string>
+    <string name="app_name">TAMS Mobile</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="activity_name">@string/launcher_name</string>
     <string name="ionic_app_id">eb0c7c8e</string>

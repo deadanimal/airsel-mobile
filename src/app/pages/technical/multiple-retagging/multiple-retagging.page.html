@@ -1,0 +1,41 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-no-border toolbar-core">
+    <ion-buttons slot="start">
+      <ion-button (click)="homePage('/technical/tabs/tab1')">
+        <ion-icon src="../../../../assets/icon/air-selangor-icon.svg" style="font-size: 2rem"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold">
+      Multiple Retagging
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openNotification()">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+        <ion-badge color="danger" style="position: absolute; right: -5px; top: 1px"></ion-badge>
+        <!--{{ notificationService.totalnotificationbyuser }}-->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-core">
+  <div class="ion-text-center">
+    <ion-button color="primary" (click)="StartScan()">Start Scan</ion-button>
+  </div>
+  <ion-card *ngFor="let assetdetail of assetdetailmultiple">
+    <ion-card-header>
+      <ion-fab horizontal="end">
+        <ion-fab-button size="small" color="primary" (click)="clickEdit(assetdetail.badge_no)">
+          <ion-icon name="document-text"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-card-title>Badge No<br />{{ assetdetail.badge_no }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Asset Id: {{ assetdetail.asset_id }}</p>
+      <p>Asset Type: {{ assetdetail.asset_type }}</p>
+      <p>Asset Location: {{ assetdetail.asset_location }}</p>
+      <!-- <p>Asset Location: {{ assetregistration.location_description }}</p> -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

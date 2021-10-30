@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"homePage('/technical/tabs/tab1')\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Work Request </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <div class=\"ion-text-center\">\n      <ion-button color=\"primary\" (click)=\"clickNew()\">New Request</ion-button>\n    </div>\n    <ion-card *ngFor=\"let workrequest of workrequests\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button *ngIf=\"workrequest.approval_profile == ''\" size=\"small\" color=\"primary\"\n            (click)=\"clickEdit(workrequest)\">\n            <ion-icon name=\"document-text\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workrequest.approval_profile != ''\" size=\"small\" color=\"success\"\n            (click)=\"clickEdit(workrequest)\">\n            <ion-icon name=\"document-text\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workrequest.work_request_status == 'CREATED'\" size=\"small\" color=\"tertiary\"\n            (click)=\"clickApprove(workrequest)\">\n            <ion-icon name=\"checkmark-circle-outline\"></ion-icon>\n          </ion-fab-button>\n          <!-- <ion-fab-button\n            size=\"small\"\n            color=\"danger\"\n            (click)=\"clickRemove(i)\"\n          >\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button> -->\n        </ion-fab>\n        <ion-card-subtitle>Work Request ID</ion-card-subtitle>\n        <ion-card-title><b>{{ workrequest.work_request_id }}</b></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <p>Asset ID: {{ workrequest.asset_id }}</p>\n        <p>Required By Date: {{ workrequest.required_by_date }}</p>\n        <p>Work Category: {{ workrequest.work_category }}</p>\n        <p>Work Class: {{ workrequest.work_class }}</p>\n        <p>Work Priority: {{ workrequest.work_priority }}</p>\n        <p>Status: {{ workrequest.work_request_status | titlecase }}</p>\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"homePage('/technical/tabs/tab1')\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Work Request </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <div class=\"ion-text-center\">\n      <ion-button color=\"primary\" (click)=\"clickNew()\">New Request</ion-button>\n    </div>\n    <ion-card *ngFor=\"let workrequest of workrequests\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button *ngIf=\"workrequest.work_request_status == 'CREATED'\" size=\"small\" color=\"tertiary\"\n            (click)=\"clickEdit(workrequest)\">\n            <ion-icon name=\"document-text\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workrequest.work_request_status != 'CREATED'\" size=\"small\" color=\"success\"\n            (click)=\"clickEdit(workrequest)\">\n            <ion-icon name=\"document-text\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workrequest.work_request_status == 'CREATED'\" size=\"small\" color=\"tertiary\"\n            (click)=\"clickApprove(workrequest)\">\n            <ion-icon name=\"checkmark-circle-outline\"></ion-icon>\n          </ion-fab-button>\n          <!-- <ion-fab-button\n            size=\"small\"\n            color=\"danger\"\n            (click)=\"clickRemove(i)\"\n          >\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button> -->\n        </ion-fab>\n        <ion-card-subtitle>Work Request ID</ion-card-subtitle>\n        <ion-card-title><b>{{ workrequest.work_request_id }}</b></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <p>Asset ID: {{ workrequest.asset_id }}</p>\n        <p>Required By Date: {{ workrequest.required_by_date }}</p>\n        <p>Work Category: {{ workrequest.work_category }}</p>\n        <p>Work Class: {{ workrequest.work_class }}</p>\n        <p>Work Priority: {{ workrequest.work_priority }}</p>\n        <p>Status: {{ workrequest.work_request_status | titlecase }}</p>\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>";
     /***/
   },
 
@@ -336,7 +336,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           workReqData.forEach(function (element) {
             if (element.asset_id != "") _this3.assetService.filter("asset_id=" + element.asset_id).subscribe(function (res) {
               // console.log("res assetsService = ", res);
-              if (res.length > 0) element.badge_no = res[0].badge_no;
+              if (res['results'].length > 0) element.badge_no = res[0].badge_no;
             }, function (err) {// console.log("err assetsService = ", err);
             });
 
@@ -469,11 +469,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                               _this5.assetService.filter("badge_no=" + data.badge_no).subscribe(function (res) {
                                 // if find, go to asset detail list
-                                if (res.length > 0) {
+                                if (res['results'].length > 0) {
                                   loading.dismiss();
                                   var navigationExtras = {
                                     state: {
-                                      badge_no: res[0].badge_no
+                                      badge_no: res['results'][0].badge_no
                                     }
                                   };
 
@@ -642,6 +642,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             work_request_id: workrequest.work_request_id,
             approval_profile: data
           };
+          console.log("WR-obj", obj);
           this.workrequestService.submit_approval_profile(obj).subscribe(function (res) {
             if (res) {
               _this7.presentAlert("Success", // "Your work request have successfully approved."
@@ -677,10 +678,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this8.assetService.filter("hex_code=" + _this8.scanValue).subscribe(function (res) {
                   loading.dismiss(); // if find, go to asset detail list
 
-                  if (res.length > 0) {
+                  if (res['results'].length > 0) {
                     var navigationExtras = {
                       state: {
-                        badge_no: res[0].badge_no
+                        badge_no: res['results'][0].badge_no
                       }
                     };
 

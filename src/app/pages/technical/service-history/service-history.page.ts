@@ -89,11 +89,11 @@ export class ServiceHistoryPage implements OnInit {
       .filter("asset_id=" + this.servHist.asset_id)
       .subscribe(
         (assServres) => {
-          console.log("assetsService res", assServres)
+          console.log("assetsService res", assServres['results'])
           // console.log("assetsService res", res[0]['asset_type'])
           // console.log("assetsService res", res[0].asset_type)
           this.assetTypesService
-            .filter("asset_type_code=" + assServres[0]['asset_type'])
+            .filter("asset_type_code=" + assServres['results'][0]['asset_type'])
             .subscribe(
               (assTypeServres) => {
                 console.log("assetTypesService res", assTypeServres)

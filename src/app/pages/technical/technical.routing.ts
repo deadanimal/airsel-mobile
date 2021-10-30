@@ -135,6 +135,13 @@ export const TechnicalRoutes: Routes = [
           ).then((m) => m.AssetRegistrationListPageModule),
       },
       {
+        path: "multiple-retagging",
+        loadChildren: () =>
+          import(
+            "./multiple-retagging/multiple-retagging.module"
+          ).then((m) => m.MultipleRetaggingPageModule),
+      },
+      {
         path: "qr-scanner",
         component: QrScannerComponent,
       },

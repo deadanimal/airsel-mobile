@@ -145,27 +145,26 @@ export class WorkRequestPage implements OnInit {
         // to get process from work request list
         this.process = this.router.getCurrentNavigation().extras.state.process;
 
-        let workrequest =
-          this.router.getCurrentNavigation().extras.state.workrequest;
+        let workrequest = this.router.getCurrentNavigation().extras.state.workrequest;
         let badge_no = this.router.getCurrentNavigation().extras.state.badge_no;
-
+        console.log('testwrnqb',this.router.getCurrentNavigation().extras.state);
         // to find asset detail if user pick badge number to find detail
         if (badge_no) {
           this.assetsService.filter("badge_no=" + badge_no).subscribe(
             (res) => {
-              if (res.length > 0) {
+              if (res['results'].length > 0) {
                 // to get node_id from table assets_assetlocationsync
                 this.getAssetLocationSync(
-                  res[0].node_id,
-                  res[0].bo,
-                  res[0].attached_to_asset_id
+                  res['results'][0].node_id,
+                  res['results'][0].bo,
+                  res['results'][0].attached_to_asset_id
                 );
 
                 this.workrequestFormGroup.patchValue({
-                  asset_description: res[0].description,
-                  asset_id: res[0].asset_id,
-                  badge_no: res[0].badge_no,
-                  owning_access_group: res[0].owning_access_group,
+                  asset_description: res['results'][0].description,
+                  asset_id: res['results'][0].asset_id,
+                  badge_no: res['results'][0].badge_no,
+                  owning_access_group: res['results'][0].owning_access_group,
                 });
               } else {
                 this.presentAlert(
@@ -186,11 +185,12 @@ export class WorkRequestPage implements OnInit {
             this.workrequestFormGroup.patchValue({
               ...workrequest,
             });
-
+            console.log('testwrnqb',this.workrequestFormGroup.value.asset_id);
+            
             this.assetsService
-              .filter("badge_no=" + this.workrequestFormGroup.value.badge_no)
+              .filter("asset_id=" + this.workrequestFormGroup.value.asset_id)
               .subscribe((res) => {
-                if (res.length > 0) {
+                if (res['results'].length > 0) {
                   // to get node_id from table assets_assetlocationsync
                   this.getAssetLocationSync(
                     workrequest.node_id,
@@ -199,10 +199,10 @@ export class WorkRequestPage implements OnInit {
                   );
 
                   this.workrequestFormGroup.patchValue({
-                    asset_description: res[0].description,
-                    asset_id: res[0].asset_id,
-                    badge_no: res[0].badge_no,
-                    owning_access_group: res[0].owning_access_group,
+                    asset_description: res['results'][0].description,
+                    asset_id: res['results'][0].asset_id,
+                    badge_no: res['results'][0].badge_no,
+                    owning_access_group: res['results'][0].owning_access_group,
                   });
                 }
               });
@@ -273,19 +273,19 @@ export class WorkRequestPage implements OnInit {
           (resAsset) => {
             // console.log("res assetsService = ", res);
 
-            if (resAsset.length > 0) {
+            if (resAsset['results'].length > 0) {
               this.workrequestFormGroup.patchValue({
-                node_id: resAsset[0].node_id,
+                node_id: resAsset['results'][0].node_id,
               });
-
-              this.assetLocatioSyncService
-                .filter("node_id=" + resAsset[0].node_id)
-                .subscribe(
+              console.error("resAssetLocationSync", resAsset['results']);
+              this.assetLocatioSyncService.filter("node_id=" + resAsset['results'][0].node_id).subscribe(
                   (resAssetLocationSync) => {
                     if (resAssetLocationSync.length > 0) {
+                      console.error("resAssetLocationSync", resAssetLocationSync);
                       this.workrequestFormGroup.patchValue({
                         location: resAssetLocationSync[0].description,
                       });
+                      
                     } else {
                       this.presentAlert("Info", "Asset location is not found");
                       this.clickBack();
@@ -326,9 +326,10 @@ export class WorkRequestPage implements OnInit {
       this.workrequestFormGroup.patchValue({
         node_id: node_id,
       });
-
+      console.error("resAssetLocationSync", node_id);
       this.assetLocatioSyncService.filter("node_id=" + node_id).subscribe(
         (resAssetLocationSync) => {
+          console.error("resAssetLocationSync", resAssetLocationSync);
           if (resAssetLocationSync.length > 0) {
             this.workrequestFormGroup.patchValue({
               location: resAssetLocationSync[0].description,

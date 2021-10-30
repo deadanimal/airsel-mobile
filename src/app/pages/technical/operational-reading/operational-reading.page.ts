@@ -76,8 +76,8 @@ export class OperationalReadingPage implements OnInit {
       submitted_datetime: new FormControl(""),
       created_date: new FormControl(""),
       modified_date: new FormControl(""),
-      location: new FormControl(""),
-      asset_description: new FormControl(""),
+      location: new FormControl({value:"",disabled: true}),
+      asset_description: new FormControl({value:"",disabled: true}),
       record_by: new FormControl(this.authService.userID),
       modified_by: new FormControl(this.authService.userID)
       // record_date: new FormControl(
@@ -106,22 +106,26 @@ export class OperationalReadingPage implements OnInit {
             .filter("badge_no=" + badge_no)
             .subscribe((res) => {
 
-              console.log("res qweqweewwq", res);
-              if (res[0].measurement_types.length == 0) {
-                console.log("measurement_types.length = ", res[0].measurement_types.length)
-                // res[0].measurement_types
+              console.log("res qweqweewwq", res['results'][0].measurement_types.length );
+              if (res['results'][0].measurement_types.length == 0) {
                 let header = "Operational Reading"
                 let body = "No Measurement Required From This Asset"
                 this.emptyMeasuremntType(header, body)
+                
+                // res[0].measurement_types
+                
+              }else{
+                //console.log("measurement_types.length = ", res['results'][0].measurement_types.length)
               }
-              this.MeasurementTypeData = res[0].measurement_types
-              this.getAssetLocationSync(res[0].node_id)
-              this.getAssetExtended(res[0].id)
+              this.MeasurementTypeData = res['results'][0].measurement_types
+              this.getAssetLocationSync(res['results'][0].node_id)
+              console.log("res test try", res['results'][0])
+              this.getAssetExtended(res['results'][0].id)
               this.operationalreadingFormGroup.patchValue({
-                asset_description: res[0].description,
-                badge_number: res[0].badge_no,
-                asset_id: res[0].asset_id,
-                owning_organization: res[0].owning_access_group,
+                asset_description: res['results'][0].description,
+                badge_number: res['results'][0].badge_no,
+                asset_id: res['results'][0].asset_id,
+                owning_organization: res['results'][0].owning_access_group,
               });
             });
         } else {
@@ -132,24 +136,27 @@ export class OperationalReadingPage implements OnInit {
             .subscribe((res) => {
               console.log("asset qweqwe = ", res)
 
-              if (res[0].measurement_types.length == 0) {
-                console.log("measurement_types.length = ", res[0].measurement_types.length)
+              if (res['results'][0].measurement_types) {
+                console.log("measurement_types.length = ", res['results'][0].measurement_types.length)
+                
+                // res[0].measurement_types
+              }else{
                 let header = "Operational Reading"
                 let body = "No Measurement Required From This Asset"
                 this.emptyMeasuremntType(header, body)
-                // res[0].measurement_types
               }
 
-              this.MeasurementTypeData = res[0].measurement_types
+              this.MeasurementTypeData = res['results'][0].measurement_types
               this.operationalreadingFormGroup.patchValue({
-                asset_description: res[0].description,
+                asset_description: res['results'][0].description,
                 measurent_type: this.OpreationalReading.measurent_type,
                 reading_datetime: this.OpreationalReading['reading_datetime'],
                 current_value: this.OpreationalReading['current_value'],
               });
               console.log("this.operationalreadingFormGroup", this.operationalreadingFormGroup)
-              this.getAssetLocationSync(res[0].node_id)
-              this.getAssetExtended(res[0].id)
+              this.getAssetLocationSync(res['results'][0].node_id)
+              console.log("res test try", res['results'][0])
+              this.getAssetExtended(res['results'][0].id)
             });
         }
       }
@@ -175,7 +182,7 @@ export class OperationalReadingPage implements OnInit {
   }
 
   getAssetLocationSync(node_id) {
-    // setInterval(() => {
+    // setInterval(() => { 
     console.log("test node_id => ", node_id)
     this.assetLocatioSyncService.filter("node_id=" + node_id).subscribe(
       (res) => {
@@ -212,7 +219,7 @@ export class OperationalReadingPage implements OnInit {
       .getOneExtended(assetid)
       .subscribe((res) => {
 
-        console.log("res measurementtypes = ", res.measurement_types);
+        console.log("res measurementtypes = ", res);
         this.MeasurementTypeData = res.measurement_types
       });
   }

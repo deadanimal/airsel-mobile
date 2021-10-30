@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"></ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Operational Reading</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"operationalreadingFormGroup\">\n        <ion-item>\n          <ion-label position=\"stacked\">Asset Description</ion-label>\n          <ion-textarea rows=\"3\" [disabled]=\"true\" readonly formControlName=\"asset_description\"></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Badge Number</ion-label>\n          <ion-input type=\"text\" [disabled]=\"true\" readonly formControlName=\"badge_number\"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Location</ion-label>\n          <ion-textarea rows=\"3\" [disabled]=\"true\" readonly formControlName=\"location\"></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Measurement Type</ion-label>\n          <!-- <ion-input type=\"text\" formControlName=\"measurent_type\"></ion-input> -->\n\n          <ion-select formControlName=\"measurent_type\" *ngIf=\"showButton == 'yes'\">\n            <ion-select-option value=\"\">Please select</ion-select-option>\n            <ion-select-option *ngFor=\"let choice of MeasurementTypeData\" [value]=\"choice.measurement_type\">\n              {{choice.measurement_type}}\n            </ion-select-option>\n          </ion-select>\n          <ion-input type=\"text\" *ngIf=\"showButton == 'no'\" [disabled]=\"true\" readonly formControlName=\"measurent_type\">\n          </ion-input>\n          <!-- <ion-select formControlName=\"measurent_type\">\n            <ion-select-option selected value=\"RUNNING-HOUR\">RUNNING HOUR</ion-select-option>\n            <ion-select-option value=\"TEMPERATURE-SENSOR\">TEMPERATURE SENSOR</ion-select-option>\n          </ion-select> -->\n\n          <!-- \n            1. Call data from /measurement-types\n            2. Save @ variable\n            3. Contoh measurements\n           -->\n        </ion-item>\n\n\n        <ion-item>\n          <ion-label position=\"stacked\">Reading Date</ion-label>\n          <ion-datetime *ngIf=\"showButton == 'yes'\" displayFormat=\"YYYY-MM-DD HH:mm:ss\"\n            formControlName=\"reading_datetime\">\n          </ion-datetime>\n          <ion-datetime *ngIf=\"showButton == 'no'\" [disabled]=\"true\" displayFormat=\"YYYY-MM-DD HH:mm:ss\"\n            formControlName=\"reading_datetime\">\n          </ion-datetime>\n          <!-- <ion-input *ngIf=\"showButton == yes\" type=\"text\" [disabled]=\"true\" readonly\n            formControlName=\"reading_datetime\"></ion-input> -->\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Reading Time</ion-label>\n          <ion-datetime displayFormat=\"HH:mm\" formControlName=\"reading_time\"></ion-datetime>\n        </ion-item> -->\n\n        <ion-item>\n          <ion-label position=\"stacked\">Current Value</ion-label>\n          <ion-input *ngIf=\"showButton == 'yes'\" type=\"number\" formControlName=\"current_value\"></ion-input>\n          <ion-input *ngIf=\"showButton == 'no'\" type=\"number\" [disabled]=\"true\" readonly\n            formControlName=\"current_value\">\n          </ion-input>\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Initial Value</ion-label>\n          <ion-input type=\"number\" formControlName=\"initial_value_flag\"></ion-input>\n        </ion-item> -->\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Owning Organization</ion-label>\n          <ion-input type=\"text\" formControlName=\"owning_organization\"></ion-input>\n        </ion-item> -->\n\n      </form>\n    </ion-list>\n\n    <!-- <ion-item lines=\"none\">\n      <ion-label class=\"ion-text-start\">Measurement Type</ion-label>\n      <ion-button (click)=\"clickAddMeasurementType()\">Add</ion-button>\n    </ion-item> -->\n\n    <ion-card *ngIf=\"operationalreadingFormGroup.value.measurement_type\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button size=\"small\" color=\"primary\" (click)=\"clickEdit(operationalreadingFormGroup.value)\">\n            <ion-icon name=\"create\"></ion-icon>\n          </ion-fab-button>\n          <!-- <ion-fab-button\n            size=\"small\"\n            color=\"danger\"\n            (click)=\"clickRemove(i)\"\n          >\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button> -->\n        </ion-fab>\n        <ion-card-title>Measurement Type <br />\n          {{ operationalreadingFormGroup.value.measurement_type\n          }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <p>\n          Reading Date/Time: {{\n          operationalreadingFormGroup.value.reading_date_time | date }}\n        </p>\n        <p>\n          Current Value: {{ operationalreadingFormGroup.value.current_value }}\n        </p>\n        <p>\n          Created Date: {{ operationalreadingFormGroup.value.record_date |\n          date:'mediumDate' }}\n        </p>\n      </ion-card-content>\n    </ion-card>\n\n    <div class=\"ion-text-center ion-padding\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Back</ion-button>\n      <ion-button *ngIf=\"showButton == 'yes'\" color=\"primary\" (click)=\"submit()\">Submit</ion-button>\n    </div>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"></ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Operational Reading</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"operationalreadingFormGroup\">\n        <ion-item>\n          <ion-label position=\"stacked\">Asset Description</ion-label>\n          <ion-textarea rows=\"3\" readonly formControlName=\"asset_description\"></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Badge Number</ion-label>\n          <ion-input type=\"text\" readonly formControlName=\"badge_number\"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Location</ion-label>\n          <ion-textarea rows=\"3\" readonly formControlName=\"location\"></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Measurement Type</ion-label>\n          <!-- <ion-input type=\"text\" formControlName=\"measurent_type\"></ion-input> -->\n\n          <ion-select formControlName=\"measurent_type\" *ngIf=\"showButton == 'yes'\">\n            <ion-select-option value=\"\">Please select</ion-select-option>\n            <ion-select-option *ngFor=\"let choice of MeasurementTypeData\" [value]=\"choice.measurement_type\">\n              {{choice.measurement_type}}\n            </ion-select-option>\n          </ion-select>\n          <ion-input type=\"text\" *ngIf=\"showButton == 'no'\" [disabled]=\"true\" readonly formControlName=\"measurent_type\">\n          </ion-input>\n          <!-- <ion-select formControlName=\"measurent_type\">\n            <ion-select-option selected value=\"RUNNING-HOUR\">RUNNING HOUR</ion-select-option>\n            <ion-select-option value=\"TEMPERATURE-SENSOR\">TEMPERATURE SENSOR</ion-select-option>\n          </ion-select> -->\n\n          <!-- \n            1. Call data from /measurement-types\n            2. Save @ variable\n            3. Contoh measurements\n           -->\n        </ion-item>\n\n\n        <ion-item>\n          <ion-label position=\"stacked\">Reading Date</ion-label>\n          <ion-datetime *ngIf=\"showButton == 'yes'\" displayFormat=\"YYYY-MM-DD HH:mm:ss\"\n            formControlName=\"reading_datetime\">\n          </ion-datetime>\n          <ion-datetime *ngIf=\"showButton == 'no'\" [disabled]=\"true\" displayFormat=\"YYYY-MM-DD HH:mm:ss\"\n            formControlName=\"reading_datetime\">\n          </ion-datetime>\n          <!-- <ion-input *ngIf=\"showButton == yes\" type=\"text\" [disabled]=\"true\" readonly\n            formControlName=\"reading_datetime\"></ion-input> -->\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Reading Time</ion-label>\n          <ion-datetime displayFormat=\"HH:mm\" formControlName=\"reading_time\"></ion-datetime>\n        </ion-item> -->\n\n        <ion-item>\n          <ion-label position=\"stacked\">Current Value</ion-label>\n          <ion-input *ngIf=\"showButton == 'yes'\" type=\"number\" formControlName=\"current_value\"></ion-input>\n          <ion-input *ngIf=\"showButton == 'no'\" type=\"number\" [disabled]=\"true\" readonly\n            formControlName=\"current_value\">\n          </ion-input>\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Initial Value</ion-label>\n          <ion-input type=\"number\" formControlName=\"initial_value_flag\"></ion-input>\n        </ion-item> -->\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Owning Organization</ion-label>\n          <ion-input type=\"text\" formControlName=\"owning_organization\"></ion-input>\n        </ion-item> -->\n\n      </form>\n    </ion-list>\n\n    <!-- <ion-item lines=\"none\">\n      <ion-label class=\"ion-text-start\">Measurement Type</ion-label>\n      <ion-button (click)=\"clickAddMeasurementType()\">Add</ion-button>\n    </ion-item> -->\n\n    <ion-card *ngIf=\"operationalreadingFormGroup.value.measurement_type\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button size=\"small\" color=\"primary\" (click)=\"clickEdit(operationalreadingFormGroup.value)\">\n            <ion-icon name=\"create\"></ion-icon>\n          </ion-fab-button>\n          <!-- <ion-fab-button\n            size=\"small\"\n            color=\"danger\"\n            (click)=\"clickRemove(i)\"\n          >\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button> -->\n        </ion-fab>\n        <ion-card-title>Measurement Type <br />\n          {{ operationalreadingFormGroup.value.measurement_type\n          }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <p>\n          Reading Date/Time: {{\n          operationalreadingFormGroup.value.reading_date_time | date }}\n        </p>\n        <p>\n          Current Value: {{ operationalreadingFormGroup.value.current_value }}\n        </p>\n        <p>\n          Created Date: {{ operationalreadingFormGroup.value.record_date |\n          date:'mediumDate' }}\n        </p>\n      </ion-card-content>\n    </ion-card>\n\n    <div class=\"ion-text-center ion-padding\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Back</ion-button>\n      <ion-button *ngIf=\"showButton == 'yes'\" color=\"primary\" (click)=\"submit()\">Submit</ion-button>\n    </div>\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -184,8 +184,8 @@ let OperationalReadingPage = class OperationalReadingPage {
             submitted_datetime: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](""),
             created_date: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](""),
             modified_date: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](""),
-            location: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](""),
-            asset_description: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](""),
+            location: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]({ value: "", disabled: true }),
+            asset_description: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]({ value: "", disabled: true }),
             record_by: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.authService.userID),
             modified_by: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.authService.userID)
             // record_date: new FormControl(
@@ -208,22 +208,25 @@ let OperationalReadingPage = class OperationalReadingPage {
                     this.assetsService
                         .filter("badge_no=" + badge_no)
                         .subscribe((res) => {
-                        console.log("res qweqweewwq", res);
-                        if (res[0].measurement_types.length == 0) {
-                            console.log("measurement_types.length = ", res[0].measurement_types.length);
-                            // res[0].measurement_types
+                        console.log("res qweqweewwq", res['results'][0].measurement_types.length);
+                        if (res['results'][0].measurement_types.length == 0) {
                             let header = "Operational Reading";
                             let body = "No Measurement Required From This Asset";
                             this.emptyMeasuremntType(header, body);
+                            // res[0].measurement_types
                         }
-                        this.MeasurementTypeData = res[0].measurement_types;
-                        this.getAssetLocationSync(res[0].node_id);
-                        this.getAssetExtended(res[0].id);
+                        else {
+                            //console.log("measurement_types.length = ", res['results'][0].measurement_types.length)
+                        }
+                        this.MeasurementTypeData = res['results'][0].measurement_types;
+                        this.getAssetLocationSync(res['results'][0].node_id);
+                        console.log("res test try", res['results'][0]);
+                        this.getAssetExtended(res['results'][0].id);
                         this.operationalreadingFormGroup.patchValue({
-                            asset_description: res[0].description,
-                            badge_number: res[0].badge_no,
-                            asset_id: res[0].asset_id,
-                            owning_organization: res[0].owning_access_group,
+                            asset_description: res['results'][0].description,
+                            badge_number: res['results'][0].badge_no,
+                            asset_id: res['results'][0].asset_id,
+                            owning_organization: res['results'][0].owning_access_group,
                         });
                     });
                 }
@@ -234,23 +237,26 @@ let OperationalReadingPage = class OperationalReadingPage {
                         .filter("asset_id=" + this.OpreationalReading.asset_id)
                         .subscribe((res) => {
                         console.log("asset qweqwe = ", res);
-                        if (res[0].measurement_types.length == 0) {
-                            console.log("measurement_types.length = ", res[0].measurement_types.length);
+                        if (res['results'][0].measurement_types) {
+                            console.log("measurement_types.length = ", res['results'][0].measurement_types.length);
+                            // res[0].measurement_types
+                        }
+                        else {
                             let header = "Operational Reading";
                             let body = "No Measurement Required From This Asset";
                             this.emptyMeasuremntType(header, body);
-                            // res[0].measurement_types
                         }
-                        this.MeasurementTypeData = res[0].measurement_types;
+                        this.MeasurementTypeData = res['results'][0].measurement_types;
                         this.operationalreadingFormGroup.patchValue({
-                            asset_description: res[0].description,
+                            asset_description: res['results'][0].description,
                             measurent_type: this.OpreationalReading.measurent_type,
                             reading_datetime: this.OpreationalReading['reading_datetime'],
                             current_value: this.OpreationalReading['current_value'],
                         });
                         console.log("this.operationalreadingFormGroup", this.operationalreadingFormGroup);
-                        this.getAssetLocationSync(res[0].node_id);
-                        this.getAssetExtended(res[0].id);
+                        this.getAssetLocationSync(res['results'][0].node_id);
+                        console.log("res test try", res['results'][0]);
+                        this.getAssetExtended(res['results'][0].id);
                     });
                 }
             }
@@ -270,7 +276,7 @@ let OperationalReadingPage = class OperationalReadingPage {
         console.log("ngOnDestroy OperationalReadingPage");
     }
     getAssetLocationSync(node_id) {
-        // setInterval(() => {
+        // setInterval(() => { 
         console.log("test node_id => ", node_id);
         this.assetLocatioSyncService.filter("node_id=" + node_id).subscribe((res) => {
             console.log("res assetlsService = ", res);
@@ -294,7 +300,7 @@ let OperationalReadingPage = class OperationalReadingPage {
         this.assetsService
             .getOneExtended(assetid)
             .subscribe((res) => {
-            console.log("res measurementtypes = ", res.measurement_types);
+            console.log("res measurementtypes = ", res);
             this.MeasurementTypeData = res.measurement_types;
         });
     }

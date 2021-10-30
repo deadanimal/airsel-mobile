@@ -107,7 +107,7 @@ export class LoginPage implements OnInit {
         // "AIS03951++",
         // "Ais1868@",
          "",
-        // "@ppsRF1D!!",
+        // "RF1D@pps!!",
         Validators.compose([Validators.minLength(6), Validators.required])
       ),
     });
@@ -167,7 +167,7 @@ export class LoginPage implements OnInit {
               (resEmp) => {
 
                 console.log("sini 2", resEmp)
-                console.log("resEmp[0].uuid", resEmp[0].uuid)
+                //console.log("resEmp[0].uuid", resEmp[0].uuid)
                 // to create user account in PIPE who AD is valid
                 // STEP 4
                 if (resEmp.length > 0) {
@@ -180,7 +180,7 @@ export class LoginPage implements OnInit {
                     password1: this.defaultPassword,
                     password2: this.defaultPassword,
                   };
-
+                  console.log("sini 3",resEmp[0].uuid)
                   ////// check in table user whether the user exist or not
                   this.userService.filter('employee_id=' + resEmp[0].uuid).subscribe(
                     (resUserSer) => {

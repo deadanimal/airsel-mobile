@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n      <ion-fab-button (click)=\"scanQrCode()\">\n        <ion-icon name=\"scan\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab> -->\n    <h4 class=\"ion-text-center ion-padding\">Work Activity Details</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"workactivityFormGroup\">\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Id:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.activityid\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Type:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.act_type_cd\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Required By Date:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.required_by_dt\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Parent Location:</ion-label>\n          <!-- <ion-input type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-input> -->\n          <ion-textarea rows=\"2\" type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-textarea>\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Asset ID:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.asset_id_1\" readonly></ion-input>\n        </ion-item> -->\n\n      </form>\n    </ion-list>\n\n    <ion-card *ngFor=\"let workActData of workactivityData\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button *ngIf=\"workActData.reading_datetime == null\" size=\"small\" color=\"primary\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workActData.reading_datetime != null\" size=\"small\" color=\"success\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n            <!-- <ion-icon name=\"checkmark-circle\"></ion-icon> -->\n          </ion-fab-button>\n\n        </ion-fab>\n        <!-- <ion-card-title>Asset ID: {{ workActData.ASSET_ID }}</ion-card-title> -->\n        <ion-card-title>Badge No<br />{{ workActData.badge_number }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <!-- <p>Asset Type: {{ workActData.asset_type }}</p> -->\n        <p>Asset ID: {{ workActData.asset_id }}</p>\n        <p>Location: {{ workActData.location_descr }}</p>\n        <p>Asset Description : {{ workActData.description }}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <!-- <ion-item lines=\"none\">\n      <ion-label class=\"ion-text-start ion-no-padding\"\n        >Service History</ion-label\n      >\n      <ion-button class=\"ion-text-end\" (click)=\"clickAddServiceHistory()\"\n        >Add</ion-button\n      >\n    </ion-item>\n\n    <ion-card *ngFor=\"let servicehistory of servicehistories; let i = index\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button\n            size=\"small\"\n            color=\"primary\"\n            (click)=\"clickEdit(servicehistory)\"\n          >\n            <ion-icon name=\"create\"></ion-icon>\n          </ion-fab-button>\n          <ion-fab-button size=\"small\" color=\"danger\" (click)=\"clickRemove(i)\">\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button>\n        </ion-fab>\n        <ion-card-title>{{ servicehistory.type }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Downtime'\">\n        <p>Start Date/Time: {{ servicehistory.start | date }}</p>\n        <p>End Date/Time: {{ servicehistory.end | date }}</p>\n        <p>Downtime Reason</p>\n        <p>{{ servicehistory.reason }}</p>\n      </ion-card-content>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Preventive Maintenance'\">\n        <p>Terminal Box</p>\n        <p>{{ servicehistory.terminal_box }}</p>\n        <p>Slip Ring & Carbon Brush</p>\n        <p>{{ servicehistory.slip_ring }}</p>\n        <p>Armature</p>\n        <p>{{ servicehistory.armature }}</p>\n      </ion-card-content>\n    </ion-card> -->\n\n    <div class=\"ion-text-center ion-padding\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Back</ion-button>\n      <!-- <ion-button color=\"primary\" (click)=\"close()\">Close</ion-button> -->\n      <ion-button color=\"primary\" [disabled]=\"setButton\" (click)=\"submit()\">Close Out</ion-button>\n    </div>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n      <ion-fab-button (click)=\"scanQrCode()\">\n        <ion-icon name=\"scan\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab> -->\n    <h4 class=\"ion-text-center ion-padding\">Work Activity Details</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"workactivityFormGroup\">\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Id:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.activityid\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Type:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.act_type_cd\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Required By Date:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.required_by_dt\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Parent Location:</ion-label>\n          <!-- <ion-input type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-input> -->\n          <ion-textarea rows=\"2\" type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-textarea>\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Asset ID:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.asset_id_1\" readonly></ion-input>\n        </ion-item> -->\n\n      </form>\n    </ion-list>\n\n    <ion-card *ngFor=\"let workActData of workactivityData\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button *ngIf=\"workActData.reading_datetime == '1997-10-06T00:00:00+00:00'\" size=\"small\" color=\"primary\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workActData.reading_datetime != '1997-10-06T00:00:00+00:00'\" size=\"small\" color=\"success\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n            <!-- <ion-icon name=\"checkmark-circle\"></ion-icon> -->\n          </ion-fab-button>\n\n        </ion-fab>\n        <!-- <ion-card-title>Asset ID: {{ workActData.ASSET_ID }}</ion-card-title> -->\n        <ion-card-title>Badge No<br />{{ workActData.badge_number }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <!-- <p>Asset Type: {{ workActData.asset_type }}</p> -->\n        <p>Asset ID: {{ workActData.asset_id }}</p>\n        <p>Location: {{ workActData.location_descr }}</p>\n        <p>Asset Description : {{ workActData.description }}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <!-- <ion-item lines=\"none\">\n      <ion-label class=\"ion-text-start ion-no-padding\"\n        >Service History</ion-label\n      >\n      <ion-button class=\"ion-text-end\" (click)=\"clickAddServiceHistory()\"\n        >Add</ion-button\n      >\n    </ion-item>\n\n    <ion-card *ngFor=\"let servicehistory of servicehistories; let i = index\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button\n            size=\"small\"\n            color=\"primary\"\n            (click)=\"clickEdit(servicehistory)\"\n          >\n            <ion-icon name=\"create\"></ion-icon>\n          </ion-fab-button>\n          <ion-fab-button size=\"small\" color=\"danger\" (click)=\"clickRemove(i)\">\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button>\n        </ion-fab>\n        <ion-card-title>{{ servicehistory.type }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Downtime'\">\n        <p>Start Date/Time: {{ servicehistory.start | date }}</p>\n        <p>End Date/Time: {{ servicehistory.end | date }}</p>\n        <p>Downtime Reason</p>\n        <p>{{ servicehistory.reason }}</p>\n      </ion-card-content>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Preventive Maintenance'\">\n        <p>Terminal Box</p>\n        <p>{{ servicehistory.terminal_box }}</p>\n        <p>Slip Ring & Carbon Brush</p>\n        <p>{{ servicehistory.slip_ring }}</p>\n        <p>Armature</p>\n        <p>{{ servicehistory.armature }}</p>\n      </ion-card-content>\n    </ion-card> -->\n\n    <div class=\"ion-text-center ion-padding\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Back</ion-button>\n      <!-- <ion-button color=\"primary\" (click)=\"close()\">Close</ion-button> -->\n      <ion-button color=\"primary\" [disabled]=\"setButton\" (click)=\"submit()\">Close Out</ion-button>\n    </div>\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -238,6 +238,7 @@ let WorkActivityPage = class WorkActivityPage {
     ngOnInit() {
         broadcaster._debug = true;
         this.menu.enable(false, "menuNotification");
+        this.workactivityData = this.workactivityData;
     }
     presentAlert(header, message) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -247,6 +248,9 @@ let WorkActivityPage = class WorkActivityPage {
                 buttons: [
                     {
                         text: "OK",
+                        handler: () => {
+                            this.router.navigate(["/technical/maintenance-work-list"]);
+                        },
                     },
                 ],
             });
@@ -382,13 +386,12 @@ let WorkActivityPage = class WorkActivityPage {
             console.log(woacalsl);
             this.workOrderActivityCompletionAssLocAssListService.getOne(woacalsl).subscribe((Res) => {
                 console.log("1test", Res);
-                console.log("2test", Res.service_histories);
-                if (Res.service_histories == [] || Res.service_histories == undefined || Res.service_histories.length == 0) {
-                    console.log("3test", datetime);
-                    Res.reading_datetime = datetime;
-                    console.log("4test", Res.reading_datetime);
-                }
                 this.workactivityData.push(Res);
+                // if(Res.service_histories == [] || Res.service_histories == undefined || Res.service_histories.length == 0){
+                //   console.log("3test",datetime)
+                //   Res.reading_datetime = datetime
+                //   console.log("4test",Res.reading_datetime)
+                // }
                 console.log("5test", this.workactivityData);
                 console.log(Res);
             }, (Err) => {
@@ -397,15 +400,18 @@ let WorkActivityPage = class WorkActivityPage {
             setTimeout(() => {
                 this.workactivityData.forEach(element => {
                     console.log("workactivityData=>>>", element);
-                    console.log("reading_datetime=>>>", element.reading_datetime);
+                    console.log("badge_number=>>>", element.badge_number);
                     let asset_id = "asset_id=" + element.asset_id;
                     /// set data to array for submit button
                     if (element.reading_datetime != null || element.reading_datetime != '') {
                         this.buttonArr.push(element);
                     }
                     this.assetsService.filter(asset_id).subscribe((res) => {
-                        element.badge_number = res[0].badge_no;
-                        element.description = res[0].description;
+                        element.badge_number = res['results'][0].badge_no;
+                        element.description = res['results'][0].description;
+                        if (element.badge_number == "" || element.badge_number == undefined) {
+                            element.reading_datetime = datetime;
+                        }
                     }, (errAs) => {
                     });
                     let nodeid = "node_id=" + element.node_id;
@@ -448,10 +454,11 @@ let WorkActivityPage = class WorkActivityPage {
         console.log("workactivityData", this.workactivityData);
         var checker = true;
         this.workactivityData.forEach(element => {
-            if (element.reading_datetime == '' || element.reading_datetime == null) {
+            if (element.reading_datetime == "1997-10-06T00:00:00+00:00") {
                 checker = false;
             }
         });
+        console.log("checker", checker);
         if (checker == true) {
             let woacassLocAssLisFormData = {
                 status: "Completed",
@@ -510,12 +517,12 @@ let WorkActivityPage = class WorkActivityPage {
                                             .filter("badge_no=" + data.badge_no)
                                             .subscribe((res) => {
                                             // if find, go to asset detail list
-                                            if (res.length > 0) {
+                                            if (res['results'].length > 0) {
                                                 loading.dismiss();
                                                 let navigationExtras = {
                                                     state: {
-                                                        badge_no: res[0].badge_no,
-                                                        asset,
+                                                        badge_no: data.badge_no,
+                                                        asset: asset,
                                                         work_activity: this.workactivity,
                                                     },
                                                 };
@@ -532,30 +539,30 @@ let WorkActivityPage = class WorkActivityPage {
                                                         let navigationExtras = {
                                                             state: {
                                                                 badge_no: data.badge_no,
-                                                                asset,
+                                                                asset: asset,
                                                                 work_activity: this.workactivity,
                                                             },
                                                         };
                                                         this.router.navigate(["/technical/work-activity-asset"], navigationExtras);
                                                     }
                                                     else {
-                                                        this.presentAlert("Error", "Sorry, asset is not found in the database.");
+                                                        this.warningAlert("Error", "Sorry, asset is not found in the database.");
                                                     }
                                                 }, (err) => {
                                                     console.error("err", err);
                                                     loading.dismiss();
-                                                    this.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                                    this.warningAlert("Error", "Sorry, there is a technical problem going on.");
                                                 });
                                             }
                                         }, (err) => {
                                             console.log("err assetlsService = ", err);
                                             loading.dismiss();
-                                            this.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                            this.warningAlert("Error", "Sorry, there is a technical problem going on.");
                                         });
                                     });
                                 }
                                 else {
-                                    this.presentAlert("Error", "Please enter badge number to find asset detail");
+                                    this.warningAlert("Error", "Please enter badge number to find asset detail");
                                 }
                             }
                             else {
@@ -587,15 +594,15 @@ let WorkActivityPage = class WorkActivityPage {
                         if (this.bBarcode) {
                             loading.dismiss();
                             broadcaster.removeEventListener(ev, listener);
-                            this.updateQrbarcode(event.data, asset);
-                            // if(event.data == asset.badge_number){
-                            //   this.updateQrbarcode(event.data, asset);
-                            // }else{
-                            //     this.warningAlert(
-                            //       "Error",
-                            //       "Batch number not match. Please try again,"
-                            //     );
-                            // }
+                            //this.updateQrbarcode(event.data, asset);
+                            var data = event.data.trim();
+                            var badge = asset.badge_number.trim();
+                            if (data == badge) {
+                                this.updateQrbarcode(event.data, asset);
+                            }
+                            else {
+                                this.warningAlert("Error", "Batch number not match. Please try again,");
+                            }
                         }
                     });
                 }
@@ -694,34 +701,34 @@ let WorkActivityPage = class WorkActivityPage {
                         this.assetsService.filter("hex_code=" + this.scanValue).subscribe((res) => {
                             loading.dismiss();
                             // if find, go to asset detail list
-                            if (res.length > 0) {
-                                if (res[0].badge_no == asset.badge_number) {
+                            if (res['results'].length > 0) {
+                                if (res['results'][0].badge_no == asset.badge_number) {
                                     let navigationExtras = {
                                         state: {
-                                            badge_no: res[0].badge_no,
-                                            asset,
-                                            work_activity: this.workactivity,
+                                            badge_no: res['results'][0].badge_no,
+                                            asset: asset,
+                                            work_activity: this.workactivity
                                         },
                                     };
                                     this.router.navigate(["/technical/work-activity-asset"], navigationExtras);
                                 }
                                 else {
-                                    this.presentAlert("Error", "Batch number not match. Please try again,");
+                                    this.warningAlert("Error", "Batch number not match. Please try again,");
                                 }
                             }
                             // else, suggest the user to use QR scanner OR search by badge number
                             else {
-                                this.presentAlert("Error", "The asset is not found in the database. Please try again by using QR scanner OR search by badge number.");
+                                this.warningAlert("Error", "The asset is not found in the database. Please try again by using QR scanner OR search by badge number.");
                             }
                         }, (err) => {
                             console.log("err assetlsService = ", err);
                             loading.dismiss();
-                            this.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                            this.warningAlert("Error", "Sorry, there is a technical problem going on.");
                         });
                     });
                 }
                 else {
-                    this.presentAlert("Error", "RFID is invalid. Please try again.");
+                    this.warningAlert("Error", "RFID is invalid. Please try again.");
                 }
             });
     }
@@ -731,62 +738,65 @@ let WorkActivityPage = class WorkActivityPage {
             this.ngZone.run(() => {
                 this.scanValue = data;
                 if (this.scanValue != "") {
-                    if (this.scanValue == asset.badge_number) {
-                        this.loadingController
-                            .create({
-                            message: "Please wait...",
-                        })
-                            .then((loading) => {
-                            loading.present();
-                            this.assetsService.filter("badge_no=" + this.scanValue).subscribe((res) => {
-                                // if find, go to asset detail list
-                                if (res.length > 0) {
-                                    loading.dismiss();
-                                    let navigationExtras = {
-                                        state: {
-                                            badge_no: res[0].badge_no,
-                                            asset
-                                        },
-                                    };
-                                    this.router.navigate(["/technical/work-activity-asset"], navigationExtras);
-                                }
-                                // else, find the asset in the wams to pump into PIPE's asset table
-                                else {
-                                    // get data from wams
-                                    this.wamsService.getAssetBadgeNo(this.scanValue).subscribe((res) => {
-                                        loading.dismiss();
-                                        if (res.results.length > 0) {
-                                            let navigationExtras = {
-                                                state: {
-                                                    badge_no: this.scanValue,
-                                                    asset,
-                                                    work_activity: this.workactivity,
-                                                },
-                                            };
-                                            this.router.navigate(["/technical/work-activity-asset"], navigationExtras);
-                                        }
-                                        else {
-                                            this.presentAlert("Error", "Sorry, asset is not found in the database.");
-                                        }
-                                    }, (err) => {
-                                        console.error("err", err);
-                                        loading.dismiss();
-                                        this.presentAlert("Error", "Sorry, there is a technical problem going on.");
-                                    });
-                                }
-                            }, (err) => {
-                                console.log("err assetlsService = ", err);
+                    //  if (this.scanValue == asset.badge_number) {
+                    this.loadingController
+                        .create({
+                        message: "Please wait...",
+                    })
+                        .then((loading) => {
+                        loading.present();
+                        this.assetsService.filter("badge_no=" + this.scanValue).subscribe((res) => {
+                            // if find, go to asset detail list
+                            if (res['results'].length > 0) {
                                 loading.dismiss();
-                                this.presentAlert("Error", "Sorry, there is a technical problem going on.");
-                            });
+                                let navigationExtras = {
+                                    state: {
+                                        badge_no: res['results'][0].badge_no,
+                                        asset: asset,
+                                        work_activity: this.workactivity
+                                    },
+                                };
+                                this.router.navigate(["/technical/work-activity-asset"], navigationExtras);
+                            }
+                            // else, find the asset in the wams to pump into PIPE's asset table
+                            else {
+                                // get data from wams
+                                this.wamsService.getAssetBadgeNo(this.scanValue).subscribe((res) => {
+                                    loading.dismiss();
+                                    if (res.results.length > 0) {
+                                        let navigationExtras = {
+                                            state: {
+                                                badge_no: this.scanValue,
+                                                asset: asset,
+                                                work_activity: this.workactivity,
+                                            },
+                                        };
+                                        this.router.navigate(["/technical/work-activity-asset"], navigationExtras);
+                                    }
+                                    else {
+                                        this.warningAlert("Error", "Sorry, asset is not found in the database.");
+                                    }
+                                }, (err) => {
+                                    console.error("err", err);
+                                    loading.dismiss();
+                                    this.warningAlert("Error", "Sorry, there is a technical problem going on.");
+                                });
+                            }
+                        }, (err) => {
+                            console.log("err assetlsService = ", err);
+                            loading.dismiss();
+                            this.warningAlert("Error", "Sorry, there is a technical problem going on.");
                         });
-                    }
-                    else {
-                        this.warningAlert("Error", "Batch number not match. Please try again,");
-                    }
+                    });
+                    // } else {
+                    //   this.warningAlert(
+                    //     "Error",
+                    //     "Batch number not match. Please try again,"
+                    //   );
+                    // }
                 }
                 else {
-                    this.presentAlert("Error", "QR code is invalid. Please try again.");
+                    this.warningAlert("Error", "QR code is invalid. Please try again.");
                 }
             });
     }

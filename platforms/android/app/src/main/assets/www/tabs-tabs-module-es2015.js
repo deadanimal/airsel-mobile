@@ -205,7 +205,7 @@ TabsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected:#3880ff ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvaW52ZW50b3J5LW1hbmFnZW1lbnQvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvaW52ZW50b3J5LW1hbmFnZW1lbnQvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLHlCQUFBO0FDQUoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9pbnZlbnRvcnktbWFuYWdlbWVudC90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC8vIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IzM4ODBmZlxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiMzODgwZmYgO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected:#3880ff ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL2ludmVudG9yeS1tYW5hZ2VtZW50L3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2ludmVudG9yeS1tYW5hZ2VtZW50L3RhYnMvdGFicy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSx5QkFBQTtBQ0FKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvaW52ZW50b3J5LW1hbmFnZW1lbnQvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAvLyAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiMzODgwZmZcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDojMzg4MGZmIDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -367,7 +367,7 @@ TabsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvaW52ZW50b3J5L3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2ludmVudG9yeS90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUNBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2ludmVudG9yeS90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSkgO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL2ludmVudG9yeS90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9pbnZlbnRvcnkvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFDQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9pbnZlbnRvcnkvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogcmdiYSg3NiwxODUsMTk2LDEpIDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -529,7 +529,7 @@ TabsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvb3BlcmF0b3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvb3BlcmF0b3IvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDBDQUFBO0FDQ0Y7O0FERUE7RUFDRSxxQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvb3BlcmF0b3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tdGFiLWJhciB7XG4gIC0tYm9yZGVyOiB0cmFuc3BhcmVudDtcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tdGFiLWJhciB7XG4gIC0tYm9yZGVyOiB0cmFuc3BhcmVudDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL29wZXJhdG9yL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL29wZXJhdG9yL3RhYnMvdGFicy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSwwQ0FBQTtBQ0NGOztBREVBO0VBQ0UscUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL29wZXJhdG9yL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59XG4iLCJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59Il19 */");
 
 /***/ }),
 
@@ -692,7 +692,7 @@ TabsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvc3RvcmUta2VlcGVyL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3N0b3JlLWtlZXBlci90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUNBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3N0b3JlLWtlZXBlci90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSkgO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3N0b3JlLWtlZXBlci90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9zdG9yZS1rZWVwZXIvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFDQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9zdG9yZS1rZWVwZXIvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogcmdiYSg3NiwxODUsMTk2LDEpIDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -854,7 +854,7 @@ TabsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9zdG9yZS1zdXBlcnZpc29yL3RhYnMvdGFicy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQ0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci90YWJzL3RhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRhYi1idXR0b24ge1xuICAgIC0tY29sb3Itc2VsZWN0ZWQ6IHJnYmEoNzYsMTg1LDE5NiwxKVxufVxuIiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSkgO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: rgba(76,185,196,1) ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3N0b3JlLXN1cGVydmlzb3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUNBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3N0b3JlLXN1cGVydmlzb3IvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgICAtLWNvbG9yLXNlbGVjdGVkOiByZ2JhKDc2LDE4NSwxOTYsMSlcbn1cbiIsImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogcmdiYSg3NiwxODUsMTk2LDEpIDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1028,7 +1028,7 @@ TabsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvdGVjaG5pY2FsL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3RlY2huaWNhbC90YWJzL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMENBQUE7QUNDRjs7QURFQTtFQUNFLHFCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy90ZWNobmljYWwvdGFicy90YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYnV0dG9uIHtcbiAgLS1jb2xvci1zZWxlY3RlZDogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tdGFiLWJhciB7XG4gIC0tYm9yZGVyOiB0cmFuc3BhcmVudDtcbn0iLCJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-tab-button {\n  --color-selected: var(--ion-color-primary);\n}\n\nion-tab-bar {\n  --border: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3RlY2huaWNhbC90YWJzL3RhYnMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy90ZWNobmljYWwvdGFicy90YWJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDBDQUFBO0FDQ0Y7O0FERUE7RUFDRSxxQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvdGVjaG5pY2FsL3RhYnMvdGFicy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGFiLWJ1dHRvbiB7XG4gIC0tY29sb3Itc2VsZWN0ZWQ6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLXRhYi1iYXIge1xuICAtLWJvcmRlcjogdHJhbnNwYXJlbnQ7XG59IiwiaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi10YWItYmFyIHtcbiAgLS1ib3JkZXI6IHRyYW5zcGFyZW50O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -1174,12 +1174,63 @@ let TabsPage = class TabsPage {
                             this.searchBadgeNo();
                         },
                     },
+                    // {
+                    //   text: "Multiple Tagging.",
+                    //   icon: "locate",
+                    //   handler: () => {
+                    //     this.MultipleRetag();
+                    //     //this.router.navigate(["/technical/multiple-retagging"]);
+                    //   },
+                    // },
                     {
                         text: "Cancel",
                         role: "cancel",
                         icon: "close",
                         handler: () => {
                             console.log("Cancel clicked");
+                        },
+                    },
+                ],
+            });
+            yield actionSheet.present();
+        });
+    }
+    MultipleRetag() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const actionSheet = yield this.actionSheetController.create({
+                header: "Choose method",
+                buttons: [
+                    {
+                        text: "RFID",
+                        icon: "scan",
+                        handler: () => {
+                            let navigationExtras = {
+                                state: {
+                                    type: "RFID"
+                                },
+                            };
+                            this.router.navigate(["/technical/multiple-retagging"], navigationExtras);
+                        },
+                    },
+                    {
+                        text: "QR Code",
+                        icon: "qr-code",
+                        handler: () => {
+                            let navigationExtras = {
+                                state: {
+                                    type: "QRC"
+                                },
+                            };
+                            this.router.navigate(["/technical/multiple-retagging"], navigationExtras);
+                        },
+                    },
+                    {
+                        text: "Back",
+                        //role: "cancel",
+                        icon: "arrow-back",
+                        handler: () => {
+                            this.scan();
+                            //console.log("Cancel clicked");
                         },
                     },
                 ],
@@ -1220,34 +1271,68 @@ let TabsPage = class TabsPage {
                                     this.assetsService
                                         .filter("badge_no=" + data.badge_no)
                                         .subscribe((res) => {
-                                        // if find, go to asset detail list
-                                        if (res.length > 0) {
-                                            loading.dismiss();
-                                            let navigationExtras = {
-                                                state: {
-                                                    badge_no: res[0].badge_no,
-                                                },
-                                            };
-                                            this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
-                                        }
-                                        // else, find the asset in the wams to pump into PIPE's asset table
-                                        else {
-                                            // get data from wams
-                                            this.wamsService
-                                                .getAssetBadgeNo(data.badge_no)
-                                                .subscribe((res) => {
-                                                loading.dismiss();
-                                                if (res.results.length > 0) {
+                                        console.log("reslength", res['results'].length);
+                                        if (res['results'].length > 0) {
+                                            let lastmodified = res['results'][0].modified_date;
+                                            lastmodified = new Date(lastmodified);
+                                            let oneday = new Date(new Date().getTime() - (2 * 60 * 60 * 1000));
+                                            console.log("dateTime", lastmodified);
+                                            console.log("dateTime", oneday);
+                                            if (lastmodified.getTime() < oneday.getTime()) {
+                                                console.log("dateTime update");
+                                                this.wamsService
+                                                    .getAssetBadgeNo(data.badge_no)
+                                                    .subscribe((res) => {
+                                                    loading.dismiss();
+                                                    // if (res.results.length > 0) {
                                                     let navigationExtras = {
                                                         state: {
                                                             badge_no: data.badge_no,
                                                         },
                                                     };
                                                     this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
-                                                }
-                                                else {
-                                                    this.presentAlert("Error", "Sorry, asset is not found in the database.");
-                                                }
+                                                    // } else {
+                                                    //   this.presentAlert(
+                                                    //     "Error",
+                                                    //     "Sorry, asset is not found in the database."
+                                                    //   );
+                                                    // }
+                                                }, (err) => {
+                                                    console.error("err", err);
+                                                    loading.dismiss();
+                                                    this.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                                });
+                                            }
+                                            else if (lastmodified.getTime() > oneday.getTime()) {
+                                                console.log("dateTime update takyah");
+                                                loading.dismiss();
+                                                let navigationExtras = {
+                                                    state: {
+                                                        badge_no: res['results'][0].badge_no,
+                                                    },
+                                                };
+                                                this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                                            }
+                                        }
+                                        else {
+                                            // get data from wams
+                                            this.wamsService
+                                                .getAssetBadgeNo(data.badge_no)
+                                                .subscribe((res) => {
+                                                loading.dismiss();
+                                                // if (res.results.length > 0) {
+                                                let navigationExtras = {
+                                                    state: {
+                                                        badge_no: data.badge_no,
+                                                    },
+                                                };
+                                                this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                                                // } else {
+                                                //   this.presentAlert(
+                                                //     "Error",
+                                                //     "Sorry, asset is not found in the database."
+                                                //   );
+                                                // }
                                             }, (err) => {
                                                 console.error("err", err);
                                                 loading.dismiss();
@@ -1286,7 +1371,7 @@ let TabsPage = class TabsPage {
     updateRfid(data) {
         if (this.bRfid)
             this.ngZone.run(() => {
-                this.scanValue = data;
+                this.scanValue = data.trim();
                 if (this.scanValue != "") {
                     this.loadingController
                         .create({
@@ -1297,20 +1382,47 @@ let TabsPage = class TabsPage {
                         this.assetsService.filter("hex_code=" + this.scanValue).subscribe((res) => {
                             loading.dismiss();
                             // if find, go to asset detail list
-                            if (res.length > 0) {
+                            if (res['results'].length > 0) {
+                                let lastmodified = res['results'][0].modified_date;
+                                lastmodified = new Date(lastmodified);
+                                let oneday = new Date(new Date().getTime() - (2 * 60 * 60 * 1000));
+                                if (lastmodified.getTime() < oneday.getTime()) {
+                                    this.wamsService
+                                        .getAssetBadgeNo(res['results'][0].badge_no)
+                                        .subscribe((res) => {
+                                        loading.dismiss();
+                                        let navigationExtras = {
+                                            state: {
+                                                badge_no: res['results'][0].badge_no,
+                                            },
+                                        };
+                                        this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                                    }, (err) => {
+                                        console.error("err", err);
+                                        loading.dismiss();
+                                        this.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                    });
+                                }
+                                else {
+                                    let navigationExtras = {
+                                        state: {
+                                            badge_no: res['results'][0].badge_no,
+                                        },
+                                    };
+                                    this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                                }
                                 let navigationExtras = {
                                     state: {
-                                        badge_no: res[0].badge_no,
+                                        badge_no: res['results'][0].badge_no,
                                     },
                                 };
                                 this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
                             }
-                            // else, suggest the user to use QR scanner OR search by badge number
                             else {
                                 this.presentAlert("Error", "The asset is not found in the database. Please try again by using QR scanner OR search by badge number.");
                             }
                         }, (err) => {
-                            console.log("err assetlsService = ", err);
+                            console.error("err", err);
                             loading.dismiss();
                             this.presentAlert("Error", "Sorry, there is a technical problem going on.");
                         });
@@ -1325,7 +1437,7 @@ let TabsPage = class TabsPage {
     updateQrbarcode(data) {
         if (this.bBarcode)
             this.ngZone.run(() => {
-                this.scanValue = data;
+                this.scanValue = data.trim();
                 if (this.scanValue != "") {
                     this.loadingController
                         .create({
@@ -1335,31 +1447,55 @@ let TabsPage = class TabsPage {
                         loading.present();
                         this.assetsService.filter("badge_no=" + this.scanValue).subscribe((res) => {
                             // if find, go to asset detail list
-                            if (res.length > 0) {
-                                loading.dismiss();
-                                let navigationExtras = {
-                                    state: {
-                                        badge_no: res[0].badge_no,
-                                    },
-                                };
-                                this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
-                            }
-                            // else, find the asset in the wams to pump into PIPE's asset table
-                            else {
-                                // get data from wams
-                                this.wamsService.getAssetBadgeNo(this.scanValue).subscribe((res) => {
-                                    loading.dismiss();
-                                    if (res.results.length > 0) {
+                            if (res['results'].length > 0) {
+                                let lastmodified = res['results'][0].modified_date;
+                                lastmodified = new Date(lastmodified);
+                                let oneday = new Date(new Date().getTime() - (2 * 60 * 60 * 1000));
+                                if (lastmodified.getTime() < oneday.getTime()) {
+                                    this.wamsService
+                                        .getAssetBadgeNo(this.scanValue)
+                                        .subscribe((res) => {
+                                        loading.dismiss();
                                         let navigationExtras = {
                                             state: {
                                                 badge_no: this.scanValue,
                                             },
                                         };
                                         this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
-                                    }
-                                    else {
-                                        this.presentAlert("Error", "Sorry, asset is not found in the database.");
-                                    }
+                                    }, (err) => {
+                                        console.error("err", err);
+                                        loading.dismiss();
+                                        this.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                    });
+                                }
+                                else {
+                                    loading.dismiss();
+                                    let navigationExtras = {
+                                        state: {
+                                            badge_no: this.scanValue,
+                                        },
+                                    };
+                                    this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                                }
+                            }
+                            // else, find the asset in the wams to pump into PIPE's asset table
+                            else {
+                                // get data from wams
+                                this.wamsService.getAssetBadgeNo(this.scanValue).subscribe((res) => {
+                                    loading.dismiss();
+                                    // if (res.results.length > 0) {
+                                    let navigationExtras = {
+                                        state: {
+                                            badge_no: this.scanValue,
+                                        },
+                                    };
+                                    this.router.navigate(["/technical/asset-detail-list"], navigationExtras);
+                                    // } else {
+                                    //   this.presentAlert(
+                                    //     "Error",
+                                    //     "Sorry, asset is not found in the database."
+                                    //   );
+                                    // }
                                 }, (err) => {
                                     console.error("err", err);
                                     loading.dismiss();
@@ -1432,7 +1568,9 @@ __webpack_require__.r(__webpack_exports__);
 let AssetsService = class AssetsService {
     constructor(http) {
         this.http = http;
+        //url: string = environment.assetUrl;
         this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/";
+        //url: string = environment.baseUrl + "v1/assets/";
         // Data 
         this.amodels = [];
     }

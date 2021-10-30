@@ -167,9 +167,9 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
         this.workOrderActivityCompletionAssLocAssLisDataAll = [];
         this.workOrderActivityCompletionAssLocAssLisDataReq = [];
         this.buttonStatusArr = [];
+        this.serviceHistArr = [];
         this.workOrdActComAssLocAssLisReq = [];
         this.worOrdActComAssLocAssLisNot = [];
-        this.serviceHistArr = [];
         this.workactivityassetFormGroup = this.formBuilder.group({
             id: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](""),
             bo_status: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](""),
@@ -182,6 +182,7 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
         this.route.queryParams.subscribe((params) => {
             if (this.router.getCurrentNavigation().extras.state) {
                 this.getAllData();
+                this.workactivity = this.router.getCurrentNavigation().extras.state.work_activity;
             }
         });
     }
@@ -203,150 +204,155 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
         this.workOrderActivityCompletionAssLocAssLisData = [];
         this.workOrderActivityCompletionAssLocAssLisDataAll = [];
         this.workOrderActivityCompletionAssLocAssLisDataReq = [];
-        this.workactivityasset.service_histories.forEach(element => {
-            // this.buttonStatus : Boolean
-            this.assetLocationAssetListServiceHistoriesService.getOne(element).subscribe((res) => {
-                console.log("serviceHistoryQuestionService", res);
-                this.workOrderActivityCompletionAssLocAssLisDataAll.push(res);
-                console.log("res.service_history_type>>", res.service_history_type);
-                console.log("res.svc_hist_type_req_fl>>", res.svc_hist_type_req_fl);
-                // if (res.svc_hist_type_req_fl == "W1YS") {
-                //   this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type)
-                //   this.workOrdActComAssLocAssLisReq.push(res)
-                //   console.log("----------<<<<<")
-                // } else {
-                //   console.log("---------->>>>>")
-                //   this.worOrdActComAssLocAssLisNot.push(res)
-                // }
-                if (res.svc_hist_type_req_fl == 'W1YS') {
-                    console.log("datares>>", this.workOrderActivityCompletionAssLocAssLisDataReq);
-                    var duplicate = false;
-                    var check_history = res.service_history_type.replace(/\-/g, '');
-                    check_history = res.service_history_type.replace(/\s/g, '');
-                    if (this.workOrderActivityCompletionAssLocAssLisDataReq.length == 0) {
-                        this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
-                        duplicate = true;
+        this.serviceHistArr = [];
+        this.workOrderActivityCompletionAssLocAssListService.getOne(this.workactivityasset.id).subscribe((resWoacalal) => {
+            resWoacalal.service_histories.forEach(element => {
+                // this.buttonStatus : Boolean
+                this.assetLocationAssetListServiceHistoriesService.getOne(element).subscribe((res) => {
+                    console.log("serviceHistoryQuestionService", res);
+                    this.workOrderActivityCompletionAssLocAssLisDataAll.push(res);
+                    console.log("res.service_history_type>>", res.service_history_type);
+                    console.log("res.svc_hist_type_req_fl>>", res.svc_hist_type_req_fl);
+                    // if (res.svc_hist_type_req_fl == "W1YS") {
+                    //   this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type)
+                    //   this.workOrdActComAssLocAssLisReq.push(res)
+                    //   console.log("----------<<<<<")
+                    // } else {
+                    //   console.log("---------->>>>>")
+                    //   this.worOrdActComAssLocAssLisNot.push(res)
+                    // }
+                    if (res.svc_hist_type_req_fl == 'W1YS') {
+                        console.log("datares>>", this.workOrderActivityCompletionAssLocAssLisDataReq);
+                        var duplicate = false;
+                        // var check_history = res.service_history_type.replace(/\-/g, '');
+                        // check_history = res.service_history_type.replace(/\s/g, '');
+                        if (this.workOrderActivityCompletionAssLocAssLisDataReq.length == 0) {
+                            this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
+                            duplicate = true;
+                        }
+                        else {
+                            this.workOrderActivityCompletionAssLocAssLisDataReq.forEach(element => {
+                                // var check_elemenent = element.replace(/\-/g, '');
+                                // check_elemenent = element.replace(/\s/g, '');
+                                // console.log("sktlg-DUPLICATE---", element+"+++++"+res.service_history_type)
+                                // console.log("sktlg", element+"+++++"+res.service_history_type)
+                                if (element == res.service_history_type) {
+                                    duplicate = true;
+                                    console.log("sktlg-DUPLICATE!!!", element + "+++++" + res.service_history_type);
+                                }
+                            });
+                        }
+                        if (duplicate == false) {
+                            this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
+                        }
+                        if (res.service_history_type == "FAILURE") {
+                            console.log("yyyyyyyyyyy");
+                            if (res.failure_type != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
+                                this.workOrdActComAssLocAssLisReq.push(res);
+                                console.log("workOrdActComAssLocAssLisReq", res);
+                                bstat = 'yes';
+                            }
+                        }
+                        else if (res.service_history_type == "DOWNTIME") {
+                            if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
+                                this.workOrdActComAssLocAssLisReq.push(res);
+                                console.log("workOrdActComAssLocAssLisReq", res);
+                                bstat = 'yes';
+                            }
+                        }
+                        else {
+                            if (res.question.length > 0) {
+                                this.workOrdActComAssLocAssLisReq.push(res);
+                                console.log('res.question != []----<<<>>>', res.question.length);
+                                bstat = 'yes';
+                            }
+                        }
                     }
                     else {
-                        this.workOrderActivityCompletionAssLocAssLisDataReq.forEach(element => {
-                            var check_elemenent = element.replace(/\-/g, '');
-                            check_elemenent = element.replace(/\s/g, '');
-                            console.log("sktlg-DUPLICATE---", check_elemenent + "+++++" + check_history);
-                            console.log("sktlg", element + "+++++" + res.service_history_type);
-                            if (check_elemenent == check_history) {
-                                duplicate = true;
-                                console.log("sktlg-DUPLICATE!!!", element + "+++++" + res.service_history_type);
-                            }
-                        });
-                    }
-                    if (duplicate == false) {
-                        this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
+                        // if (res.service_history_type == "FAILURE") {
+                        // if (res.failure_type != '' && res.failure_root_cause != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
+                        this.worOrdActComAssLocAssLisNot.push(res);
+                        // }
+                        // } else if (res.service_history_type == "DOWNTIME") {
+                        //   if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                        //     this.worOrdActComAssLocAssLisNot.push(res)
+                        //   }
+                        // } else {
+                        //   if (res.question.length > 0) {
+                        //     this.worOrdActComAssLocAssLisNot.push(res)
+                        //   }
+                        // }
                     }
                     if (res.service_history_type == "FAILURE") {
-                        console.log("yyyyyyyyyyy");
-                        if (res.failure_type != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
-                            this.workOrdActComAssLocAssLisReq.push(res);
-                            console.log("workOrdActComAssLocAssLisReq", res);
-                            bstat = 'yes';
+                        if (res.failure_type != '' && res.failure_mode != '' && res.failure_repair && res.failure_component != '') {
+                            this.workOrderActivityCompletionAssLocAssLisData.push(res);
+                            // bstat = 'yes'
+                            this.serviceHistArr.push(res.service_history_type);
                         }
                     }
                     else if (res.service_history_type == "DOWNTIME") {
                         if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
-                            this.workOrdActComAssLocAssLisReq.push(res);
-                            console.log("workOrdActComAssLocAssLisReq", res);
-                            bstat = 'yes';
+                            this.workOrderActivityCompletionAssLocAssLisData.push(res);
+                            // bstat = 'yes'
+                            this.serviceHistArr.push(res.service_history_type);
                         }
                     }
                     else {
                         if (res.question.length > 0) {
-                            this.workOrdActComAssLocAssLisReq.push(res);
-                            console.log('res.question != []----<<<>>>', res.question.length);
-                            bstat = 'yes';
+                            this.workOrderActivityCompletionAssLocAssLisData.push(res);
+                            // bstat = 'yes'
+                            this.serviceHistArr.push(res.service_history_type);
                         }
                     }
+                    console.log("serviceHistArr1", this.serviceHistArr);
+                    this.buttonStatusArr.push(bstat);
+                    console.log("this.buttonStatusArr = ", this.buttonStatusArr);
+                    if (this.buttonStatusArr.indexOf('no') == -1) {
+                        this.buttonStatus = false;
+                    }
+                    else {
+                        this.buttonStatus = true;
+                    }
+                }, (err) => {
+                    console.log(err);
+                });
+            });
+            setTimeout(() => {
+                if (this.workOrdActComAssLocAssLisReq.length == this.workOrderActivityCompletionAssLocAssLisDataReq.length) {
+                    this.buttonDisable = false;
                 }
                 else {
-                    // if (res.service_history_type == "FAILURE") {
-                    // if (res.failure_type != '' && res.failure_root_cause != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
-                    this.worOrdActComAssLocAssLisNot.push(res);
-                    // }
-                    // } else if (res.service_history_type == "DOWNTIME") {
-                    //   if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
-                    //     this.worOrdActComAssLocAssLisNot.push(res)
-                    //   }
-                    // } else {
-                    //   if (res.question.length > 0) {
-                    //     this.worOrdActComAssLocAssLisNot.push(res)
-                    //   }
-                    // }
+                    this.buttonDisable = true;
                 }
-                if (res.service_history_type == "FAILURE") {
-                    if (res.failure_type != '' && res.failure_mode != '' && res.failure_repair && res.failure_component != '' && res.comments != '') {
-                        this.workOrderActivityCompletionAssLocAssLisData.push(res);
-                        // bstat = 'yes'
-                        this.serviceHistArr.push(res.service_history_type);
-                    }
-                }
-                else if (res.service_history_type == "DOWNTIME") {
-                    if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
-                        this.workOrderActivityCompletionAssLocAssLisData.push(res);
-                        // bstat = 'yes'
-                        this.serviceHistArr.push(res.service_history_type);
-                    }
-                }
-                else {
-                    if (res.question.length > 0) {
-                        this.workOrderActivityCompletionAssLocAssLisData.push(res);
-                        // bstat = 'yes'
-                        this.serviceHistArr.push(res.service_history_type);
-                    }
-                }
-                this.buttonStatusArr.push(bstat);
-                console.log("this.buttonStatusArr = ", this.buttonStatusArr);
-                if (this.buttonStatusArr.indexOf('no') == -1) {
-                    this.buttonStatus = false;
-                }
-                else {
-                    this.buttonStatus = true;
-                }
+                console.log("workOrderActivityCompletionAssLocAssLisDataReq", this.workOrderActivityCompletionAssLocAssLisDataReq);
+            }, 1000);
+            console.log("serviceHistArr2", this.serviceHistArr);
+            // if (this.router.getCurrentNavigation().extras.state.badge_no) {
+            var badge_no = this.workactivityasset.badge_number;
+            console.log("badge_no = ", badge_no);
+            // if (badge_no == this.workactivityasset.badge_number) {
+            this.assetsService
+                .filter("badge_no=" + badge_no)
+                .subscribe((res) => {
+                console.log("res qweqwe", res['results']);
+                this.workactivityassetFormGroup.patchValue({
+                    asset_type: res['results'][0].asset_type,
+                    badge_number: badge_no,
+                    // serial_number: res[0].serial_number,
+                    detailed_description: res['results'][0].description,
+                });
             }, (err) => {
-                console.log(err);
+                console.error("err", err);
             });
+            // } else {
+            //   this.alertErrorWorkActivityAsset(
+            //     "Work Activity",
+            //     "The QR code is not same with the asset. Please try again."
+            //   );
+            // }
+            // }
+        }, () => {
         });
-        setTimeout(() => {
-            if (this.workOrdActComAssLocAssLisReq.length == this.workOrderActivityCompletionAssLocAssLisDataReq.length) {
-                this.buttonDisable = false;
-            }
-            else {
-                this.buttonDisable = true;
-            }
-            console.log("workOrderActivityCompletionAssLocAssLisDataReq", this.workOrderActivityCompletionAssLocAssLisDataReq);
-        }, 1000);
-        // if (this.router.getCurrentNavigation().extras.state.badge_no) {
-        let badge_no = this.router.getCurrentNavigation().extras.state
-            .badge_no;
-        // console.log("badge_no = ", badge_no)
-        // if (badge_no == this.workactivityasset.badge_number) {
-        this.assetsService
-            .filter("badge_no=" + badge_no)
-            .subscribe((res) => {
-            // console.log("res qweqwe", res)
-            this.workactivityassetFormGroup.patchValue({
-                asset_type: res[0].asset_type,
-                badge_number: badge_no,
-                // serial_number: res[0].serial_number,
-                detailed_description: res[0].description,
-            });
-        }, (err) => {
-            console.error("err", err);
-        });
-        // } else {
-        //   this.alertErrorWorkActivityAsset(
-        //     "Work Activity",
-        //     "The QR code is not same with the asset. Please try again."
-        //   );
-        // }
-        // }
     }
     getAllData2() {
         this.workOrderActivityCompletionAssLocAssLisData = [];
@@ -380,19 +386,19 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
                     // }
                     if (res.svc_hist_type_req_fl == 'W1YS') {
                         var duplicate = false;
-                        var check_history = res.service_history_type.replace(/\-/g, '');
-                        check_history = res.service_history_type.replace(/\s/g, '');
+                        // var check_history = res.service_history_type.replace(/\-/g, '');
+                        // check_history = res.service_history_type.replace(/\s/g, '');
                         if (this.workOrderActivityCompletionAssLocAssLisDataReq.length == 0) {
                             this.workOrderActivityCompletionAssLocAssLisDataReq.push(res.service_history_type);
                             duplicate = true;
                         }
                         else {
                             this.workOrderActivityCompletionAssLocAssLisDataReq.forEach(element => {
-                                var check_elemenent = element.replace(/\-/g, '');
-                                check_elemenent = element.replace(/\s/g, '');
-                                console.log("sktlg-DUPLICATE---", check_elemenent + "+++++" + check_history);
-                                console.log("sktlg", element + "+++++" + res.service_history_type);
-                                if (check_elemenent == check_history) {
+                                // var check_elemenent = element.replace(/\-/g, '');
+                                // check_elemenent = element.replace(/\s/g, '');
+                                // console.log("sktlg-DUPLICATE---", check_elemenent+"+++++"+check_history)
+                                // console.log("sktlg", element+"+++++"+res.service_history_type)
+                                if (element == res.service_history_type) {
                                     duplicate = true;
                                     console.log("sktlg-DUPLICATE!!!", element + "+++++" + res.service_history_type);
                                 }
@@ -409,7 +415,7 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
                             }
                         }
                         else if (res.service_history_type == "DOWNTIME") {
-                            if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                            if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
                                 this.workOrdActComAssLocAssLisReq.push(res);
                                 bstat = 'yes';
                                 this.buttonStatusArr.push(bstat);
@@ -438,18 +444,21 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
                         //   }
                         // }
                     }
+                    console.log("serviceHistArr", res);
                     if (res.service_history_type == "FAILURE") {
                         if (res.failure_type != '' && res.failure_root_cause != '' && res.failure_repair != '' && res.failure_mode != '' && res.failure_component != '') {
                             this.workOrderActivityCompletionAssLocAssLisData.push(res);
                             // bstat = 'yes'
                             this.serviceHistArr.push(res.service_history_type);
+                            console.log("serviceHistArr", this.serviceHistArr);
                         }
                     }
                     else if (res.service_history_type == "DOWNTIME") {
-                        if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '' && res.comments != '') {
+                        if (res.start_date_time != '' && res.start_date_time != '' && res.end_date_time != '' && res.downtime_reason != '') {
                             this.workOrderActivityCompletionAssLocAssLisData.push(res);
                             // bstat = 'yes'
                             this.serviceHistArr.push(res.service_history_type);
+                            console.log("serviceHistArr", this.serviceHistArr);
                         }
                     }
                     else {
@@ -457,9 +466,10 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
                             this.workOrderActivityCompletionAssLocAssLisData.push(res);
                             // bstat = 'yes'
                             this.serviceHistArr.push(res.service_history_type);
+                            console.log("serviceHistArr", this.serviceHistArr);
                         }
                     }
-                    console.log("this.buttonStatusArr.length = ", this.buttonStatusArr.length);
+                    //console.log("this.buttonStatusArr.length = ", this.buttonStatusArr.length)
                     // console.log("this.workOrderActivityCompletionAssLocAssLisDataReq.length = ", this.workOrderActivityCompletionAssLocAssLisDataReq.length)
                     // console.log("workOrderActivityCompletionAssLocAssLisDataReq = ", this.workOrderActivityCompletionAssLocAssLisDataReq)
                     // var workOrderActivityCompletionAssLocAssLisDataReqtrue = new Set(this.workOrderActivityCompletionAssLocAssLisDataReq);
@@ -475,6 +485,7 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
                     // } else {
                     //   this.buttonStatus = true
                     // }
+                    console.log("serviceHistArr", this.serviceHistArr);
                 }, (err) => {
                     console.log(err);
                 });
@@ -551,6 +562,7 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
             // }
             if (element.svc_hist_type_req_fl == 'W1YS') {
                 console.log("elementW1YS-----", element);
+                check.push(element.service_history_type);
                 // if (element.service_history_type == "FAILURE") {
                 //   console.log("sini fail")
                 //   if (element.failure_type != '' && element.failure_root_cause != '' && element.failure_repair != '' && element.failure_mode != '' && element.failure_component != '') {
@@ -570,28 +582,26 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
                 //     console.log('else')
                 //   }
                 // }
-                var duplicate = false;
-                if (element.service_history_type != '') {
-                    if (check.length == 0) {
-                        check.push(element.service_history_type);
-                        duplicate = true;
-                    }
-                    else {
-                        check.forEach(check => {
-                            console.log("1t", check);
-                            console.log("2t", element.service_history_type);
-                            if (check == element.service_history_type) {
-                                duplicate = true;
-                            }
-                        });
-                    }
-                    if (duplicate == false) {
-                        check.push(element.service_history_type);
-                    }
-                }
-                else {
-                    console.log(element);
-                }
+                // var duplicate = false;
+                // if (element.service_history_type != '') {
+                //   if (check.length == 0){
+                //     check.push(element.service_history_type)
+                //     duplicate = true;
+                //   }else{
+                //     check.forEach(check => {
+                //       console.log("1t", check)
+                //       console.log("2t", element.service_history_type)
+                //         if(check == element.service_history_type){
+                //           duplicate = true;
+                //         }
+                //     });
+                //   }
+                //   if(duplicate == false){
+                //    check.push(element.service_history_type)
+                //   }
+                // } else {
+                //   console.log(element)
+                // }
             }
         });
         console.log("check==", check);
@@ -614,6 +624,11 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
     }
     alertWorkActivityAsset(header, message) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let navigationExtras = {
+                state: {
+                    work_activity: this.workactivity,
+                },
+            };
             const alert = yield this.alertController.create({
                 header,
                 message,
@@ -621,7 +636,11 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
                     {
                         text: "OK",
                         handler: () => {
-                            this.router.navigate(["/technical/work-activity"]);
+                            this.router.navigateByUrl('/technical/maintenance-work-detail', { skipLocationChange: true }).then(() => {
+                                this.router.navigate(['/technical/work-activity'], navigationExtras);
+                            });
+                            //this.router.navigate(["/technical/work-activity"]);
+                            //this.router.navigate(["/technical/maintenance-work-detail"]);
                         },
                     },
                 ],
@@ -645,20 +664,45 @@ let WorkActivityAssetPage = class WorkActivityAssetPage {
         });
     }
     clickBack() {
-        this.router.navigate(["/technical/work-activity"]);
+        let navigationExtras = {
+            state: {
+                work_activity: this.workactivity,
+            },
+        };
+        this.router.navigateByUrl('/technical/maintenance-work-detail', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/technical/work-activity'], navigationExtras);
+        });
     }
     clickAddServiceHistory(servicehistory) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log("serv_hist", servicehistory);
+            console.log("serv_hist2", this.serviceHistArr);
             let obj = {
                 servicehistory: servicehistory,
                 servHistArr: this.serviceHistArr
             };
             const modal = yield this.modalController.create({
                 component: _service_history_service_history_page__WEBPACK_IMPORTED_MODULE_5__["ServiceHistoryPage"],
-                componentProps: { servicehistory: servicehistory, servHistArr: this.serviceHistArr },
+                componentProps: { servicehistory: servicehistory, servHistArr: this.serviceHistArr, WAA: this.workactivityasset },
             });
             modal.onDidDismiss().then((data) => {
-                this.getAllData2();
+                //naqib
+                let navigationExtras = {
+                    state: {
+                        badge_no: this.workactivityasset.badge_number,
+                        asset: this.workactivityasset,
+                        work_activity: this.workactivity
+                    },
+                };
+                console.log("test321-1", navigationExtras);
+                console.log("test321-2", this.serviceHistArr);
+                console.log("test321-3", data);
+                //this.router.navigateByUrl('/technical/work-activity');
+                this.router.navigateByUrl('/technical/work-activity', { skipLocationChange: true }).then(() => {
+                    this.router.navigate(['/technical/work-activity-asset'], navigationExtras);
+                });
+                this.serviceHistArr = data['data'];
+                //this.getAllData2()
                 // if (data) this.servicehistories.push(data.data);
                 // console.log("this.servicehistories = ", this.servicehistories)
                 // this.workactivityService.getOne(this.workactivityasset.id).subscribe(

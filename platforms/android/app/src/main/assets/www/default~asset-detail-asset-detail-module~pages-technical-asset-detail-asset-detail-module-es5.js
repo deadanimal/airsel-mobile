@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Asset Detail </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"scanQrCode()\">\n      <ion-icon name=\"scan\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab> -->\n  <div class=\"ion-padding\">\n    <ion-list class=\"ion-padding line-input\">\n\n      <ion-item>\n        <ion-label position=\"stacked\">Badge No</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.badge_no\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset ID</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.asset_id\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Type</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" readonly [value]=\"asset_detail.asset_type\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Description</ion-label>\n        <!-- <ion-input type=\"text\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\">\n        </ion-input> -->\n        <ion-textarea rows=\"3\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\"></ion-textarea>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Location</ion-label>\n        <ion-textarea rows=\"3\" [disabled]=\"true\" [value]=\"assetLocatioSyncdata\" readonly></ion-textarea>\n      </ion-item>\n    </ion-list>\n\n\n    <ion-list-header *ngIf=\"assetAttrColumn != []\">\n      <ion-label>Asset Attribute </ion-label>\n    </ion-list-header>\n\n    <ion-list class=\"ion-padding line-input\">\n      <ion-item *ngFor=\"let assetAttr of assetAttributedatas\">\n        <ion-label position=\"stacked\">{{assetAttr.field_name | titlecase}}</ion-label>\n\n        <ion-input type=\"text\" *ngIf=\"assetAttr.dropdown == 'no'\" (change)=\"onKey($event.target.value,assetAttr)\"\n          value=\"{{assetAttr.field_value}}\">\n        </ion-input>\n\n        <ion-select *ngIf=\"assetAttr.dropdown == 'yes'\" (ionChange)=\"onKey($event.target.value,assetAttr)\">\n          <ion-select-option *ngFor=\"let assAtt of assetAttr.option\" [value]=\"assAtt.characteristic_value\">\n            {{assAtt.characteristic_value}}</ion-select-option>\n        </ion-select>\n\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n  <div class=\"ion-padding ion-text-center\">\n    <ion-button color=\"light\" (click)=\"cancel()\">Cancel</ion-button>\n    <ion-button color=\"primary\" (click)=\"updateDetails()\">Update</ion-button>\n  </div>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Asset Detail </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button (click)=\"scanQrCode()\">\n      <ion-icon name=\"scan\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab> -->\n  <div class=\"ion-padding\">\n    <ion-list class=\"ion-padding line-input\">\n\n      <ion-item>\n        <ion-label position=\"stacked\">Badge No</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.badge_no\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset ID</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" [value]=\"asset_detail.asset_id\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Type</ion-label>\n        <ion-input type=\"text\" [disabled]=\"true\" readonly [value]=\"asset_detail.asset_type\" readonly></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Description</ion-label>\n        <!-- <ion-input type=\"text\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\">\n        </ion-input> -->\n        <ion-textarea rows=\"3\" (change)=\"onKeyAssDesc($event.target.value,asset_detail)\"\n          [value]=\"asset_detail.description\"></ion-textarea>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"stacked\">Asset Location</ion-label>\n        <ion-textarea rows=\"3\" [disabled]=\"true\" [value]=\"assetLocatioSyncdata\" readonly></ion-textarea>\n      </ion-item>\n    </ion-list>\n\n\n    <ion-list-header *ngIf=\"assetAttrColumn != []\">\n      <ion-label>Asset Attribute </ion-label>\n    </ion-list-header>\n\n    <ion-list class=\"ion-padding line-input\">\n      <ion-item *ngFor=\"let assetAttr of assetAttributedatas\">\n        <ion-label position=\"stacked\">{{assetAttr.field_name | titlecase}}</ion-label>\n\n        <ion-input *ngIf=\"assetAttr.dropdown != 'yes'\" type=\"text\" (change)=\"onKey($event.target.value,assetAttr)\"\n          value=\"{{assetAttr.field_value}}\">\n        </ion-input>\n\n        <ion-select *ngIf=\"assetAttr.dropdown == 'yes'\" (ionChange)=\"onKey($event.target.value,assetAttr)\" value=\"{{assetAttr.field_value}}\">\n          <ion-select-option *ngFor=\"let assAtt of assetAttr.option\" [value]=\"assAtt.characteristic_value\">\n            {{assAtt.characteristic_value}}</ion-select-option>\n        </ion-select>\n\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n  <div class=\"ion-padding ion-text-center\">\n    <ion-button color=\"light\" (click)=\"cancel()\">Cancel</ion-button>\n    <ion-button color=\"primary\" (click)=\"updateDetails()\">Update</ion-button>\n    <div style=\"height:250px;\">&nbsp;</div>\n  </div>\n</ion-content>";
     /***/
   },
 
@@ -456,16 +456,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           created_at: "",
           modified_at: ""
         };
-        this.assetAttributedatas = []; // Forms
-        // firstFormGroup: FormGroup;
-        // secondFormGroup: FormGroup;
-        // thirdFormGroup: FormGroup;
-        // fourthFormGroup: FormGroup;
-        // fifthFormGroup: FormGroup;
-        // sixthFormGroup: FormGroup;
-        // seventhFormGroup: FormGroup;
-        // validation_messages = [];
-
+        this.assetAttributedatas = [];
         this.myDate = new Date();
         this.assetAttributeId = [];
         this.assetAttributeColumnFormData = [];
@@ -474,17 +465,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.field_value = '';
         this.route.queryParams.subscribe(function (params) {
           if (_this.router.getCurrentNavigation().extras.state) {
-            _this.asset_detail = _this.router.getCurrentNavigation().extras.state.asset_detail; // console.log("this.asset_detail==>><<", this.asset_detail)
+            _this.asset_detail = _this.router.getCurrentNavigation().extras.state.asset_detail;
+            var asset_attributes = _this.asset_detail["asset_attributes"];
+            console.log("trylain", asset_attributes);
 
-            var asset_attributes = _this.asset_detail["asset_attributes"]; // console.log('assetType = ', assetType)
-            // this.getAssetAttributeData()
-
-            _this.getAssetAttributeData(asset_attributes); // console.log("this.asset_detail ooooo = ", this.asset_detail)
-            // console.log("this.asset_detail asset_id = ", this.asset_detail.asset_type)
-
+            _this.getAssetAttributeData(asset_attributes);
 
             var asset_type = "asset_type_code=" + _this.asset_detail['asset_type'];
-            _this.assetAttributeId = _this.asset_detail['asset_attributes']; // console.log("this.assetAttributeId----", this.assetAttributeId)
+            _this.assetAttributeId = _this.asset_detail['asset_attributes'];
 
             _this.assetTypesService.filter(asset_type).subscribe(function (assTypeRes) {
               // console.log("assTypeRes", assTypeRes)
@@ -499,62 +487,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               });
             }, function (err) {
               console.log(err);
-            }); // if (this.asset_detail.asset_primary_category.match(/Pump/i)) {
-            //   this.asset_type = "Pump";
-            // } else if (this.asset_detail.asset_primary_category.match(/Motor/i)) {
-            //   this.asset_type = "Motor";
-            // }
-
+            });
 
             if (_this.asset_detail['attached_to_asset_id'] == '') {
               _this.assetLocatioSyncService.filter("node_id=" + _this.asset_detail['node_id']).subscribe(function (res) {
-                // console.log("assetLocatioSyncServiceres", res);
-                // this.assetregistrations = res;
-                // this.assetLocatioSyncdata = res[0].description
                 if (res.length > 0) {
                   _this.assetLocatioSyncdata = res[0].description;
                 } else {
                   _this.assetLocatioSyncdata = '-';
-                } // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
-
+                }
               }, function (err) {
                 console.error("err", err);
               });
             } else {
               _this.assetsService.filter("asset_id=" + _this.asset_detail['attached_to_asset_id']).subscribe(function (resA) {
-                console.log("assetqqqqqqqqq=res", resA);
+                console.log("assetqqqqqqqqq=res", resA['results']);
 
-                _this.assetLocatioSyncService.filter("node_id=" + resA[0]['node_id']).subscribe(function (resAls) {
+                _this.assetLocatioSyncService.filter("node_id=" + resA['results'][0]['node_id']).subscribe(function (resAls) {
                   console.log("resAls>><<>>", resAls);
 
                   if (resAls.length > 0) {
                     _this.assetLocatioSyncdata = resAls[0].description;
                   } else {
                     _this.assetLocatioSyncdata = '-';
-                  } // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
-
+                  }
                 }, function (err) {
                   console.error("err", err);
                 });
               }, function (error) {
                 console.log(error);
               });
-            } // this.assetLocatioSyncService.filter("node_id=" + this.asset_detail.node_id).subscribe(
-            //   (res) => {
-            //     // console.log("assetLocatioSyncServiceres", res);
-            //     // this.assetregistrations = res;
-            //     if (res.length > 0) {
-            //       this.assetLocatioSyncdata = res[0].description
-            //     } else {
-            //       this.assetLocatioSyncdata = '-'
-            //     }
-            //     // console.log(" this.assetLocatioSyncdata = ", this.assetLocatioSyncdata)
-            //   },
-            //   (err) => {
-            //     console.error("err", err);
-            //   }
-            // );
-
+            }
           }
         });
       }
@@ -567,32 +530,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getAssAttrColumnData(assAttCol) {
           var _this2 = this;
 
-          // arraytype = []
           setTimeout(function () {
-            // console.log("this.assetAttributedatas<>><><>", this.assetAttributedatas)
-            // this.assetAttributedatas.forEach((elementqq) => {
-            //   console.log("elementqq = ", elementqq)
-            //   arraytype.push(elementqq.field_name)
-            // })
-            // for (let key in this.assetAttributedatas) {
-            //   let child = this.assetAttributedatas[key];
-            //   console.log("qweqweqweqqwe", this.assetAttributedatas[key])
-            // }
-            // for (let i = 0; i <= this.assetAttributedatas.length; i++) {
-            //   console.log("this.assetAttributedatas = ", this.assetAttributedatas[i])
-            //   arraytype.push(this.assetAttributedatas[i].field_name)
-            // }
-            // console.log("this.arraytype>>>>>>>", this.arraytype)
             if (assAttCol['bottom_water_level'] == true) {
               if (_this2.arraytype.indexOf('bottom_water_level') == -1) {
                 var assAttColTemp = [];
                 assAttColTemp['id'] = '';
-                assAttColTemp['action_type'] = ''; // assAttColTemp['adhoc_value'] = null
-
+                assAttColTemp['action_type'] = '';
                 assAttColTemp['characteristic_type'] = '';
                 assAttColTemp['characteristic_type_name'] = 'bottom_water_level';
                 assAttColTemp['field_name'] = 'bottom_water_level';
-                assAttColTemp['field_value'] = ''; // assAttColTemp['characteristic_value'] = null
+                assAttColTemp['field_value'] = '';
 
                 _this2.assetAttributedatas.push(assAttColTemp);
               }
@@ -677,7 +624,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             if (assAttCol['manufacturer'] == true) {
-              // console.log("gggggggg")
+              console.log("gggggggg");
+
               if (_this2.arraytype.indexOf('manufacturer') == -1) {
                 // console.log("hhhhhhh")
                 var _assAttColTemp6 = [];
@@ -1640,17 +1588,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this2.assetAttributedatas.forEach(function (ele) {
               console.log("eleeleeleeleele", ele);
-              var filter = "attribute_field_name=" + ele.characteristic_type_name;
+              var filter = "attribute_field_name=" + ele.characteristic_type_name; // ele.dropdown = 'no';
+              // ele.option = [];
 
-              _this2.assetAttributePredefineService.filter(filter).subscribe(function (res) {
-                if (res.length > 0) {
-                  ele.dropdown = 'yes';
-                  ele.option = res;
-                } else {
-                  ele.dropdown = 'no';
-                  ele.option = [];
-                }
-              }, function (err) {});
+              if (ele.characteristic_type_name == "" || ele.characteristic_type_name == null) {
+                ele.dropdown = 'no';
+                ele.option = [];
+              } else {
+                _this2.assetAttributePredefineService.filter(filter).subscribe(function (res) {
+                  if (res.length > 0) {
+                    //console.log("testing123", res)
+                    ele.dropdown = 'yes';
+                    ele.option = res;
+                  } else {
+                    ele.dropdown = 'no';
+                    ele.option = [];
+                  }
+                }, function (err) {});
+              }
             }); // setTimeout(() => {
 
 
@@ -1785,7 +1740,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "clickBack",
         value: function clickBack() {
-          this.router.navigate(["/technical/tabs/tab2"]);
+          this.router.navigate(["/technical/tabs/tab1"]);
         }
       }, {
         key: "openNotification",
@@ -1804,9 +1759,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this5.field_value = null;
 
             _this5.assetAttributeService.getOne(element).subscribe(function (aasRes) {
-              // console.log('assetAttributeService>>=// ', aasRes)
-              // this.assetAttributedatas.push(aasRes)
+              console.log('assetAttributeService>>=// ', aasRes); // this.assetAttributedatas.push(aasRes)
               // console.log("assetAttributedatas = ", this.assetAttributedatas)
+
               var assct = aasRes.characteristic_type; // console.log('aasRes.characteristic_type = ', assct)
               // this.getsadaasasd(assct)
 
@@ -1877,7 +1832,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           console.log("row === ", row);
           console.log("value === ", value);
           this.assetAttributedatas.forEach(function (element) {
-            // check in the form data 
+            console.log("testelement", element); // check in the form data 
+
             if (element.field_name == row.field_name) {
               var characteristic_type_list = ["CM-MFG", "CM-WASTC", "CM-VRTVD", "CM-VOWNS", "CM-VROWN", "CM-VINPT"];
               var updateformData = {}; // console.log(characteristic_type_list.indexOf(row.characteristic_type))
@@ -1914,27 +1870,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   console.error("err", err);
                 });
               } else {
-                element.action_type = 'UPDATE';
-                updateformData['action_type'] = 'UPDATE'; // console.log('exist cok')
+                console.log("testtrycubatrytest", element.field_value);
+                console.log("testtrycubatrytest", updateformData['adhoc_value']);
 
-                _this6.assetAttributeService.update(element.id, updateformData).subscribe(function (res) {// console.log(res)
-                  // this.assetAttributedatas.push(res)
-                  // console.log("resAAS = ", res)
-                  // this.assetAttributeId.push(res.id)
-                  // element.id = res.id;
-                  // let obj = {
-                  //   submitted_datetime: this.getCurrentDateTime(),
-                  // }
-                  // this.assetsService.update(this.asset_detail['id'], obj).subscribe(
-                  //   (resp) => {
-                  //     console.log('berjaya cok', resp)
-                  //   }, (error) => {
-                  //     console.log('tidak berjaya cok', error)
-                  //   }
-                  // )
-                }, function (err) {
-                  console.error("err", err);
-                });
+                if (updateformData['adhoc_value'] == "") {
+                  element.action_type = 'UNCHANGED';
+                  updateformData['action_type'] = 'UNCHANGED';
+
+                  _this6.assetAttributeService.update(element.id, updateformData).subscribe(function (res) {}, function (err) {
+                    console.error("err", err);
+                  });
+                } else {
+                  element.action_type = 'UPDATE';
+                  updateformData['action_type'] = 'UPDATE'; // console.log('exist cok')
+
+                  _this6.assetAttributeService.update(element.id, updateformData).subscribe(function (res) {}, function (err) {
+                    console.error("err", err);
+                  });
+                }
               }
             }
           });
@@ -1951,8 +1904,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // setTimeout(() => {
           // console.log("assetAttributedatas --==][ ", this.assetAttributedatas)
           var assetAttrIdExist = [];
+          console.log("naq1", this.assetAttributedatas);
           this.assetAttributedatas.forEach(function (element) {
-            // console.log("element --- ", element.id)
+            console.log("naq", element.id); // console.log("element --- ", element.id)
+
             if (element.id != '') {
               // console.log('masuk')
               assetAttrIdExist.push(element.id);
@@ -1971,6 +1926,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // console.log("datetime", roo)
 
           console.log("obj = ", obj);
+          console.log("objtrytest = ", this.asset_detail['id']);
           console.log(" this.selectedDate", selectedDate);
           console.log("this.getCurrentDateTime()", this.getCurrentDateTime());
           var twoHoursBefore = new Date();
@@ -1978,7 +1934,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.assetsService.update(this.asset_detail['id'], obj).subscribe(function (resp) {
             console.log('berjaya cok', resp);
-          }, function (error) {// console.log('tidak berjaya cok', error)
+          }, function (error) {
+            console.log('tidak berjaya cok', error);
           }, function () {
             _this7.update();
           }); // } else {
@@ -3077,8 +3034,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function AssetsService(http) {
         _classCallCheck(this, AssetsService);
 
-        this.http = http;
-        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; // Data 
+        this.http = http; //url: string = environment.assetUrl;
+
+        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; //url: string = environment.baseUrl + "v1/assets/";
+        // Data 
 
         this.amodels = [];
       }

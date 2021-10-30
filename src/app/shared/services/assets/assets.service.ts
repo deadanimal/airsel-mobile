@@ -10,7 +10,9 @@ import { AssetsModel } from "./assets.model";
   providedIn: "root",
 })
 export class AssetsService {
+  //url: string = environment.assetUrl;
   url: string = environment.baseUrl + "v1/assets/";
+  //url: string = environment.baseUrl + "v1/assets/";
 
   // Data 
   public amodels: AssetsModel[] = [];

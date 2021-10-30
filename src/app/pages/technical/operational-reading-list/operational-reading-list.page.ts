@@ -287,11 +287,11 @@ export class OperationalReadingListPage implements OnInit {
                     .subscribe(
                       (res) => {
                         // if find, go to asset detail list
-                        if (res.length > 0) {
+                        if (res['results'].length > 0) {
                           loading.dismiss();
                           let navigationExtras: NavigationExtras = {
                             state: {
-                              badge_no: res[0].badge_no,
+                              badge_no: res['results'][0].badge_no,
                             },
                           };
 
@@ -395,10 +395,10 @@ export class OperationalReadingListPage implements OnInit {
                 (res) => {
                   loading.dismiss();
                   // if find, go to asset detail list
-                  if (res.length > 0) {
+                  if (res['results'].length > 0) {
                     let navigationExtras: NavigationExtras = {
                       state: {
-                        badge_no: res[0].badge_no,
+                        badge_no: res['results'][0].badge_no,
                       },
                     };
 
@@ -448,11 +448,11 @@ export class OperationalReadingListPage implements OnInit {
               this.assetsService.filter("badge_no=" + this.scanValue).subscribe(
                 (res) => {
                   // if find, go to asset detail list
-                  if (res.length > 0) {
+                  if (res['results'].length > 0) {
                     loading.dismiss();
                     let navigationExtras: NavigationExtras = {
                       state: {
-                        badge_no: res[0].badge_no,
+                        badge_no: res['results'][0].badge_no,
                       },
                     };
 

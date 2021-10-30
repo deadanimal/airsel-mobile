@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n      <ion-fab-button (click)=\"scanQrCode()\">\n        <ion-icon name=\"scan\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab> -->\n    <h4 class=\"ion-text-center ion-padding\">Work Activity Details</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"workactivityFormGroup\">\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Id:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.activityid\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Type:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.act_type_cd\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Required By Date:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.required_by_dt\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Parent Location:</ion-label>\n          <!-- <ion-input type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-input> -->\n          <ion-textarea rows=\"2\" type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-textarea>\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Asset ID:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.asset_id_1\" readonly></ion-input>\n        </ion-item> -->\n\n      </form>\n    </ion-list>\n\n    <ion-card *ngFor=\"let workActData of workactivityData\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button *ngIf=\"workActData.reading_datetime == null\" size=\"small\" color=\"primary\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workActData.reading_datetime != null\" size=\"small\" color=\"success\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n            <!-- <ion-icon name=\"checkmark-circle\"></ion-icon> -->\n          </ion-fab-button>\n\n        </ion-fab>\n        <!-- <ion-card-title>Asset ID: {{ workActData.ASSET_ID }}</ion-card-title> -->\n        <ion-card-title>Badge No<br />{{ workActData.badge_number }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <!-- <p>Asset Type: {{ workActData.asset_type }}</p> -->\n        <p>Asset ID: {{ workActData.asset_id }}</p>\n        <p>Location: {{ workActData.location_descr }}</p>\n        <p>Asset Description : {{ workActData.description }}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <!-- <ion-item lines=\"none\">\n      <ion-label class=\"ion-text-start ion-no-padding\"\n        >Service History</ion-label\n      >\n      <ion-button class=\"ion-text-end\" (click)=\"clickAddServiceHistory()\"\n        >Add</ion-button\n      >\n    </ion-item>\n\n    <ion-card *ngFor=\"let servicehistory of servicehistories; let i = index\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button\n            size=\"small\"\n            color=\"primary\"\n            (click)=\"clickEdit(servicehistory)\"\n          >\n            <ion-icon name=\"create\"></ion-icon>\n          </ion-fab-button>\n          <ion-fab-button size=\"small\" color=\"danger\" (click)=\"clickRemove(i)\">\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button>\n        </ion-fab>\n        <ion-card-title>{{ servicehistory.type }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Downtime'\">\n        <p>Start Date/Time: {{ servicehistory.start | date }}</p>\n        <p>End Date/Time: {{ servicehistory.end | date }}</p>\n        <p>Downtime Reason</p>\n        <p>{{ servicehistory.reason }}</p>\n      </ion-card-content>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Preventive Maintenance'\">\n        <p>Terminal Box</p>\n        <p>{{ servicehistory.terminal_box }}</p>\n        <p>Slip Ring & Carbon Brush</p>\n        <p>{{ servicehistory.slip_ring }}</p>\n        <p>Armature</p>\n        <p>{{ servicehistory.armature }}</p>\n      </ion-card-content>\n    </ion-card> -->\n\n    <div class=\"ion-text-center ion-padding\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Back</ion-button>\n      <!-- <ion-button color=\"primary\" (click)=\"close()\">Close</ion-button> -->\n      <ion-button color=\"primary\" [disabled]=\"setButton\" (click)=\"submit()\">Close Out</ion-button>\n    </div>\n  </div>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <!-- <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\n      <ion-fab-button (click)=\"scanQrCode()\">\n        <ion-icon name=\"scan\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab> -->\n    <h4 class=\"ion-text-center ion-padding\">Work Activity Details</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"workactivityFormGroup\">\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Id:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.activityid\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Work Activity Type:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.act_type_cd\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Required By Date:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.required_by_dt\" readonly></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label position=\"stacked\">Parent Location:</ion-label>\n          <!-- <ion-input type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-input> -->\n          <ion-textarea rows=\"2\" type=\"text\" [value]=\"workactivity.asset_loc_sync\" readonly></ion-textarea>\n        </ion-item>\n\n        <!-- <ion-item>\n          <ion-label position=\"stacked\">Asset ID:</ion-label>\n          <ion-input type=\"text\" [value]=\"workactivity.asset_id_1\" readonly></ion-input>\n        </ion-item> -->\n\n      </form>\n    </ion-list>\n\n    <ion-card *ngFor=\"let workActData of workactivityData\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button *ngIf=\"workActData.reading_datetime == '1997-10-06T00:00:00+00:00'\" size=\"small\" color=\"primary\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n          </ion-fab-button>\n\n          <ion-fab-button *ngIf=\"workActData.reading_datetime != '1997-10-06T00:00:00+00:00'\" size=\"small\" color=\"success\"\n            (click)=\"clickViewAsset(workActData)\">\n            <ion-icon name=\"search\"></ion-icon>\n            <!-- <ion-icon name=\"checkmark-circle\"></ion-icon> -->\n          </ion-fab-button>\n\n        </ion-fab>\n        <!-- <ion-card-title>Asset ID: {{ workActData.ASSET_ID }}</ion-card-title> -->\n        <ion-card-title>Badge No<br />{{ workActData.badge_number }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <!-- <p>Asset Type: {{ workActData.asset_type }}</p> -->\n        <p>Asset ID: {{ workActData.asset_id }}</p>\n        <p>Location: {{ workActData.location_descr }}</p>\n        <p>Asset Description : {{ workActData.description }}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <!-- <ion-item lines=\"none\">\n      <ion-label class=\"ion-text-start ion-no-padding\"\n        >Service History</ion-label\n      >\n      <ion-button class=\"ion-text-end\" (click)=\"clickAddServiceHistory()\"\n        >Add</ion-button\n      >\n    </ion-item>\n\n    <ion-card *ngFor=\"let servicehistory of servicehistories; let i = index\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button\n            size=\"small\"\n            color=\"primary\"\n            (click)=\"clickEdit(servicehistory)\"\n          >\n            <ion-icon name=\"create\"></ion-icon>\n          </ion-fab-button>\n          <ion-fab-button size=\"small\" color=\"danger\" (click)=\"clickRemove(i)\">\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button>\n        </ion-fab>\n        <ion-card-title>{{ servicehistory.type }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Downtime'\">\n        <p>Start Date/Time: {{ servicehistory.start | date }}</p>\n        <p>End Date/Time: {{ servicehistory.end | date }}</p>\n        <p>Downtime Reason</p>\n        <p>{{ servicehistory.reason }}</p>\n      </ion-card-content>\n      <ion-card-content *ngIf=\"servicehistory.type == 'Preventive Maintenance'\">\n        <p>Terminal Box</p>\n        <p>{{ servicehistory.terminal_box }}</p>\n        <p>Slip Ring & Carbon Brush</p>\n        <p>{{ servicehistory.slip_ring }}</p>\n        <p>Armature</p>\n        <p>{{ servicehistory.armature }}</p>\n      </ion-card-content>\n    </ion-card> -->\n\n    <div class=\"ion-text-center ion-padding\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Back</ion-button>\n      <!-- <ion-button color=\"primary\" (click)=\"close()\">Close</ion-button> -->\n      <ion-button color=\"primary\" [disabled]=\"setButton\" (click)=\"submit()\">Close Out</ion-button>\n    </div>\n  </div>\n</ion-content>";
     /***/
   },
 
@@ -398,6 +398,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function ngOnInit() {
           broadcaster._debug = true;
           this.menu.enable(false, "menuNotification");
+          this.workactivityData = this.workactivityData;
         }
       }, {
         key: "presentAlert",
@@ -405,6 +406,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee() {
+            var _this3 = this;
+
             var alert;
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
@@ -415,7 +418,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       header: header,
                       message: message,
                       buttons: [{
-                        text: "OK"
+                        text: "OK",
+                        handler: function handler() {
+                          _this3.router.navigate(["/technical/maintenance-work-list"]);
+                        }
                       }]
                     });
 
@@ -480,7 +486,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee3() {
-            var _this3 = this;
+            var _this4 = this;
 
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
@@ -492,7 +498,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.workactivityService.update(this.workactivityFormGroup.value.id, this.workactivityFormGroup.value).subscribe(function (res) {
                       console.log("res", res);
 
-                      _this3.alertWorkActivity("Work Activity", "Your work activity have successfully closed in the the system. Thank you.");
+                      _this4.alertWorkActivity("Work Activity", "Your work activity have successfully closed in the the system. Thank you.");
                     }, function (err) {
                       console.error("err", err);
                     });
@@ -511,7 +517,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee4() {
-            var _this4 = this;
+            var _this5 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
@@ -525,7 +531,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       buttons: [{
                         text: "OK",
                         handler: function handler() {
-                          _this4.router.navigate(["/technical/maintenance-work-detail"]);
+                          _this5.router.navigate(["/technical/maintenance-work-detail"]);
                         }
                       }]
                     });
@@ -554,7 +560,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee5() {
-            var _this5 = this;
+            var _this6 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
@@ -569,7 +575,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 2:
                     modal = _context5.sent;
                     modal.onDidDismiss().then(function (data) {
-                      if (data.data) _this5.servicehistories.push(data.data);
+                      if (data.data) _this6.servicehistories.push(data.data);
                     });
                     _context5.next = 6;
                     return modal.present();
@@ -672,7 +678,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getWOrkActivityData",
         value: function getWOrkActivityData(getdata) {
-          var _this6 = this;
+          var _this7 = this;
 
           var woacalalsh = [];
           var datetime = new Date().toLocaleDateString();
@@ -681,51 +687,53 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var woacalsl = element.toString();
             console.log(woacalsl);
 
-            _this6.workOrderActivityCompletionAssLocAssListService.getOne(woacalsl).subscribe(function (Res) {
+            _this7.workOrderActivityCompletionAssLocAssListService.getOne(woacalsl).subscribe(function (Res) {
               console.log("1test", Res);
-              console.log("2test", Res.service_histories);
 
-              if (Res.service_histories == [] || Res.service_histories == undefined || Res.service_histories.length == 0) {
-                console.log("3test", datetime);
-                Res.reading_datetime = datetime;
-                console.log("4test", Res.reading_datetime);
-              }
+              _this7.workactivityData.push(Res); // if(Res.service_histories == [] || Res.service_histories == undefined || Res.service_histories.length == 0){
+              //   console.log("3test",datetime)
+              //   Res.reading_datetime = datetime
+              //   console.log("4test",Res.reading_datetime)
+              // }
 
-              _this6.workactivityData.push(Res);
 
-              console.log("5test", _this6.workactivityData);
+              console.log("5test", _this7.workactivityData);
               console.log(Res);
             }, function (Err) {
               console.error("err", Err);
             });
 
             setTimeout(function () {
-              _this6.workactivityData.forEach(function (element) {
+              _this7.workactivityData.forEach(function (element) {
                 console.log("workactivityData=>>>", element);
-                console.log("reading_datetime=>>>", element.reading_datetime);
+                console.log("badge_number=>>>", element.badge_number);
                 var asset_id = "asset_id=" + element.asset_id; /// set data to array for submit button
 
                 if (element.reading_datetime != null || element.reading_datetime != '') {
-                  _this6.buttonArr.push(element);
+                  _this7.buttonArr.push(element);
                 }
 
-                _this6.assetsService.filter(asset_id).subscribe(function (res) {
-                  element.badge_number = res[0].badge_no;
-                  element.description = res[0].description;
+                _this7.assetsService.filter(asset_id).subscribe(function (res) {
+                  element.badge_number = res['results'][0].badge_no;
+                  element.description = res['results'][0].description;
+
+                  if (element.badge_number == "" || element.badge_number == undefined) {
+                    element.reading_datetime = datetime;
+                  }
                 }, function (errAs) {});
 
                 var nodeid = "node_id=" + element.node_id;
 
-                _this6.assetLocatioSyncService.filter(nodeid).subscribe(function (resALALSH) {
+                _this7.assetLocatioSyncService.filter(nodeid).subscribe(function (resALALSH) {
                   console.log("resALALSH --=-= ", resALALSH);
                   element.location_descr = resALALSH[0].description;
                 }, function () {});
               });
 
-              console.log("this.buttonArr", _this6.buttonArr.length);
+              console.log("this.buttonArr", _this7.buttonArr.length);
 
-              if (_this6.buttonArr.length == 0) {
-                _this6.setButton = true;
+              if (_this7.buttonArr.length == 0) {
+                _this7.setButton = true;
               }
             }, 1000);
           });
@@ -747,15 +755,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this7 = this;
+          var _this8 = this;
 
           console.log("workactivityData", this.workactivityData);
           var checker = true;
           this.workactivityData.forEach(function (element) {
-            if (element.reading_datetime == '' || element.reading_datetime == null) {
+            if (element.reading_datetime == "1997-10-06T00:00:00+00:00") {
               checker = false;
             }
           });
+          console.log("checker", checker);
 
           if (checker == true) {
             var woacassLocAssLisFormData = {
@@ -768,7 +777,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.workOrderActivityCompletionService.update(this.workactivity.id, woacassLocAssLisFormData).subscribe(function (res) {
               console.log("res = ", res);
 
-              _this7.presentAlert("Success", "Successfully update data.");
+              _this8.presentAlert("Success", "Successfully update data.");
             }, function (err) {
               console.log("workOrderActivityCompletionService err", err);
             });
@@ -783,7 +792,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee7() {
-            var _this8 = this;
+            var _this9 = this;
 
             var alert;
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
@@ -812,28 +821,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         handler: function handler(data) {
                           if (data.badge_no == asset['badge_number']) {
                             if (data.badge_no) {
-                              _this8.loadingController.create({
+                              _this9.loadingController.create({
                                 message: "Please wait..."
                               }).then(function (loading) {
                                 loading.present();
 
-                                _this8.assetsService.filter("badge_no=" + data.badge_no).subscribe(function (res) {
+                                _this9.assetsService.filter("badge_no=" + data.badge_no).subscribe(function (res) {
                                   // if find, go to asset detail list
-                                  if (res.length > 0) {
+                                  if (res['results'].length > 0) {
                                     loading.dismiss();
                                     var navigationExtras = {
                                       state: {
-                                        badge_no: res[0].badge_no,
+                                        badge_no: data.badge_no,
                                         asset: asset,
-                                        work_activity: _this8.workactivity
+                                        work_activity: _this9.workactivity
                                       }
                                     };
 
-                                    _this8.router.navigate(["/technical/work-activity-asset"], navigationExtras);
+                                    _this9.router.navigate(["/technical/work-activity-asset"], navigationExtras);
                                   } // else, find the asset in the wams to pump into PIPE's asset table
                                   else {
                                       // get data from wams
-                                      _this8.wamsService.getAssetBadgeNo(data.badge_no).subscribe(function (res) {
+                                      _this9.wamsService.getAssetBadgeNo(data.badge_no).subscribe(function (res) {
                                         loading.dismiss();
 
                                         if (res.results.length > 0) {
@@ -841,33 +850,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                             state: {
                                               badge_no: data.badge_no,
                                               asset: asset,
-                                              work_activity: _this8.workactivity
+                                              work_activity: _this9.workactivity
                                             }
                                           };
 
-                                          _this8.router.navigate(["/technical/work-activity-asset"], _navigationExtras);
+                                          _this9.router.navigate(["/technical/work-activity-asset"], _navigationExtras);
                                         } else {
-                                          _this8.presentAlert("Error", "Sorry, asset is not found in the database.");
+                                          _this9.warningAlert("Error", "Sorry, asset is not found in the database.");
                                         }
                                       }, function (err) {
                                         console.error("err", err);
                                         loading.dismiss();
 
-                                        _this8.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                        _this9.warningAlert("Error", "Sorry, there is a technical problem going on.");
                                       });
                                     }
                                 }, function (err) {
                                   console.log("err assetlsService = ", err);
                                   loading.dismiss();
 
-                                  _this8.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                                  _this9.warningAlert("Error", "Sorry, there is a technical problem going on.");
                                 });
                               });
                             } else {
-                              _this8.presentAlert("Error", "Please enter badge number to find asset detail");
+                              _this9.warningAlert("Error", "Please enter badge number to find asset detail");
                             }
                           } else {
-                            _this8.warningAlert("Error", "Batch number not match. Please try again,");
+                            _this9.warningAlert("Error", "Batch number not match. Please try again,");
                           }
                         }
                       }]
@@ -889,7 +898,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onRegister2DBarcodeListener",
         value: function onRegister2DBarcodeListener(asset) {
-          var _this9 = this;
+          var _this10 = this;
 
           this.loadingController.create({
             message: "Please scan the QR code...",
@@ -904,22 +913,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               console.log(JSON.stringify(event));
 
               if (event.SCAN_STATE == "success") {
-                _this9.ngZone.run(function () {
-                  console.log("this.bBarcode = ", _this9.bBarcode);
+                _this10.ngZone.run(function () {
+                  console.log("this.bBarcode = ", _this10.bBarcode);
 
-                  if (_this9.bBarcode) {
+                  if (_this10.bBarcode) {
                     loading.dismiss();
-                    broadcaster.removeEventListener(ev, listener);
+                    broadcaster.removeEventListener(ev, listener); //this.updateQrbarcode(event.data, asset);
 
-                    _this9.updateQrbarcode(event.data, asset); // if(event.data == asset.badge_number){
-                    //   this.updateQrbarcode(event.data, asset);
-                    // }else{
-                    //     this.warningAlert(
-                    //       "Error",
-                    //       "Batch number not match. Please try again,"
-                    //     );
-                    // }
+                    var data = event.data.trim();
+                    var badge = asset.badge_number.trim();
 
+                    if (data == badge) {
+                      _this10.updateQrbarcode(event.data, asset);
+                    } else {
+                      _this10.warningAlert("Error", "Batch number not match. Please try again,");
+                    }
                   }
                 });
               }
@@ -931,7 +939,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onRegisterRFIDListener",
         value: function onRegisterRFIDListener(asset) {
-          var _this10 = this;
+          var _this11 = this;
 
           this.loadingController.create({
             message: "Please scan the RFID tag...",
@@ -946,14 +954,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               console.log(JSON.stringify(event));
 
               if (event.SCAN_STATE == "success") {
-                _this10.ngZone.run(function () {
-                  console.log("this.bRfid = ", _this10.bRfid);
+                _this11.ngZone.run(function () {
+                  console.log("this.bRfid = ", _this11.bRfid);
 
-                  if (_this10.bRfid) {
+                  if (_this11.bRfid) {
                     loading.dismiss();
                     broadcaster.removeEventListener(ev, listener);
 
-                    _this10.updateRfid(event.data, asset);
+                    _this11.updateRfid(event.data, asset);
                   }
                 });
               }
@@ -968,7 +976,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee8() {
-            var _this11 = this;
+            var _this12 = this;
 
             var actionSheet;
             return regeneratorRuntime.wrap(function _callee8$(_context8) {
@@ -986,20 +994,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         icon: "scan",
                         handler: function handler() {
                           console.log("RFID clicked");
-                          _this11.bBarcode = false;
-                          _this11.bRfid = true;
+                          _this12.bBarcode = false;
+                          _this12.bRfid = true;
 
-                          _this11.onRegisterRFIDListener(asset);
+                          _this12.onRegisterRFIDListener(asset);
                         }
                       }, {
                         text: "QR Code",
                         icon: "qr-code",
                         handler: function handler() {
                           console.log("QR Code clicked");
-                          _this11.bBarcode = true;
-                          _this11.bRfid = false;
+                          _this12.bBarcode = true;
+                          _this12.bRfid = false;
 
-                          _this11.onRegister2DBarcodeListener(asset);
+                          _this12.onRegister2DBarcodeListener(asset);
                         }
                       }, {
                         text: "Badge No.",
@@ -1007,7 +1015,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         handler: function handler() {
                           console.log("Badge No. clicked");
 
-                          _this11.searchBadgeNo(asset);
+                          _this12.searchBadgeNo(asset);
                         }
                       }, {
                         text: "Cancel",
@@ -1036,47 +1044,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateRfid",
         value: function updateRfid(data, asset) {
-          var _this12 = this;
+          var _this13 = this;
 
           if (this.bRfid) this.ngZone.run(function () {
-            _this12.scanValue = data;
+            _this13.scanValue = data;
 
-            if (_this12.scanValue != "" || _this12.scanValue != undefined || _this12.scanValue != '' || _this12.scanValue != null) {
-              _this12.loadingController.create({
+            if (_this13.scanValue != "" || _this13.scanValue != undefined || _this13.scanValue != '' || _this13.scanValue != null) {
+              _this13.loadingController.create({
                 message: "Please wait..."
               }).then(function (loading) {
                 loading.present();
 
-                _this12.assetsService.filter("hex_code=" + _this12.scanValue).subscribe(function (res) {
+                _this13.assetsService.filter("hex_code=" + _this13.scanValue).subscribe(function (res) {
                   loading.dismiss(); // if find, go to asset detail list
 
-                  if (res.length > 0) {
-                    if (res[0].badge_no == asset.badge_number) {
+                  if (res['results'].length > 0) {
+                    if (res['results'][0].badge_no == asset.badge_number) {
                       var navigationExtras = {
                         state: {
-                          badge_no: res[0].badge_no,
+                          badge_no: res['results'][0].badge_no,
                           asset: asset,
-                          work_activity: _this12.workactivity
+                          work_activity: _this13.workactivity
                         }
                       };
 
-                      _this12.router.navigate(["/technical/work-activity-asset"], navigationExtras);
+                      _this13.router.navigate(["/technical/work-activity-asset"], navigationExtras);
                     } else {
-                      _this12.presentAlert("Error", "Batch number not match. Please try again,");
+                      _this13.warningAlert("Error", "Batch number not match. Please try again,");
                     }
                   } // else, suggest the user to use QR scanner OR search by badge number
                   else {
-                      _this12.presentAlert("Error", "The asset is not found in the database. Please try again by using QR scanner OR search by badge number.");
+                      _this13.warningAlert("Error", "The asset is not found in the database. Please try again by using QR scanner OR search by badge number.");
                     }
                 }, function (err) {
                   console.log("err assetlsService = ", err);
                   loading.dismiss();
 
-                  _this12.presentAlert("Error", "Sorry, there is a technical problem going on.");
+                  _this13.warningAlert("Error", "Sorry, there is a technical problem going on.");
                 });
               });
             } else {
-              _this12.presentAlert("Error", "RFID is invalid. Please try again.");
+              _this13.warningAlert("Error", "RFID is invalid. Please try again.");
             }
           });
         } // qr code
@@ -1084,68 +1092,72 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateQrbarcode",
         value: function updateQrbarcode(data, asset) {
-          var _this13 = this;
+          var _this14 = this;
 
           if (this.bBarcode) this.ngZone.run(function () {
-            _this13.scanValue = data;
+            _this14.scanValue = data;
 
-            if (_this13.scanValue != "") {
-              if (_this13.scanValue == asset.badge_number) {
-                _this13.loadingController.create({
-                  message: "Please wait..."
-                }).then(function (loading) {
-                  loading.present();
+            if (_this14.scanValue != "") {
+              //  if (this.scanValue == asset.badge_number) {
+              _this14.loadingController.create({
+                message: "Please wait..."
+              }).then(function (loading) {
+                loading.present();
 
-                  _this13.assetsService.filter("badge_no=" + _this13.scanValue).subscribe(function (res) {
-                    // if find, go to asset detail list
-                    if (res.length > 0) {
-                      loading.dismiss();
-                      var navigationExtras = {
-                        state: {
-                          badge_no: res[0].badge_no,
-                          asset: asset
-                        }
-                      };
-
-                      _this13.router.navigate(["/technical/work-activity-asset"], navigationExtras);
-                    } // else, find the asset in the wams to pump into PIPE's asset table
-                    else {
-                        // get data from wams
-                        _this13.wamsService.getAssetBadgeNo(_this13.scanValue).subscribe(function (res) {
-                          loading.dismiss();
-
-                          if (res.results.length > 0) {
-                            var _navigationExtras2 = {
-                              state: {
-                                badge_no: _this13.scanValue,
-                                asset: asset,
-                                work_activity: _this13.workactivity
-                              }
-                            };
-
-                            _this13.router.navigate(["/technical/work-activity-asset"], _navigationExtras2);
-                          } else {
-                            _this13.presentAlert("Error", "Sorry, asset is not found in the database.");
-                          }
-                        }, function (err) {
-                          console.error("err", err);
-                          loading.dismiss();
-
-                          _this13.presentAlert("Error", "Sorry, there is a technical problem going on.");
-                        });
-                      }
-                  }, function (err) {
-                    console.log("err assetlsService = ", err);
+                _this14.assetsService.filter("badge_no=" + _this14.scanValue).subscribe(function (res) {
+                  // if find, go to asset detail list
+                  if (res['results'].length > 0) {
                     loading.dismiss();
+                    var navigationExtras = {
+                      state: {
+                        badge_no: res['results'][0].badge_no,
+                        asset: asset,
+                        work_activity: _this14.workactivity
+                      }
+                    };
 
-                    _this13.presentAlert("Error", "Sorry, there is a technical problem going on.");
-                  });
+                    _this14.router.navigate(["/technical/work-activity-asset"], navigationExtras);
+                  } // else, find the asset in the wams to pump into PIPE's asset table
+                  else {
+                      // get data from wams
+                      _this14.wamsService.getAssetBadgeNo(_this14.scanValue).subscribe(function (res) {
+                        loading.dismiss();
+
+                        if (res.results.length > 0) {
+                          var _navigationExtras2 = {
+                            state: {
+                              badge_no: _this14.scanValue,
+                              asset: asset,
+                              work_activity: _this14.workactivity
+                            }
+                          };
+
+                          _this14.router.navigate(["/technical/work-activity-asset"], _navigationExtras2);
+                        } else {
+                          _this14.warningAlert("Error", "Sorry, asset is not found in the database.");
+                        }
+                      }, function (err) {
+                        console.error("err", err);
+                        loading.dismiss();
+
+                        _this14.warningAlert("Error", "Sorry, there is a technical problem going on.");
+                      });
+                    }
+                }, function (err) {
+                  console.log("err assetlsService = ", err);
+                  loading.dismiss();
+
+                  _this14.warningAlert("Error", "Sorry, there is a technical problem going on.");
                 });
-              } else {
-                _this13.warningAlert("Error", "Batch number not match. Please try again,");
-              }
+              }); // } else {
+              //   this.warningAlert(
+              //     "Error",
+              //     "Batch number not match. Please try again,"
+              //   );
+              // }
+
             } else {
-              _this13.presentAlert("Error", "QR code is invalid. Please try again.");
+              _this14.warningAlert("Error", "QR code is invalid. Please try again.");
             }
           });
         }
@@ -1402,22 +1414,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "get",
         value: function get() {
-          var _this14 = this;
+          var _this15 = this;
 
           return this.http.get(this.url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
             console.log("WorkOrderActivityCompletionModel", res);
-            _this14.wamodels = res;
+            _this15.wamodels = res;
           }));
         }
       }, {
         key: "getOne",
         value: function getOne(id) {
-          var _this15 = this;
+          var _this16 = this;
 
           var urlID = this.url + id + "/";
           return this.http.get(urlID).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
             console.log("WorkOrderActivityCompletionModel", res);
-            _this15.wamodel = res;
+            _this16.wamodel = res;
           }));
         }
       }, {

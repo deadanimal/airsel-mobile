@@ -125,6 +125,10 @@ const routes: Routes = [
   {
     path: 'approval-profile',
     loadChildren: () => import('./pages/technical/approval-profile/approval-profile.module').then( m => m.ApprovalProfilePageModule)
+  },
+  {
+    path: 'multiple-retagging',
+    loadChildren: () => import('./pages/technical/multiple-retagging/multiple-retagging.module').then( m => m.MultipleRetaggingPageModule)
   }
 ];
 @NgModule({

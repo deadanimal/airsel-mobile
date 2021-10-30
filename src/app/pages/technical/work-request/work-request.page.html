@@ -103,7 +103,7 @@
 
         <ion-item>
           <ion-label position="stacked">Planner</ion-label>
-          <ionic-selectable *ngIf="process != 'view'" [(ngModel)]="planners" [items]="plannerData" itemValueField="planner"
+          <ionic-selectable item-content *ngIf="process != 'view'" placeholder="Please select" [(ngModel)]="planners" [items]="plannerData" itemValueField="planner"
             itemTextField="description" [canSearch]="true" formControlName="planner"
             (onChange)="onChangePlanner($event)">
           </ionic-selectable>
@@ -142,7 +142,7 @@
           <ion-label position="stacked">Work Category</ion-label>
           <ion-select *ngIf="process != 'view'" formControlName="work_category">
             <ion-select-option value="">Please select</ion-select-option>
-            <ion-select-option *ngFor="let wcatd of workCategoryData" [value]="wcatd.value">
+            <ion-select-option *ngFor="let wcatd of workCategoryDataqwe" [value]="wcatd.value">
               {{wcatd.description}}
             </ion-select-option>
           </ion-select>

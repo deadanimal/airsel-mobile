@@ -697,7 +697,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"homePage('/technical/tabs/tab1')\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Asset Detail </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Asset Details</h4>\n\n    <ion-card *ngFor=\"let assetregistration of assetregistrations\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button size=\"small\" color=\"primary\" (click)=\"clickEdit(assetregistration)\">\n            <ion-icon name=\"document-text\"></ion-icon>\n          </ion-fab-button>\n          <!-- <ion-fab-button\n            size=\"small\"\n            color=\"danger\"\n            (click)=\"clickRemove(i)\"\n          >\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button> -->\n        </ion-fab>\n        <ion-card-title>Badge No<br />{{ assetregistration.badge_no }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <p>Asset Id: {{ assetregistration.asset_id }}</p>\n        <p>Asset Type: {{ assetregistration.asset_type }}</p>\n        <p>Asset Location: {{ assetLocatioSyncdata }}</p>\n        <!-- <p>Asset Location: {{ assetregistration.location_description }}</p> -->\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"homePage('/technical/tabs/tab1')\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> Asset Detail </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          <!-- {{ notificationService.totalnotificationbyuser }}-->\n          </ion-badge> \n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Asset Details</h4>\n\n    <ion-card *ngFor=\"let assetregistration of assetregistrations\">\n      <ion-card-header>\n        <ion-fab horizontal=\"end\">\n          <ion-fab-button size=\"small\" color=\"primary\" (click)=\"clickEdit(assetregistration)\">\n            <ion-icon name=\"document-text\"></ion-icon>\n          </ion-fab-button>\n          <!-- <ion-fab-button\n            size=\"small\"\n            color=\"danger\"\n            (click)=\"clickRemove(i)\"\n          >\n            <ion-icon name=\"trash\"></ion-icon>\n          </ion-fab-button> -->\n        </ion-fab>\n        <ion-card-title>Badge No<br />{{ assetregistration.badge_no }}</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <p>Asset Id: {{ assetregistration.asset_id }}</p>\n        <p>Asset Type: {{ assetregistration.asset_type }}</p>\n        <p>Asset Location: {{ assetLocatioSyncdata }}</p>\n        <!-- <p>Asset Location: {{ assetregistration.location_description }}</p> -->\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -873,7 +873,7 @@ ProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("table {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvc3RvcmUta2VlcGVyL2xpc3QtaXRlbS9saXN0LWl0ZW0ucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9zdG9yZS1rZWVwZXIvbGlzdC1pdGVtL2xpc3QtaXRlbS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9zdG9yZS1rZWVwZXIvbGlzdC1pdGVtL2xpc3QtaXRlbS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XG4gICAgd2lkdGg6IDEwMCU7XG59IiwidGFibGUge1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("table {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3N0b3JlLWtlZXBlci9saXN0LWl0ZW0vbGlzdC1pdGVtLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvc3RvcmUta2VlcGVyL2xpc3QtaXRlbS9saXN0LWl0ZW0ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvc3RvcmUta2VlcGVyL2xpc3QtaXRlbS9saXN0LWl0ZW0ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xuICAgIHdpZHRoOiAxMDAlO1xufSIsInRhYmxlIHtcbiAgd2lkdGg6IDEwMCU7XG59Il19 */");
 
 /***/ }),
 
@@ -938,7 +938,7 @@ ListItemPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("table {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci9saXN0LWl0ZW0vbGlzdC1pdGVtLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvc3RvcmUtc3VwZXJ2aXNvci9saXN0LWl0ZW0vbGlzdC1pdGVtLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3N0b3JlLXN1cGVydmlzb3IvbGlzdC1pdGVtL2xpc3QtaXRlbS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XG4gICAgd2lkdGg6IDEwMCU7XG59IiwidGFibGUge1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("table {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL3BhZ2VzL3N0b3JlLXN1cGVydmlzb3IvbGlzdC1pdGVtL2xpc3QtaXRlbS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3N0b3JlLXN1cGVydmlzb3IvbGlzdC1pdGVtL2xpc3QtaXRlbS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9zdG9yZS1zdXBlcnZpc29yL2xpc3QtaXRlbS9saXN0LWl0ZW0ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xuICAgIHdpZHRoOiAxMDAlO1xufSIsInRhYmxlIHtcbiAgd2lkdGg6IDEwMCU7XG59Il19 */");
 
 /***/ }),
 
@@ -1328,8 +1328,8 @@ let AssetDetailListPage = class AssetDetailListPage {
         // console.log("badge_no =", badge_no)
         this.assetsService.filter("badge_no=" + badge_no).subscribe((res) => {
             console.log("assetregistrations=res", res);
-            this.assetregistrations = res;
-            if (res[0].attached_to_asset_id == '') {
+            this.assetregistrations = res['results'];
+            if (res['results'][0].attached_to_asset_id == '') {
                 this.assetLocatioSyncService.filter("node_id=" + this.assetregistrations[0].node_id).subscribe((res) => {
                     console.log("assetLocatioSyncServiceres>>>", res);
                     // this.assetregistrations = res;
@@ -1346,9 +1346,9 @@ let AssetDetailListPage = class AssetDetailListPage {
                 });
             }
             else {
-                this.assetsService.filter("asset_id=" + res[0].attached_to_asset_id).subscribe((resA) => {
+                this.assetsService.filter("asset_id=" + res['results'][0].attached_to_asset_id).subscribe((resA) => {
                     console.log("assetqqqqqqqqq=res", resA);
-                    this.assetLocatioSyncService.filter("node_id=" + resA[0]['node_id']).subscribe((resAls) => {
+                    this.assetLocatioSyncService.filter("node_id=" + resA['results'][0]['node_id']).subscribe((resAls) => {
                         console.log("resAls>><<>>", resAls);
                         if (resAls.length > 0) {
                             this.assetLocatioSyncdata = resAls[0].description;
@@ -1360,7 +1360,7 @@ let AssetDetailListPage = class AssetDetailListPage {
                     }, (err) => {
                         console.error("err", err);
                     });
-                    this.assetregistrations = res;
+                    //this.assetregistrations = res;
                 }, (error) => {
                     console.log(error);
                 });
@@ -1387,6 +1387,7 @@ let AssetDetailListPage = class AssetDetailListPage {
                 asset_detail: assetregistration,
             },
         };
+        console.log("try1", assetregistration);
         this.router.navigate(["/technical/asset-detail"], navigationExtras);
     }
     homePage(path) {

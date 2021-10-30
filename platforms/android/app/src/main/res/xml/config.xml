@@ -45,7 +45,7 @@
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
     </feature>
-    <name>TAMS-WAMS Mobile</name>
+    <name>TAMS Mobile</name>
     <description>An app for the Air Selangor workers.</description>
     <author email="webmaster@airselangor.com" href="https://www.airselangor.com/">Air Selangor</author>
     <content src="index.html" />

@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Service History</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"servicehistoryFormGroup\">\n        <ion-item>\n          <ion-label position=\"stacked\">Service History Type</ion-label>\n          <ion-select (ionChange)=\"onChangeServiceHistory($event.target.value)\">\n            <ion-select-option *ngFor=\"let serHis of ServiceHistoryList\" [value]=\"serHis.id\">\n              {{serHis.service_hist_desc}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n        <div *ngIf=\"questionAndAnswerDiv == '1'\">\n          <!-- <div> -->\n          <ion-item *ngFor=\"let qna of questionAndAnswerData\">\n            <ion-label position=\"stacked\">{{qna.question.question_desc}}</ion-label>\n            <ion-select (ionChange)=\"safeDataToArray($event.target.value,qna)\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ans of qna.answer\" [value]=\"ans.answer_cd\">{{ans.answer_text}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerDowntimeDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Start Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'start')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'start')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">End Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'end')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'end')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Downtime Reason</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n              <ion-select-option value=\"PL\">Planned</ion-select-option>\n              <ion-select-option value=\"NPL\">Not Planned\n              </ion-select-option>\n            </ion-select>\n            <!-- <ion-input type=\"text\" (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n            </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Comment</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'comment')\" required>\n            </ion-input>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerFailureDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Cause</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'type')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansType of failureTypeData\" [value]=\"ansType.failure_type\">\n                {{ansType.failure_type}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Mode</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'mode')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansMode of failureModeData\" [value]=\"ansMode.failure_mode\">\n                {{ansMode.failure_mode}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Repair</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'repair')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansRepair of failureRepairData\" [value]=\"ansRepair.failure_repair\">\n                {{ansRepair.failure_repair}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Component</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'component')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansComp of failureComponentData\" [value]=\"ansComp.failure_comp\">\n                {{ansComp.failure_comp}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Remark</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'remark')\" required>\n            </ion-input>\n          </ion-item>\n\n        </div>\n\n      </form>\n    </ion-list>\n\n    <div class=\"ion-text-center\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Cancel</ion-button>\n      <ion-button color=\"primary\" (click)=\"presentAlertConfirm()\">Save</ion-button>\n    </div>\n  </div>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header mode=\"ios\" class=\"ion-no-border\">\n  <ion-toolbar mode=\"ios\" class=\"ion-no-border toolbar-core\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"clickBack()\">\n        <ion-icon src=\"../../../../assets/icon/air-selangor-icon.svg\" style=\"font-size: 2rem\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title style=\"font-weight: bold\"> </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"openNotification()\">\n        <ion-icon slot=\"icon-only\" name=\"notifications\"></ion-icon>\n        <ion-badge size=\"small\" color=\"danger\" style=\"position: absolute; right: -5px; top: 1px\">\n          {{ notificationService.totalnotificationbyuser }}</ion-badge>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"content-core\">\n  <div class=\"ion-padding\">\n    <h4 class=\"ion-text-center ion-padding\">Service History</h4>\n    <ion-list class=\"line-input\">\n      <form [formGroup]=\"servicehistoryFormGroup\">\n        <ion-item>\n          <ion-label position=\"stacked\">Service History Type</ion-label>\n          <ion-select (ionChange)=\"onChangeServiceHistory($event.target.value)\">\n            <ion-select-option *ngFor=\"let serHis of ServiceHistoryList\" [value]=\"serHis.id\">\n              {{serHis.service_hist_desc}}</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n        <div *ngIf=\"questionAndAnswerDiv == '1'\">\n          <!-- <div> -->\n          <ion-item *ngFor=\"let qna of questionAndAnswerData\">\n            <ion-label position=\"stacked\">{{qna.question.question_desc}}</ion-label>\n            <ion-select (ionChange)=\"safeDataToArray($event.target.value,qna)\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ans of qna.answer\" [value]=\"ans.answer_cd\">{{ans.answer_text}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerDowntimeDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Start Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'start')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'start')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">End Date Time</ion-label>\n            <ion-datetime displayFormat=\"YYYY-MM-DD HH:mm:ss\" pickerFormat=\"YYYY-MM-DD HH:mm:ss\"\n              (ionChange)=\"saveFailureDontimeArray($event.target.value,'end')\"></ion-datetime>\n            <!-- <ion-input type=\"datetime-local\" (click)=\"saveFailureDontimeArray($event.target.value,'end')\" required> -->\n            <!-- </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Downtime Reason</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n              <ion-select-option value=\"PL\">Planned</ion-select-option>\n              <ion-select-option value=\"NPL\">Not Planned\n              </ion-select-option>\n            </ion-select>\n            <!-- <ion-input type=\"text\" (ionChange)=\"saveFailureDontimeArray($event.target.value,'reason')\" required>\n            </ion-input> -->\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Comment</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'comment')\" required>\n            </ion-input>\n          </ion-item>\n        </div>\n\n        <div *ngIf=\"questionAndAnswerFailureDiv == '1'\">\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Cause</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'type')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansType of failureTypeData\" [value]=\"ansType.failure_type\">\n                {{ansType.failure_type}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Mode</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'mode')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansMode of failureModeData\" [value]=\"ansMode.failure_mode\">\n                {{ansMode.failure_mode}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Repair</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'repair')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansRepair of failureRepairData\" [value]=\"ansRepair.failure_repair\">\n                {{ansRepair.failure_repair}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Failure Component</ion-label>\n            <ion-select (ionChange)=\"saveFailureDontimeArray($event.target.value,'component')\" required>\n              <ion-select-option>Please Select</ion-select-option>\n              <ion-select-option *ngFor=\"let ansComp of failureComponentData\" [value]=\"ansComp.failure_comp\">\n                {{ansComp.failure_comp}}\n              </ion-select-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item>\n            <ion-label position=\"stacked\">Comment</ion-label>\n            <ion-input type=\"text\" (keyup)=\"saveFailureDontimeArray($event.target.value,'remark')\" required>\n            </ion-input>\n          </ion-item>\n\n        </div>\n\n      </form>\n    </ion-list>\n\n    <div class=\"ion-text-center\">\n      <ion-button color=\"light\" (click)=\"clickBack()\">Cancel</ion-button>\n      <ion-button color=\"primary\" (click)=\"presentAlertConfirm()\">Save</ion-button>\n    </div>\n  </div>\n</ion-content>";
     /***/
   },
 
@@ -151,19 +151,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _amcharts_amcharts4_internal_core_utils_Array__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! @amcharts/amcharts4/.internal/core/utils/Array */
+    "./node_modules/@amcharts/amcharts4/.internal/core/utils/Array.js");
+    /* harmony import */
+
+
+    var src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! src/app/shared/services/asset-location-asset-list-service-histories/asset-location-asset-list-service-histories.service */
     "./src/app/shared/services/asset-location-asset-list-service-histories/asset-location-asset-list-service-histories.service.ts");
     /* harmony import */
 
 
-    var src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service */
     "./src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service.ts");
     /* harmony import */
 
 
-    var src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! src/app/shared/services/failure-profile/failure-profile.service */
     "./src/app/shared/services/failure-profile/failure-profile.service.ts");
 
@@ -209,6 +215,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.assetTypeData = [];
         this.updateformData = [];
         this.servHistArr = [];
+        this.WorkActAsset = _amcharts_amcharts4_internal_core_utils_Array__WEBPACK_IMPORTED_MODULE_14__["any"];
         this.serviceHistoryArray = [];
         this.listOfAllrequired = [];
         this.failureTypeData = [];
@@ -229,14 +236,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.downtime_comment = '';
         this.servHist = this.navParams.get("servicehistory");
         this.servHistArr = this.navParams.get("servHistArr");
+        this.WorkActAsset = this.navParams.get("WAA");
         console.log("this.servHist servHistArr = ", this.servHistArr);
         console.log("this.servHist servHist = ", this.servHist);
         this.getWorkOrderActComAssLocAssLis(this.servHist);
         this.assetsService.filter("asset_id=" + this.servHist.asset_id).subscribe(function (assServres) {
-          console.log("assetsService res", assServres); // console.log("assetsService res", res[0]['asset_type'])
+          console.log("assetsService res", assServres['results']); // console.log("assetsService res", res[0]['asset_type'])
           // console.log("assetsService res", res[0].asset_type)
 
-          _this.assetTypesService.filter("asset_type_code=" + assServres[0]['asset_type']).subscribe(function (assTypeServres) {
+          _this.assetTypesService.filter("asset_type_code=" + assServres['results'][0]['asset_type']).subscribe(function (assTypeServres) {
             console.log("assetTypesService res", assTypeServres);
 
             _this.assetTypeData.push(assTypeServres[0]);
@@ -356,7 +364,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "clickBack",
         value: function clickBack() {
-          this.modalController.dismiss(); // await this.modalController.dismiss(onClosedData);
+          this.modalController.dismiss(this.serviceHistoryArray); // await this.modalController.dismiss(onClosedData);
         }
       }, {
         key: "alertServiceHistory",
@@ -378,7 +386,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       buttons: [{
                         text: "OK",
                         handler: function handler() {
-                          _this3.modalController.dismiss();
+                          _this3.modalController.dismiss(_this3.serviceHistoryArray);
                         }
                       }]
                     });
@@ -416,7 +424,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }); // console.log("assetType = ", assetType)
           // console.log("assetType = ", assetType['service_hist_desc'])
 
-          this.selectedServiceHistory = assetType['service_hist_desc'];
+          this.selectedServiceHistory = assetType['service_hist_type'];
           this.selectedAssetType = assetType['category'];
           this.selectedServiceHistoryType = assetType['service_hist_type'];
           console.log(this.selectedAssetType, "---", this.selectedServiceHistory);
@@ -500,10 +508,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "safeDataToArray",
         value: function safeDataToArray(value, row) {
-          console.log("row", row);
-          console.log("value", value);
+          var func = "";
           var obj = {
-            // ...row,
             question_id: row.question.id,
             question_cd: row.question.question_cd,
             question_desc: row.question.question_desc,
@@ -511,8 +517,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             valid_value: row.answer,
             answer_id: value
           };
-          this.updateformData.push(obj);
-          console.log("qnaPostData", this.updateformData);
+          func = "add";
+
+          if (this.updateformData.length == 0) {
+            func = "add";
+          } else {
+            for (var x = 0; x < this.updateformData.length; x++) {
+              if (this.updateformData[x].question_id == row.question.id) {
+                func = "update";
+                this.updateformData[x].answer_id = value;
+              }
+            }
+          }
+
+          if (func == "add") {
+            this.updateformData.push(obj);
+          } // console.log("qnaPostData", func);
+          // console.log("qnaPostData", this.updateformData);
+
         }
       }, {
         key: "saveFailureDontimeArray",
@@ -552,26 +574,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var servHistQues = [];
           var woacalalData = [];
           var alalshData = [];
-          var idToBeUpdate = ''; // if (this.workOrderActComAssLocAssLis.service_histories.length > 0) {
-          //   console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-          //   this.workOrderActComAssLocAssLis.service_histories
-          //     .forEach(element => {
-          //       // this.AssLocAssLisArrId
-          //       woacalalData.push(element)
-          //     });
-          // } else {
-          //   console.log("sini length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-          //   woacalalData = []
-          // }
+          var idToBeUpdate = '';
 
           if (this.listOfAllrequired.length > 0) {
             console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length);
             this.listOfAllrequired.forEach(function (element) {
               // this.AssLocAssLisArrId
-              console.log("element==>>", element); // // set for question_id
-              // servHistQues.push(element.id)
-              // set for service_history_id
-
+              console.log("element==>>", element);
               woacalalData.push(element.id);
               console.log(_this5.selectedServiceHistoryType, "==", element.service_history_type);
 
@@ -590,7 +599,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           console.log('servHistQues>>>', servHistQues);
 
           if (this.selectedAssetType == 'Failure') {
-            if (this.failure_type == '' && this.failure_mode == '' && this.failure_repair == '' && this.failure_component == '' && this.failure_remark == '') {
+            if (this.failure_type == '' || this.failure_mode == '' || this.failure_repair == '' || this.failure_component == '') {
               this.alertWarning('Warning', 'Please answer all question.');
             } else {
               var assLocAssLisSerHisData = {
@@ -599,7 +608,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 failure_mode: this.failure_mode,
                 failure_repair: this.failure_repair,
                 failure_component: this.failure_component,
-                comments: this.failure_remark
+                comments: this.failure_remark,
+                start_date_time: new Date(),
+                end_date_time: new Date(),
+                downtime_reason: "NPL",
+                failure_root_cause: "AGING"
               };
               console.log("assLocAssLisSerHisData = ", assLocAssLisSerHisData);
 
@@ -610,6 +623,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   var woacassLocAssLisFormData = {
                     service_histories: woacalalData
                   };
+                  console.log("updateservhistaaa1", _this5.servHist.id);
+                  console.log("updateservhistaaa1", woacassLocAssLisFormData);
 
                   _this5.workOrderActivityCompletionAssLocAssListService.update(_this5.servHist.id, woacassLocAssLisFormData).subscribe(function (woacalalRes) {
                     console.log("woacalalRes =", woacalalRes);
@@ -622,6 +637,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   console.log(err);
                 });
               } else {
+                console.log("updateservhistaaa2", idToBeUpdate);
+                console.log("updateservhistaaa2", assLocAssLisSerHisData);
                 this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, assLocAssLisSerHisData).subscribe(function (res) {
                   console.log("updatefailureformData = ", res); // woacalalData.push(res.id)
                   // let woacassLocAssLisFormData = {
@@ -642,7 +659,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }
           } else if (this.selectedAssetType == 'Downtime') {
-            if (this.downtime_start == '' && this.downtime_end == '' && this.downtime_reason == '' && this.downtime_comment == '') {
+            if (this.downtime_start == '' || this.downtime_end == '' || this.downtime_reason == '') {
               this.alertWarning('Warning', 'Please answer all question.');
             } else {
               var _assLocAssLisSerHisData = {
@@ -650,7 +667,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 start_date_time: this.downtime_start,
                 end_date_time: this.downtime_end,
                 downtime_reason: this.downtime_reason,
-                comments: this.downtime_comment
+                comments: this.downtime_comment,
+                failure_type: "AGING",
+                failure_mode: "JAMMED",
+                failure_repair: "ASSET-REPLACEMENT",
+                failure_component: "SENSOR",
+                failure_root_cause: "AGING"
               };
               console.log("assLocAssLisSerHisData = ", _assLocAssLisSerHisData);
 
@@ -662,6 +684,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   var woacassLocAssLisFormData = {
                     service_histories: woacalalData
                   };
+                  console.log("updateservhistaaa3", _this5.servHist.id);
+                  console.log("updateservhistaaa3", woacassLocAssLisFormData);
 
                   _this5.workOrderActivityCompletionAssLocAssListService.update(_this5.servHist.id, woacassLocAssLisFormData).subscribe(function (woacalalRes) {
                     console.log("woacalalRes =", woacalalRes);
@@ -674,7 +698,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   console.log(err);
                 });
               } else {
-                console.log("this is a existing data ", idToBeUpdate);
+                //console.log("this is a existing data ", idToBeUpdate)
+                console.log("updateservhistaaa4", idToBeUpdate);
+                console.log("updateservhistaaa4", _assLocAssLisSerHisData);
                 this.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, _assLocAssLisSerHisData).subscribe(function (res) {
                   console.log("updatefailureformData = ", res); // woacalalData.push(res.id)
                   // let woacassLocAssLisFormData = {
@@ -704,14 +730,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var _loop = function _loop(x) {
                 console.log("xxxxxx = ", x);
                 console.log("this.updateformData[x] = ", _this5.updateformData[x]);
-                console.log("element1['valid_value'] = ", _this5.updateformData[x]['valid_value'].length); // let validvalue: any = []
-
+                console.log("element1['valid_value'] = ", _this5.updateformData[x]['valid_value'].length);
                 var styleDiv = '';
                 var questionvalueData = void 0;
                 var questionvalue = [];
                 var validvalue = [];
-                var responseRadio = ''; // this.updateformData[x]['valid_value'].forEach(element2 => {
-
+                var responseRadio = '';
                 var valid_value_data = _this5.updateformData[x]['valid_value'];
 
                 var _loop2 = function _loop2(i) {
@@ -731,10 +755,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   _this5.questionValidValueService.post(validValueFormData).subscribe(function (queValValRes) {
                     console.log("res queValValRes = ", queValValRes);
-                    var obj2 = [queValValRes.id]; // validvalue.push(this.updateformData[x].id);
-                    // questionvalue.push(obj2);
-                    // validvalue[i] = queValValRes.id
-
+                    var obj2 = [queValValRes.id];
                     console.log("validvalue array = ", obj2);
                     validvalue.push(queValValRes.id);
                     console.log("questionvalue qweqwe res = ", validvalue);
@@ -765,14 +786,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                           var _assLocAssLisSerHisData2 = {
                             comments: _this5.updateformData[x].question_seq,
                             service_history_type: _this5.selectedServiceHistory,
-                            // failure_type: this.updateformData[x].question_seq,
-                            // failure_mode: this.updateformData[x].question_seq,
-                            // failure_repair: this.updateformData[x].question_seq,
-                            // failure_component: this.updateformData[x].question_seq,
-                            // failure_root_cause: this.updateformData[x].question_seq,
-                            // svc_hist_type_req_fl: this.updateformData[x].question_seq,
-                            // downtime_reason: this.updateformData[x].question_seq,
-                            question: servHistQues
+                            question: servHistQues,
+                            start_date_time: new Date(),
+                            end_date_time: new Date(),
+                            downtime_reason: "NPL",
+                            failure_type: "AGING",
+                            failure_mode: "JAMMED",
+                            failure_repair: "ASSET-REPLACEMENT",
+                            failure_component: "SENSOR",
+                            failure_root_cause: "AGING"
                           };
                           console.log("assLocAssLisSerHisData>><<<<><", _assLocAssLisSerHisData2);
 
@@ -782,18 +804,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                             _this5.assetLocationAssetListServiceHistoriesService.post(_assLocAssLisSerHisData2).subscribe(function (alslshRes) {
                               console.log("alslshRes", alslshRes);
                               console.log("alslshRes", alslshRes.id);
-                              woacalalData.push(alslshRes.id); // let woacassLocAssLisDataFormData = new FormData();
-                              // woacassLocAssLisDataFormData.append('service_histories',woacalalData)
-
+                              woacalalData.push(alslshRes.id);
                               var woacassLocAssLisFormData = {
                                 service_histories: woacalalData
                               };
+                              console.log("updateservhistaaa5", _this5.servHist.id);
+                              console.log("updateservhistaaa5", woacassLocAssLisFormData);
 
                               _this5.workOrderActivityCompletionAssLocAssListService.update(_this5.servHist.id, woacassLocAssLisFormData).subscribe(function (woacalalRes) {
                                 console.log("woacalalRes =", woacalalRes);
 
-                                _this5.alertWorkActivityAsset('Work Activity', 'Your service history has been successfully updated.'); // this.presentAlertConfirm()
-
+                                _this5.alertWorkActivityAsset('Work Activity', 'Your service history has been successfully updated.');
                               }, function (woacalalErr) {
                                 console.log(woacalalErr);
                               });
@@ -801,42 +822,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                               console.log("alslshErr", alslshErr);
                             }, function () {});
                           } else {
-                            console.log(_assLocAssLisSerHisData2);
+                            console.log("updateservhistaaa6", _assLocAssLisSerHisData2);
+                            console.log("updateservhistaaa6", idToBeUpdate);
 
                             _this5.assetLocationAssetListServiceHistoriesService.update(idToBeUpdate, _assLocAssLisSerHisData2).subscribe(function (alslshRes) {
-                              console.log("alslshRes", alslshRes); // console.log("siniiiiii length = ", this.workOrderActComAssLocAssLis)
-                              // if (this.workOrderActComAssLocAssLis.service_histories.length > 0) {
-                              //   console.log("sana length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-                              //   this.workOrderActComAssLocAssLis.service_histories
-                              //     .forEach(element => {
-                              //       // this.AssLocAssLisArrId
-                              //       woacalalData.push(element)
-                              //     });
-                              // } else {
-                              //   console.log("sini length = ", this.workOrderActComAssLocAssLis.service_histories.length)
-                              //   woacalalData = []
-                              // }
-                              // woacalalData.push(alslshRes.id)
-                              // let woacassLocAssLisDataFormData = new FormData();
-                              // woacassLocAssLisDataFormData.append('service_histories',woacalalData)
-                              // let woacassLocAssLisFormData = {
-                              //   service_histories: woacalalData
-                              // }
-                              // this.workOrderActivityCompletionAssLocAssListService.update(this.servHist.id, woacassLocAssLisFormData).subscribe(
-                              //   (woacalalRes) => {
-                              //     console.log("woacalalRes =", woacalalRes)
+                              console.log("alslshRes", alslshRes);
 
-                              _this5.alertWorkActivityAsset('Work Activity', 'SuccessFully Save Data.'); //     // this.presentAlertConfirm()
-                              //   }, (woacalalErr) => {
-                              //     console.log(woacalalErr)
-                              //   }
-                              // )
-
+                              _this5.alertWorkActivityAsset('Work Activity', 'SuccessFully Save Data.');
                             }, function (alslshErr) {
                               console.log("alslshErr", alslshErr);
                             }, function () {});
-                          } // console.log("here 111111111111")
-
+                          }
                         }
                       }, function (err) {
                         console.error("err", err);
@@ -852,7 +848,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               };
 
-              // this.updateformData.forEach(element1 => {
               for (var x = 0; x < this.updateformData.length; x++) {
                 _loop(x);
               }
@@ -915,7 +910,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         handler: function handler() {
                           // this.router.navigate(["/technical/maintenance-work-list"]);
                           // this.router.navigate(["/technical/work-activity-asset"]);
-                          _this6.modalController.dismiss();
+                          _this6.modalController.dismiss(_this6.serviceHistoryArray);
                         }
                       }]
                     });
@@ -1018,11 +1013,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         type: src_app_shared_services_service_histories_question_service_histories_question_service__WEBPACK_IMPORTED_MODULE_11__["ServiceHistoriesQuestionService"]
       }, {
-        type: src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_14__["AssetLocationAssetListServiceHistoriesService"]
+        type: src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_15__["AssetLocationAssetListServiceHistoriesService"]
       }, {
-        type: src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_15__["WorkOrderActivityCompletionAssLocAssListService"]
+        type: src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_16__["WorkOrderActivityCompletionAssLocAssListService"]
       }, {
-        type: src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_16__["FailureProfileModelService"]
+        type: src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_17__["FailureProfileModelService"]
       }];
     };
 
@@ -1034,7 +1029,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./service-history.page.scss */
       "./src/app/pages/technical/service-history/service-history.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["MenuController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], src_app_shared_services_notifications_notifications_service__WEBPACK_IMPORTED_MODULE_5__["NotificationsService"], src_app_shared_services_work_activities_work_activities_service__WEBPACK_IMPORTED_MODULE_6__["WorkActivitiesService"], src_app_shared_services_asset_types_asset_types_service__WEBPACK_IMPORTED_MODULE_7__["AssetTypesService"], src_app_shared_services_assets_assets_service__WEBPACK_IMPORTED_MODULE_8__["AssetsService"], src_app_shared_services_asset_service_history_asset_service_history_service__WEBPACK_IMPORTED_MODULE_9__["AssetServiceHistoryService"], src_app_shared_services_service_history_service_history_service__WEBPACK_IMPORTED_MODULE_10__["ServiceHistoryService"], src_app_shared_services_service_history_question_service_history_question_service__WEBPACK_IMPORTED_MODULE_12__["ServiceHistoryQuestionService"], src_app_shared_services_questions_value_valid_questions_value_valid_service__WEBPACK_IMPORTED_MODULE_13__["QuestionValidValueService"], src_app_shared_services_service_histories_question_service_histories_question_service__WEBPACK_IMPORTED_MODULE_11__["ServiceHistoriesQuestionService"], src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_14__["AssetLocationAssetListServiceHistoriesService"], src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_15__["WorkOrderActivityCompletionAssLocAssListService"], src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_16__["FailureProfileModelService"]])], ServiceHistoryPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["MenuController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], src_app_shared_services_notifications_notifications_service__WEBPACK_IMPORTED_MODULE_5__["NotificationsService"], src_app_shared_services_work_activities_work_activities_service__WEBPACK_IMPORTED_MODULE_6__["WorkActivitiesService"], src_app_shared_services_asset_types_asset_types_service__WEBPACK_IMPORTED_MODULE_7__["AssetTypesService"], src_app_shared_services_assets_assets_service__WEBPACK_IMPORTED_MODULE_8__["AssetsService"], src_app_shared_services_asset_service_history_asset_service_history_service__WEBPACK_IMPORTED_MODULE_9__["AssetServiceHistoryService"], src_app_shared_services_service_history_service_history_service__WEBPACK_IMPORTED_MODULE_10__["ServiceHistoryService"], src_app_shared_services_service_history_question_service_history_question_service__WEBPACK_IMPORTED_MODULE_12__["ServiceHistoryQuestionService"], src_app_shared_services_questions_value_valid_questions_value_valid_service__WEBPACK_IMPORTED_MODULE_13__["QuestionValidValueService"], src_app_shared_services_service_histories_question_service_histories_question_service__WEBPACK_IMPORTED_MODULE_11__["ServiceHistoriesQuestionService"], src_app_shared_services_asset_location_asset_list_service_histories_asset_location_asset_list_service_histories_service__WEBPACK_IMPORTED_MODULE_15__["AssetLocationAssetListServiceHistoriesService"], src_app_shared_services_work_order_activity_completion_AssLocAssList_work_order_activity_completion_AssLocAssList_service__WEBPACK_IMPORTED_MODULE_16__["WorkOrderActivityCompletionAssLocAssListService"], src_app_shared_services_failure_profile_failure_profile_service__WEBPACK_IMPORTED_MODULE_17__["FailureProfileModelService"]])], ServiceHistoryPage);
     /***/
   },
 
@@ -1482,8 +1477,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function AssetsService(http) {
         _classCallCheck(this, AssetsService);
 
-        this.http = http;
-        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; // Data 
+        this.http = http; //url: string = environment.assetUrl;
+
+        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; //url: string = environment.baseUrl + "v1/assets/";
+        // Data 
 
         this.amodels = [];
       }
@@ -2238,135 +2235,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./src/app/shared/services/work-activities/work-activities.service.ts":
-  /*!****************************************************************************!*\
-    !*** ./src/app/shared/services/work-activities/work-activities.service.ts ***!
-    \****************************************************************************/
-
-  /*! exports provided: WorkActivitiesService */
-
-  /***/
-  function srcAppSharedServicesWorkActivitiesWorkActivitiesServiceTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "WorkActivitiesService", function () {
-      return WorkActivitiesService;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! src/environments/environment */
-    "./src/environments/environment.ts");
-    /* harmony import */
-
-
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @angular/common/http */
-    "./node_modules/@angular/common/fesm2015/http.js");
-    /* harmony import */
-
-
-    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! rxjs/operators */
-    "./node_modules/rxjs/_esm2015/operators/index.js");
-
-    var WorkActivitiesService =
-    /*#__PURE__*/
-    function () {
-      function WorkActivitiesService(http) {
-        _classCallCheck(this, WorkActivitiesService);
-
-        this.http = http;
-        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/work-activities/"; // Data
-
-        this.wamodels = [];
-      }
-
-      _createClass(WorkActivitiesService, [{
-        key: "post",
-        value: function post(body) {
-          return this.http.post(this.url, body).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
-            console.log("WorkActivitiesModel", res);
-          }));
-        }
-      }, {
-        key: "get",
-        value: function get() {
-          var _this27 = this;
-
-          return this.http.get(this.url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
-            console.log("WorkActivitiesModel", res);
-            _this27.wamodels = res;
-          }));
-        }
-      }, {
-        key: "getOne",
-        value: function getOne(id) {
-          var _this28 = this;
-
-          var urlID = this.url + id + "/";
-          return this.http.get(urlID).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
-            console.log("WorkActivitiesModel", res);
-            _this28.wamodel = res;
-          }));
-        }
-      }, {
-        key: "update",
-        value: function update(id, body) {
-          return this.http.patch(this.url + id + '/', body).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
-            console.log("WorkActivitiesModel", res);
-          }));
-        }
-      }, {
-        key: "delete",
-        value: function _delete(id) {
-          return this.http.delete(this.url + id + "/").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
-            console.log("WorkActivitiesModel", res);
-          }));
-        }
-      }, {
-        key: "filter",
-        value: function filter(field) {
-          var urlFilter = this.url + "?" + field;
-          return this.http.get(urlFilter).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
-            console.log("WorkActivitiesModel", res);
-          }));
-        }
-      }]);
-
-      return WorkActivitiesService;
-    }();
-
-    WorkActivitiesService.ctorParameters = function () {
-      return [{
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
-      }];
-    };
-
-    WorkActivitiesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-      providedIn: "root"
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])], WorkActivitiesService);
-    /***/
-  },
-
-  /***/
   "./src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service.ts":
   /*!**************************************************************************************************************************************!*\
     !*** ./src/app/shared/services/work-order-activity-completion-AssLocAssList/work-order-activity-completion-AssLocAssList.service.ts ***!
@@ -2438,22 +2306,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "get",
         value: function get() {
-          var _this29 = this;
+          var _this27 = this;
 
           return this.http.get(this.url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
             console.log("WorkOrderActivityCompletionAssLocAssListModel", res);
-            _this29.amodels = res;
+            _this27.amodels = res;
           }));
         }
       }, {
         key: "getOne",
         value: function getOne(id) {
-          var _this30 = this;
+          var _this28 = this;
 
           var urlID = this.url + id + "/";
           return this.http.get(urlID).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
             console.log("WorkOrderActivityCompletionAssLocAssListModel", res);
-            _this30.amodel = res;
+            _this28.amodel = res;
           }));
         }
       }, {

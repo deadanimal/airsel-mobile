@@ -360,11 +360,11 @@ let OperationalReadingListPage = class OperationalReadingListPage {
                                         .filter("badge_no=" + data.badge_no)
                                         .subscribe((res) => {
                                         // if find, go to asset detail list
-                                        if (res.length > 0) {
+                                        if (res['results'].length > 0) {
                                             loading.dismiss();
                                             let navigationExtras = {
                                                 state: {
-                                                    badge_no: res[0].badge_no,
+                                                    badge_no: res['results'][0].badge_no,
                                                 },
                                             };
                                             this.router.navigate(["/technical/operational-reading"], navigationExtras);
@@ -438,10 +438,10 @@ let OperationalReadingListPage = class OperationalReadingListPage {
                         this.assetsService.filter("hex_code=" + this.scanValue).subscribe((res) => {
                             loading.dismiss();
                             // if find, go to asset detail list
-                            if (res.length > 0) {
+                            if (res['results'].length > 0) {
                                 let navigationExtras = {
                                     state: {
-                                        badge_no: res[0].badge_no,
+                                        badge_no: res['results'][0].badge_no,
                                     },
                                 };
                                 this.router.navigate(["/technical/operational-reading"], navigationExtras);
@@ -475,11 +475,11 @@ let OperationalReadingListPage = class OperationalReadingListPage {
                         loading.present();
                         this.assetsService.filter("badge_no=" + this.scanValue).subscribe((res) => {
                             // if find, go to asset detail list
-                            if (res.length > 0) {
+                            if (res['results'].length > 0) {
                                 loading.dismiss();
                                 let navigationExtras = {
                                     state: {
-                                        badge_no: res[0].badge_no,
+                                        badge_no: res['results'][0].badge_no,
                                     },
                                 };
                                 this.router.navigate(["/technical/operational-reading"], navigationExtras);

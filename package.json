@@ -40,7 +40,8 @@
     "angular-svg-round-progressbar": "^3.0.1",
     "chart.js": "^2.9.3",
     "chartjs-plugin-labels": "^1.1.0",
-    "cordova-android": "8.1.0",
+    "cordova-android": "^8.1.0",
+    "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-browser": "6.0.0",
     "cordova-plugin-broadcaster": "^4.3.1",
     "cordova-plugin-camera": "^4.1.0",
@@ -120,8 +121,8 @@
       "cordova-plugin-broadcaster": {}
     },
     "platforms": [
-      "android",
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

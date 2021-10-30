@@ -793,7 +793,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | pages-technical-technical-module */
-        [__webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("default~pages-technical-measurement-type-measurement-type-module~pages-technical-operational-reading~b806443f"), __webpack_require__.e("default~pages-technical-technical-module~work-request-work-request-module"), __webpack_require__.e("default~pages-technical-operational-reading-operational-reading-module~pages-technical-technical-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-technical-technical-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~pages-technical-maintenance-work-list-maintenance-work-list-module~pages-technical-service-h~0e48d102"), __webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("default~pages-technical-measurement-type-measurement-type-module~pages-technical-operational-reading~b806443f"), __webpack_require__.e("default~pages-technical-technical-module~work-request-work-request-module"), __webpack_require__.e("default~pages-technical-operational-reading-operational-reading-module~pages-technical-technical-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-technical-technical-module")]).then(__webpack_require__.bind(null,
         /*! ./pages/technical/technical.module */
         "./src/app/pages/technical/technical.module.ts")).then(function (m) {
           return m.TechnicalModule;
@@ -859,7 +859,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | pages-technical-maintenance-work-list-maintenance-work-list-module */
-        [__webpack_require__.e("default~maintenance-work-list-maintenance-work-list-module~pages-technical-maintenance-work-list-mai~328f7f95"), __webpack_require__.e("pages-technical-maintenance-work-list-maintenance-work-list-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~pages-technical-maintenance-work-list-maintenance-work-list-module~pages-technical-service-h~0e48d102"), __webpack_require__.e("default~maintenance-work-list-maintenance-work-list-module~pages-technical-maintenance-work-list-mai~328f7f95")]).then(__webpack_require__.bind(null,
         /*! ./pages/technical/maintenance-work-list/maintenance-work-list.module */
         "./src/app/pages/technical/maintenance-work-list/maintenance-work-list.module.ts")).then(function (m) {
           return m.MaintenanceWorkListPageModule;
@@ -881,7 +881,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | pages-technical-work-activity-work-activity-module */
-        [__webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("default~pages-technical-work-activity-work-activity-module~work-activity-work-activity-module"), __webpack_require__.e("pages-technical-work-activity-work-activity-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~pages-technical-maintenance-work-list-maintenance-work-list-module~pages-technical-service-h~0e48d102"), __webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("default~pages-technical-work-activity-work-activity-module~work-activity-work-activity-module"), __webpack_require__.e("pages-technical-work-activity-work-activity-module")]).then(__webpack_require__.bind(null,
         /*! ./pages/technical/work-activity/work-activity.module */
         "./src/app/pages/technical/work-activity/work-activity.module.ts")).then(function (m) {
           return m.WorkActivityPageModule;
@@ -892,7 +892,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | pages-technical-service-history-service-history-module */
-        [__webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~pages-technical-maintenance-work-list-maintenance-work-list-module~pages-technical-service-h~0e48d102"), __webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null,
         /*! ./pages/technical/service-history/service-history.module */
         "./src/app/pages/technical/service-history/service-history.module.ts")).then(function (m) {
           return m.ServiceHistoryPageModule;
@@ -969,7 +969,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | pages-technical-work-activity-asset-work-activity-asset-module */
-        [__webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("default~pages-technical-work-activity-asset-work-activity-asset-module~work-activity-asset-work-acti~ae4b2a7c"), __webpack_require__.e("pages-technical-work-activity-asset-work-activity-asset-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~pages-technical-maintenance-work-list-maintenance-work-list-module~pages-technical-service-h~0e48d102"), __webpack_require__.e("default~pages-technical-service-history-service-history-module~pages-technical-technical-module~page~69be26f5"), __webpack_require__.e("default~pages-technical-work-activity-asset-work-activity-asset-module~work-activity-asset-work-acti~ae4b2a7c"), __webpack_require__.e("pages-technical-work-activity-asset-work-activity-asset-module")]).then(__webpack_require__.bind(null,
         /*! ./pages/technical/work-activity-asset/work-activity-asset.module */
         "./src/app/pages/technical/work-activity-asset/work-activity-asset.module.ts")).then(function (m) {
           return m.WorkActivityAssetPageModule;
@@ -1107,6 +1107,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return m.ApprovalProfilePageModule;
         });
       }
+    }, {
+      path: 'multiple-retagging',
+      loadChildren: function loadChildren() {
+        return Promise.all(
+        /*! import() | pages-technical-multiple-retagging-multiple-retagging-module */
+        [__webpack_require__.e("default~multiple-retagging-multiple-retagging-module~pages-technical-multiple-retagging-multiple-ret~6fdd8e80"), __webpack_require__.e("pages-technical-multiple-retagging-multiple-retagging-module")]).then(__webpack_require__.bind(null,
+        /*! ./pages/technical/multiple-retagging/multiple-retagging.module */
+        "./src/app/pages/technical/multiple-retagging/multiple-retagging.module.ts")).then(function (m) {
+          return m.MultipleRetaggingPageModule;
+        });
+      }
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -1138,7 +1149,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-item {\n  --background: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLXJmaWQvbW9iaWxlL3NyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSx5QkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWl0ZW0ge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xufVxuIiwiaW9uLWl0ZW0ge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-item {\n  --background: transparent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9wbnNiL0RvY3VtZW50cy9HaXRIdWIvYWlyc2VsLW1vYmlsZS9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbn1cbiIsImlvbi1pdGVtIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbn0iXX0= */";
     /***/
   },
 
@@ -2043,9 +2054,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var environment = {
       production: false,
-      baseUrl: 'https://airsel-rfid.prototype.com.my/' //baseUrl: 'https://airsel-rfid-api-prod.pipe.my/'
-      //baseUrl: 'https://airsel-rfid-api.pipe.my/'
+      //baseUrl: 'https://airsel-rfid.prototype.com.my/'
+      baseUrl: 'https://airsel-rfid-api-prod.pipe.my/' //baseUrl: 'https://airsel-rfid-api.pipe.my/'
       // baseUrl: 'http://127.0.0.1:8000/'
+      //assetUrl: 'https://airsel-rfid.prototype.com.my/v1/assets/'
+      //assetUrl: 'https://airsel-rfid-api-prod.pipe.my/v1/assets/'
 
     };
     /*
@@ -2125,7 +2138,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /Users/pnsb/Documents/GitHub/airsel-rfid/mobile/src/main.ts */
+    /*! /Users/pnsb/Documents/GitHub/airsel-mobile/src/main.ts */
     "./src/main.ts");
     /***/
   }

@@ -195,8 +195,9 @@ export class AssetDetailPage implements OnInit {
         this.asset_detail = this.router.getCurrentNavigation().extras.state.asset_detail;
 
         let asset_attributes = this.asset_detail["asset_attributes"];
+        console.log("trylain",asset_attributes)
         this.getAssetAttributeData(asset_attributes)
-
+        
         let asset_type = "asset_type_code=" + this.asset_detail['asset_type']
         this.assetAttributeId = this.asset_detail['asset_attributes']
         
@@ -236,9 +237,9 @@ export class AssetDetailPage implements OnInit {
 
           this.assetsService.filter("asset_id=" + this.asset_detail['attached_to_asset_id']).subscribe(
             (resA) => {
-              console.log("assetqqqqqqqqq=res", resA);
+              console.log("assetqqqqqqqqq=res", resA['results']);
 
-              this.assetLocatioSyncService.filter("node_id=" + resA[0]['node_id']).subscribe(
+              this.assetLocatioSyncService.filter("node_id=" + resA['results'][0]['node_id']).subscribe(
                 (resAls) => {
                   console.log("resAls>><<>>", resAls)
                   if (resAls.length > 0) {
@@ -353,7 +354,7 @@ export class AssetDetailPage implements OnInit {
       }
       if (assAttCol['manufacturer'] == true) {
 
-        // console.log("gggggggg")
+         console.log("gggggggg")
 
         if (this.arraytype.indexOf('manufacturer') == -1) {
           // console.log("hhhhhhh")
@@ -1253,23 +1254,31 @@ export class AssetDetailPage implements OnInit {
       }
 
       this.assetAttributedatas.forEach(ele => {
-        console.log("eleeleeleeleele", ele)
-        let filter = "attribute_field_name=" + ele.characteristic_type_name
-        this.assetAttributePredefineService.filter(filter).subscribe(
-          (res) => {
-
-            if (res.length > 0) {
-              ele.dropdown = 'yes'
-              ele.option = res
-            } else {
-              ele.dropdown = 'no'
-              ele.option = []
+        console.log("eleeleeleeleele", ele);
+        let filter = "attribute_field_name=" + ele.characteristic_type_name;
+        // ele.dropdown = 'no';
+        // ele.option = [];
+        if(ele.characteristic_type_name == "" || ele.characteristic_type_name == null){
+            ele.dropdown = 'no'
+            ele.option = []
+        }else{
+          this.assetAttributePredefineService.filter(filter).subscribe(
+            (res) => {
+  
+              if (res.length > 0) {
+                //console.log("testing123", res)
+                ele.dropdown = 'yes';
+                ele.option = res;
+              }else{
+                ele.dropdown = 'no';
+                ele.option = [];
+              }
+  
+            }, (err) => {
+  
             }
-
-          }, (err) => {
-
-          }
-        )
+          )
+        }
       });
 
       // setTimeout(() => {
@@ -1419,7 +1428,7 @@ export class AssetDetailPage implements OnInit {
       this.field_value = null
       this.assetAttributeService.getOne(element).subscribe(
         (aasRes) => {
-          // console.log('assetAttributeService>>=// ', aasRes)
+          console.log('assetAttributeService>>=// ', aasRes)
           // this.assetAttributedatas.push(aasRes)
           // console.log("assetAttributedatas = ", this.assetAttributedatas)
           let assct = aasRes.characteristic_type
@@ -1507,7 +1516,7 @@ export class AssetDetailPage implements OnInit {
     console.log("value === ", value)
 
     this.assetAttributedatas.forEach(element => {
-
+      console.log("testelement", element)
       // check in the form data 
       if (element.field_name == row.field_name) {
 
@@ -1554,32 +1563,31 @@ export class AssetDetailPage implements OnInit {
             }
           );
         } else {
-          element.action_type = 'UPDATE';
-          updateformData['action_type'] = 'UPDATE'
-          // console.log('exist cok')
-          this.assetAttributeService.update(element.id, updateformData).subscribe(
-            (res) => {
-              // console.log(res)
-              // this.assetAttributedatas.push(res)
-              // console.log("resAAS = ", res)
-              // this.assetAttributeId.push(res.id)
-              // element.id = res.id;
-              // let obj = {
-              //   submitted_datetime: this.getCurrentDateTime(),
-              // }
-              // this.assetsService.update(this.asset_detail['id'], obj).subscribe(
-              //   (resp) => {
-              //     console.log('berjaya cok', resp)
-              //   }, (error) => {
-              //     console.log('tidak berjaya cok', error)
-              //   }
-              // )
-            },
-            (err) => {
-              console.error("err", err);
-            }
-          );
-
+          console.log("testtrycubatrytest", element.field_value);
+          console.log("testtrycubatrytest", updateformData['adhoc_value']);
+          
+          if (updateformData['adhoc_value'] == ""){
+            element.action_type = 'UNCHANGED';
+            updateformData['action_type'] = 'UNCHANGED'
+            this.assetAttributeService.update(element.id, updateformData).subscribe(
+              (res) => {
+              },
+              (err) => {
+                console.error("err", err);
+              }
+            );
+          }else{
+            element.action_type = 'UPDATE';
+            updateformData['action_type'] = 'UPDATE'
+            // console.log('exist cok')
+            this.assetAttributeService.update(element.id, updateformData).subscribe(
+              (res) => {
+              },
+              (err) => {
+                console.error("err", err);
+              }
+            );
+          }
         }
       }
     });
@@ -1596,8 +1604,9 @@ export class AssetDetailPage implements OnInit {
     // setTimeout(() => {
     // console.log("assetAttributedatas --==][ ", this.assetAttributedatas)
     let assetAttrIdExist = []
+    console.log("naq1",this.assetAttributedatas);
     this.assetAttributedatas.forEach(element => {
-
+      console.log("naq",element.id);
       // console.log("element --- ", element.id)
       if (element.id != '') {
         // console.log('masuk')
@@ -1619,6 +1628,7 @@ export class AssetDetailPage implements OnInit {
     // let roo = this.asset_detail["effective_datetime"].setHours(this.asset_detail["effective_datetime"].getHours() - 2);
     // console.log("datetime", roo)
     console.log("obj = ", obj)
+    console.log("objtrytest = ", this.asset_detail['id'])
     console.log(" this.selectedDate", selectedDate)
     console.log("this.getCurrentDateTime()", this.getCurrentDateTime())
 
@@ -1631,7 +1641,7 @@ export class AssetDetailPage implements OnInit {
       (resp) => {
         console.log('berjaya cok', resp)
       }, (error) => {
-        // console.log('tidak berjaya cok', error)
+        console.log('tidak berjaya cok', error)
       }, () => {
         this.update()
       }

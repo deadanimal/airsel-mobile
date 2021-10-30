@@ -202,8 +202,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function AssetsService(http) {
         _classCallCheck(this, AssetsService);
 
-        this.http = http;
-        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; // Data 
+        this.http = http; //url: string = environment.assetUrl;
+
+        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].baseUrl + "v1/assets/"; //url: string = environment.baseUrl + "v1/assets/";
+        // Data 
 
         this.amodels = [];
       }
