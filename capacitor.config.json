@@ -13,7 +13,7 @@
     "preferences": {
       "ScrollEnabled": "false",
       "android-minSdkVersion": "23",
-      "android-maxSdkVersion": "27",
+      "android-maxSdkVersion": "30",
       "BackupWebStorage": "none",
       "SplashMaintainAspectRatio": "true",
       "FadeSplashScreenDuration": "300",
